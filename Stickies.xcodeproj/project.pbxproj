@@ -8,18 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D848D2842D57900AEC836 /* StickiesApp.swift */; };
-		505D84902842D57900AEC836 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D848F2842D57900AEC836 /* ContentView.swift */; };
 		505D84922842D57D00AEC836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84912842D57D00AEC836 /* Assets.xcassets */; };
 		505D84952842D57D00AEC836 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84942842D57D00AEC836 /* Preview Assets.xcassets */; };
+		5060F52B285D187A004E9142 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060F52A285D187A004E9142 /* AddCardView.swift */; };
+		50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */; };
+		50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08B2284EA7FA00678A3E /* DataController.swift */; };
+		50CC08B5284EAF1B00678A3E /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08B4284EAF1B00678A3E /* CardFront.swift */; };
+		50FEF01C284D594600FA8373 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEF018284D594600FA8373 /* CardBack.swift */; };
+		50FEF01D284D594700FA8373 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEF019284D594600FA8373 /* CardView.swift */; };
+		50FEF01E284D594700FA8373 /* StickiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEF01A284D594600FA8373 /* StickiesView.swift */; };
+		50FEF01F284D594700FA8373 /* AspectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEF01B284D594600FA8373 /* AspectListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		505D848A2842D57900AEC836 /* Stickies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stickies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		505D848D2842D57900AEC836 /* StickiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickiesApp.swift; sourceTree = "<group>"; };
-		505D848F2842D57900AEC836 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		505D84912842D57D00AEC836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505D84942842D57D00AEC836 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		505D84962842D57D00AEC836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5060F52A285D187A004E9142 /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
+		50CC08B0284EA70500678A3E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		50CC08B2284EA7FA00678A3E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		50CC08B4284EAF1B00678A3E /* CardFront.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
+		50FEF018284D594600FA8373 /* CardBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
+		50FEF019284D594600FA8373 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		50FEF01A284D594600FA8373 /* StickiesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickiesView.swift; sourceTree = "<group>"; };
+		50FEF01B284D594600FA8373 /* AspectListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,10 +66,14 @@
 		505D848C2842D57900AEC836 /* Stickies */ = {
 			isa = PBXGroup;
 			children = (
+				50CC08B6284EB3CD00678A3E /* DataModel */,
+				50FEF020284D5B1600FA8373 /* Services */,
+				50FEF016284D58A200FA8373 /* Repositories */,
+				50FEF015284D589A00FA8373 /* ViewModels */,
+				50FEF014284D588F00FA8373 /* Views */,
 				505D848D2842D57900AEC836 /* StickiesApp.swift */,
-				505D848F2842D57900AEC836 /* ContentView.swift */,
-				505D84912842D57D00AEC836 /* Assets.xcassets */,
 				505D84962842D57D00AEC836 /* Info.plist */,
+				505D84912842D57D00AEC836 /* Assets.xcassets */,
 				505D84932842D57D00AEC836 /* Preview Content */,
 			);
 			path = Stickies;
@@ -67,6 +85,49 @@
 				505D84942842D57D00AEC836 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		50CC08B6284EB3CD00678A3E /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				50CC08B2284EA7FA00678A3E /* DataController.swift */,
+				50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		50FEF014284D588F00FA8373 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				50CC08B4284EAF1B00678A3E /* CardFront.swift */,
+				50FEF018284D594600FA8373 /* CardBack.swift */,
+				50FEF01B284D594600FA8373 /* AspectListView.swift */,
+				50FEF019284D594600FA8373 /* CardView.swift */,
+				50FEF01A284D594600FA8373 /* StickiesView.swift */,
+				5060F52A285D187A004E9142 /* AddCardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		50FEF015284D589A00FA8373 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		50FEF016284D58A200FA8373 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		50FEF020284D5B1600FA8373 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +199,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				505D84902842D57900AEC836 /* ContentView.swift in Sources */,
+				50FEF01F284D594700FA8373 /* AspectListView.swift in Sources */,
+				50CC08B5284EAF1B00678A3E /* CardFront.swift in Sources */,
+				50FEF01C284D594600FA8373 /* CardBack.swift in Sources */,
+				50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */,
+				50FEF01D284D594700FA8373 /* CardView.swift in Sources */,
+				50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */,
 				505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */,
+				50FEF01E284D594700FA8373 /* StickiesView.swift in Sources */,
+				5060F52B285D187A004E9142 /* AddCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Stickies/Preview Content\"";
 				DEVELOPMENT_TEAM = 27MAHLJV74;
@@ -277,8 +346,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Ion-Caus.Stickies";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stickies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -289,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Stickies/Preview Content\"";
 				DEVELOPMENT_TEAM = 27MAHLJV74;
@@ -299,8 +370,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Ion-Caus.Stickies";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stickies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -328,6 +400,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				50CC08B0284EA70500678A3E /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 50CC08B0284EA70500678A3E /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 505D84822842D57900AEC836 /* Project object */;
 }

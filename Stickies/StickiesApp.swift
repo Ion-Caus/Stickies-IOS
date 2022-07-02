@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct StickiesApp: App {
+    @ObservedObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StickiesView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
