@@ -9,8 +9,16 @@
         <attribute name="synonyms" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
+        <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="cards" inverseEntity="Deck"/>
+    </entity>
+    <entity name="Deck" representedClassName="Deck" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Card" inverseName="deck" inverseEntity="Card"/>
     </entity>
     <elements>
-        <element name="Card" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Card" positionX="-54" positionY="-63" width="128" height="178"/>
+        <element name="Deck" positionX="-239.2609252929688" positionY="-31.56515502929688" width="128" height="103"/>
     </elements>
 </model>

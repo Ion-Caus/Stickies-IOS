@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500EA5262871F90A005A2C83 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EA5252871F90A005A2C83 /* PlayView.swift */; };
+		500EA5282871FD33005A2C83 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EA5272871FD33005A2C83 /* Background.swift */; };
+		500EA52A287200E9005A2C83 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EA529287200E9005A2C83 /* CardListView.swift */; };
+		50168BD3288215C200ABF8EF /* DeckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD2288215C200ABF8EF /* DeckListViewModel.swift */; };
+		50168BD52882209500ABF8EF /* DeckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD42882209500ABF8EF /* DeckListView.swift */; };
+		50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD72883204300ABF8EF /* Deck+Extensions.swift */; };
+		50168BDA28834ECE00ABF8EF /* AddDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD928834ECD00ABF8EF /* AddDeckView.swift */; };
+		50168BDD2883544900ABF8EF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BDC2883544900ABF8EF /* ViewExtensions.swift */; };
+		50168BDF28835B8700ABF8EF /* Card+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BDE28835B8700ABF8EF /* Card+Extension.swift */; };
 		505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D848D2842D57900AEC836 /* StickiesApp.swift */; };
 		505D84922842D57D00AEC836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84912842D57D00AEC836 /* Assets.xcassets */; };
 		505D84952842D57D00AEC836 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84942842D57D00AEC836 /* Preview Assets.xcassets */; };
@@ -21,6 +30,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		500EA5252871F90A005A2C83 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
+		500EA5272871FD33005A2C83 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		500EA529287200E9005A2C83 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
+		50168BD2288215C200ABF8EF /* DeckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModel.swift; sourceTree = "<group>"; };
+		50168BD42882209500ABF8EF /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
+		50168BD72883204300ABF8EF /* Deck+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+Extensions.swift"; sourceTree = "<group>"; };
+		50168BD928834ECD00ABF8EF /* AddDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckView.swift; sourceTree = "<group>"; };
+		50168BDC2883544900ABF8EF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		50168BDE28835B8700ABF8EF /* Card+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Extension.swift"; sourceTree = "<group>"; };
 		505D848A2842D57900AEC836 /* Stickies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stickies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		505D848D2842D57900AEC836 /* StickiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickiesApp.swift; sourceTree = "<group>"; };
 		505D84912842D57D00AEC836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,6 +65,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50168BD628831FFD00ABF8EF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				500EA5272871FD33005A2C83 /* Background.swift */,
+				50FEF01B284D594600FA8373 /* AspectListView.swift */,
+				50CC08B4284EAF1B00678A3E /* CardFront.swift */,
+				50FEF018284D594600FA8373 /* CardBack.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		50168BDB288353FC00ABF8EF /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				50168BDC2883544900ABF8EF /* ViewExtensions.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		505D84812842D57900AEC836 = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +103,9 @@
 		505D848C2842D57900AEC836 /* Stickies */ = {
 			isa = PBXGroup;
 			children = (
+				50168BD628831FFD00ABF8EF /* Components */,
 				50CC08B6284EB3CD00678A3E /* DataModel */,
-				50FEF020284D5B1600FA8373 /* Services */,
-				50FEF016284D58A200FA8373 /* Repositories */,
+				50168BDB288353FC00ABF8EF /* Extentions */,
 				50FEF015284D589A00FA8373 /* ViewModels */,
 				50FEF014284D588F00FA8373 /* Views */,
 				505D848D2842D57900AEC836 /* StickiesApp.swift */,
@@ -92,6 +129,8 @@
 			children = (
 				50CC08B2284EA7FA00678A3E /* DataController.swift */,
 				50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */,
+				50168BD72883204300ABF8EF /* Deck+Extensions.swift */,
+				50168BDE28835B8700ABF8EF /* Card+Extension.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -99,12 +138,13 @@
 		50FEF014284D588F00FA8373 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				50CC08B4284EAF1B00678A3E /* CardFront.swift */,
-				50FEF018284D594600FA8373 /* CardBack.swift */,
-				50FEF01B284D594600FA8373 /* AspectListView.swift */,
 				50FEF019284D594600FA8373 /* CardView.swift */,
 				50FEF01A284D594600FA8373 /* StickiesView.swift */,
+				500EA5252871F90A005A2C83 /* PlayView.swift */,
 				5060F52A285D187A004E9142 /* AddCardView.swift */,
+				500EA529287200E9005A2C83 /* CardListView.swift */,
+				50168BD42882209500ABF8EF /* DeckListView.swift */,
+				50168BD928834ECD00ABF8EF /* AddDeckView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,22 +152,9 @@
 		50FEF015284D589A00FA8373 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				50168BD2288215C200ABF8EF /* DeckListViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		50FEF016284D58A200FA8373 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		50FEF020284D5B1600FA8373 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,15 +226,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				500EA5282871FD33005A2C83 /* Background.swift in Sources */,
+				50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */,
+				50168BDD2883544900ABF8EF /* ViewExtensions.swift in Sources */,
 				50FEF01F284D594700FA8373 /* AspectListView.swift in Sources */,
 				50CC08B5284EAF1B00678A3E /* CardFront.swift in Sources */,
 				50FEF01C284D594600FA8373 /* CardBack.swift in Sources */,
 				50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */,
 				50FEF01D284D594700FA8373 /* CardView.swift in Sources */,
+				50168BDA28834ECE00ABF8EF /* AddDeckView.swift in Sources */,
+				50168BD3288215C200ABF8EF /* DeckListViewModel.swift in Sources */,
 				50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */,
+				50168BDF28835B8700ABF8EF /* Card+Extension.swift in Sources */,
 				505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */,
 				50FEF01E284D594700FA8373 /* StickiesView.swift in Sources */,
+				500EA5262871F90A005A2C83 /* PlayView.swift in Sources */,
+				500EA52A287200E9005A2C83 /* CardListView.swift in Sources */,
 				5060F52B285D187A004E9142 /* AddCardView.swift in Sources */,
+				50168BD52882209500ABF8EF /* DeckListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

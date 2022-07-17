@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddCardView : View {
-    
     @Binding var isPresented: Bool
     @Environment(\.managedObjectContext) var context
     
@@ -17,6 +16,8 @@ struct AddCardView : View {
     @State var isFavourite = false
     @State var synonym = ""
     @State var synonyms: [String] = []
+    
+    let deck: Deck?
     
     var disableAddButton: Bool {
         return word.isEmpty || type.isEmpty || synonyms.isEmpty
@@ -83,6 +84,7 @@ struct AddCardView : View {
                         card.word = word
                         card.type = type
                         card.synonyms = synonyms
+                        card.deck = deck
                         
                         try? context.save()
                         isPresented = false
@@ -96,16 +98,11 @@ struct AddCardView : View {
     }
 }
 
-enum WordType: String, Equatable, CaseIterable {
-    case Phrase = "Phrase"
-    case Noun = "Noun"
-    case Verb = "Verb"
-    case Adjective = "Adjective"
-    case Adverb = "Adverb"
-}
-
 struct AddCardView_Previews: PreviewProvider {
+    static var context = DataController.shared.context
     static var previews: some View {
-        AddCardView(isPresented: .constant(true))
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
+    
+        AddCardView(isPresented: .constant(true), deck: deck)
     }
 }

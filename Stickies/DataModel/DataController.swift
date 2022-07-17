@@ -8,16 +8,32 @@
 import CoreData
 import Foundation
 
-class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "DataModel")
+class DataController {
+    static let shared = DataController()
     
-    init() {
+    let container: NSPersistentContainer
+    let context: NSManagedObjectContext
+    
+    private init() {
+        container = NSPersistentContainer(name: "DataModel")
         container.loadPersistentStores { description, error in
             let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             print(urls[urls.count-1] as URL)
+            
             if let error = error {
                 print("Core Data failed to load \(error.localizedDescription)")
             }
+        }
+        context = container.viewContext
+    }
+    
+    func save() {
+        do {
+            try context.save()
+        }
+        catch {
+            context.rollback()
+            print(error.localizedDescription)
         }
     }
 }

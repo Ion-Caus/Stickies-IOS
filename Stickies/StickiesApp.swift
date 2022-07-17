@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct StickiesApp: App {
-    @ObservedObject private var dataController = DataController()
+    private var dataController = DataController.shared
     
     var body: some Scene {
         WindowGroup {
-            StickiesView()
-                .environment(\.managedObjectContext, dataController.container.viewContext)
+            DeckListView()
+                .environment(\.managedObjectContext, dataController.context)
         }
     }
 }
