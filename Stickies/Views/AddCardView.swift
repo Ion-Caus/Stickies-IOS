@@ -12,15 +12,15 @@ struct AddCardView : View {
     @Environment(\.managedObjectContext) var context
     
     @State var word = ""
-    @State var type = WordType.Phrase.rawValue
+    @State var type = WordType.Phrase
     @State var isFavourite = false
     @State var synonym = ""
     @State var synonyms: [String] = []
     
-    let deck: Deck?
+    let deck: Deck
     
     var disableAddButton: Bool {
-        return word.isEmpty || type.isEmpty || synonyms.isEmpty
+        return word.isEmpty || synonyms.isEmpty
     }
     
     var body: some View {
@@ -31,7 +31,7 @@ struct AddCardView : View {
                     
                     Picker("Type", selection: $type) {
                         ForEach(WordType.allCases, id: \.self) { value in
-                            Text(value.rawValue).tag(value.rawValue)
+                            Text(value.rawValue).tag(value)
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
@@ -74,21 +74,10 @@ struct AddCardView : View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("Done") {
-                        let card = Card(context: context)
-                        card.id = UUID()
-                        card.createdDate = Date()
-                        card.modifiedDate = Date()
-                        card.recallScore = 0
-                        
-                        card.isFavourite = isFavourite
-                        card.word = word
-                        card.type = type
-                        card.synonyms = synonyms
-                        card.deck = deck
-                        
-                        try? context.save()
+                        let _ = Card(word: word, type: type, isFavourite: isFavourite, synonyms: synonyms, deck: deck, context: context)
+        
+                        DataController.shared.save()
                         isPresented = false
-
                     }
                     .disabled(disableAddButton)
                 }

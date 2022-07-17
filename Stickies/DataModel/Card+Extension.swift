@@ -10,7 +10,7 @@ import CoreData
 
 extension Card {
     
-    convenience init(word: String, type: WordType, isFavourite: Bool, synonyms: [String], context: NSManagedObjectContext) {
+    convenience init(word: String, type: WordType, isFavourite: Bool, synonyms: [String], deck: Deck, context: NSManagedObjectContext) {
         self.init(context: context)
         self.id = UUID()
         self.createdDate = Date()
@@ -18,9 +18,10 @@ extension Card {
         self.recallScore = 0
         
         self.word = word
-         self.type = type.rawValue
+        self.type = type.rawValue
         self.isFavourite = isFavourite
         self.synonyms = synonyms
+        self.deck = deck
     }
     
     static func fetch() -> NSFetchRequest<Card> {
@@ -30,12 +31,11 @@ extension Card {
         return request
     }
     
-    static func fetchBy(deck: Deck?) -> NSFetchRequest<Card> {
+    static func fetchBy(deck: Deck) -> NSFetchRequest<Card> {
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         request.sortDescriptors = [ NSSortDescriptor(keyPath: \Card.createdDate, ascending: false)]
-        if (deck != nil) {
-            request.predicate =  NSPredicate(format: "deck == %@", deck!)
-        }
+        request.predicate = NSPredicate(format: "deck == %@", deck)
+
         return request
     }
 }

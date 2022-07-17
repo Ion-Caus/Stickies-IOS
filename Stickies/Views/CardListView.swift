@@ -16,9 +16,9 @@ struct CardListView: View {
     
     @State private var showingAdding = false
     
-    let deck: Deck?
+    let deck: Deck
     
-    init(deck: Deck?) {
+    init(deck: Deck) {
         _cards = FetchRequest(fetchRequest: Card.fetchBy(deck: deck), animation: .easeInOut)
         
         self.deck = deck
@@ -32,7 +32,7 @@ struct CardListView: View {
                 HStack (alignment: .center, spacing: 15) {
                     backButton
                     
-                    Text(deck?.title ?? "Stickies").bold()
+                    Text(deck.title ?? "Stickies").bold()
 
                     Spacer()
                 }
