@@ -40,7 +40,7 @@ struct AddCardView : View {
                 }
                 Section(header: Text("Back Face")) {
                     HStack {
-                        TextField("Synonym", text: $synonym)
+                        TextField(deck.type ?? "Synonym", text: $synonym)
                         
                         Spacer()
                         Button("Add") {

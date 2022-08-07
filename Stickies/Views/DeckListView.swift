@@ -23,21 +23,19 @@ struct DeckListView : View {
             ZStack {
                 List {
                     ForEach(decks, id: \.id) { deck in
-                        
                         NavigationLink(destination: CardListView(deck: deck)) {
-                            Text(deck.title ?? "")
-           
+                            Text(deck.title ?? "NO TITLE")
                         }
                     }
                     .onDelete(perform: { indexSet in
                         withAnimation {
                             indexSet.map { decks[$0] }.forEach(context.delete)
-
                             DataController.shared.save()
                             
                         }
                     })
                 }
+                .listStyle(InsetGroupedListStyle())
                 
                 VStack {
                     Spacer()
@@ -53,6 +51,7 @@ struct DeckListView : View {
                 AddDeckView(isPresented: $showingAdding)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     var addButton: some View {

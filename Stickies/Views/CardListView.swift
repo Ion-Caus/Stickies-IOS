@@ -35,13 +35,14 @@ struct CardListView: View {
                     Text(deck.title ?? "Stickies").bold()
 
                     Spacer()
+                    addButton
                 }
                 .font(.title)
                 .padding([.top, .horizontal])
                 
                 AspectListView(
                     items: Array(cards),
-                    aspectRation: 3/4)
+                    aspectRation: CardConstants.aspectRatio)
                 { card in
                     CardView(card: card) {
                         Group {
@@ -71,7 +72,7 @@ struct CardListView: View {
                 
                 Spacer()
                 HStack(alignment: .center, spacing: 10) {
-                    addButton
+                    playButton
                 }
  
             }
@@ -81,6 +82,16 @@ struct CardListView: View {
             .sheet(isPresented: $showingAdding) {
                 AddCardView(isPresented: $showingAdding, deck: deck)
             }
+            
+        }
+    }
+    
+    var backButton: some View {
+        Button {
+            presentationMode.wrappedValue.dismiss()
+        }
+        label: {
+            Image(systemName: "chevron.backward.circle")
         }
     }
     
@@ -90,17 +101,14 @@ struct CardListView: View {
         }
         label: {
             Image(systemName: "plus.circle")
-                .font(Font.system(size: 65))
         }
     }
     
-    var backButton: some View {
-        Button () {
-            presentationMode.wrappedValue.dismiss()
+    var playButton: some View {
+        NavigationLink(destination: PlayView(cards: Array(cards))) {
+            Image(systemName: "play.circle")
         }
-        label: {
-            Image(systemName: "chevron.backward.circle")
-        }
+        .font(Font.system(size: 65))
     }
     
 }

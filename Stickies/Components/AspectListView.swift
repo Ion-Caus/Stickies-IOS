@@ -22,15 +22,16 @@ struct AspectListView<Item, ItemView>: View where Item: Identifiable, ItemView: 
         GeometryReader { geometry in
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    let height: CGFloat = geometry.size.height * 0.75
-                    let width: CGFloat = geometry.size.width * 0.70
+                    let height: CGFloat = geometry.size.height * CardConstants.heightFromScreen
+                    let width: CGFloat = geometry.size.width * CardConstants.widthFromScreen
                     
                     LazyHStack(alignment: .center) {
-                        Rectangle()
+                        Rectangle() //empty space
                             .frame(width: width * 0.1, height: height)
                             .aspectRatio(aspectRation, contentMode: .fit)
                             .opacity(0)
                             .padding(.trailing, 20)
+                        
                         ForEach(items) { item in
                             content(item)
                                 .aspectRatio(aspectRation, contentMode: .fit)

@@ -31,7 +31,7 @@ struct CardFront : View {
             
             VStack (alignment: .center) {
                 Text(type)
-                    .font(.title3)
+                    .font(.subheadline)
                 
                 Text(word)
                     .font(.title)

@@ -11,11 +11,7 @@ import SwiftUI
 struct StickiesView: View {
     
     var body: some View {
-        ZStack {
-            Background()
-            
             DeckListView()
-        }
     
     }
 
