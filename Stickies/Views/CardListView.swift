@@ -15,6 +15,7 @@ struct CardListView: View {
     @FetchRequest private var cards: FetchedResults<Card>
     
     @State private var showingAdding = false
+    @State private var searchText = ""
     
     let deck: Deck
     
@@ -33,12 +34,20 @@ struct CardListView: View {
                     backButton
                     
                     Text(deck.title ?? "Stickies").bold()
+                    
 
                     Spacer()
                     addButton
                 }
                 .font(.title)
                 .padding([.top, .horizontal])
+                
+                TextField("Search", text: $searchText)
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .onChange(of: searchText) { newValue in
+                                cards.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "word CONTAINS %@", newValue)
+                            }
                 
                 AspectListView(
                     items: Array(cards),
@@ -53,7 +62,7 @@ struct CardListView: View {
                                 Label("Edit", systemImage: "pencil")
                             }
                             Divider()
-                            Button {
+                            Button(role: .destructive) {
                                 withAnimation {
                                     context.delete(card)
                                     DataController.shared.save()
@@ -68,7 +77,8 @@ struct CardListView: View {
                         }
                     }
                 }
-                .padding(.top)
+                
+            
                 
                 Spacer()
                 HStack(alignment: .center, spacing: 10) {
@@ -80,9 +90,8 @@ struct CardListView: View {
             .padding(.bottom)
             .navigationBarHidden(true)
             .sheet(isPresented: $showingAdding) {
-                AddCardView(isPresented: $showingAdding, deck: deck)
+                CardFormView(isPresented: $showingAdding, deck: deck)
             }
-            
         }
     }
     
@@ -97,7 +106,7 @@ struct CardListView: View {
     
     var addButton: some View {
         Button {
-            showingAdding = true;
+            showingAdding = true
         }
         label: {
             Image(systemName: "plus.circle")
@@ -110,7 +119,7 @@ struct CardListView: View {
         }
         .font(Font.system(size: 65))
     }
-    
+
 }
 
 struct CardListView_Previews: PreviewProvider {
@@ -118,5 +127,6 @@ struct CardListView_Previews: PreviewProvider {
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
         CardListView(deck: deck)
+            .previewInterfaceOrientation(.portrait)
     }
 }

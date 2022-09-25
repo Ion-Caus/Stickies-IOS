@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DeckListView : View {
-
+    
     @Environment(\.managedObjectContext) private var context
     
     @FetchRequest(
@@ -16,26 +16,61 @@ struct DeckListView : View {
         animation: .easeInOut)
     private var decks: FetchedResults<Deck>
     
-    @State private var showingAdding = false
+    @State private var showConfirmation = false
+    @State private var showingForm = false
+    
+    @State private var searchText = ""
+    @State private var selectedDeck: Deck? = nil
     
     var body: some View {
         NavigationView {
             ZStack {
                 List {
                     ForEach(decks, id: \.id) { deck in
-                        NavigationLink(destination: CardListView(deck: deck)) {
+                        NavigationLink(destination: SimpleCardListView(deck: deck)) {
                             Text(deck.title ?? "NO TITLE")
                         }
-                    }
-                    .onDelete(perform: { indexSet in
-                        withAnimation {
-                            indexSet.map { decks[$0] }.forEach(context.delete)
-                            DataController.shared.save()
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button(role: .destructive) {
+                                selectedDeck = deck
+                                showConfirmation = true
+                                
+                            } label: {
+                                Label("Delete", systemImage: "trash.fill")
+                            }
                             
+                            
+                            Button {
+                                selectedDeck = deck
+                                showingForm = true
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
+                            .tint(.gray)
                         }
-                    })
+                        
+                    }
+                    
                 }
                 .listStyle(InsetGroupedListStyle())
+                .searchable(text: $searchText)
+                .onChange(of: searchText) { newValue in
+                    decks.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "title CONTAINS %@", newValue)
+                }
+                .confirmationDialog("Would you like to delete \(selectedDeck?.title ?? "this list")?",
+                                    isPresented: $showConfirmation,
+                                    titleVisibility: .visible) {
+                    Button("Delete", role: .destructive){
+                        guard let deck = selectedDeck  else {
+                            return
+                        }
+                        context.delete(deck)
+                        DataController.shared.save()
+                        selectedDeck = nil
+                        
+                    }
+                }
+                
                 
                 VStack {
                     Spacer()
@@ -47,8 +82,8 @@ struct DeckListView : View {
                 
             }
             .navigationTitle("Decks")
-            .sheet(isPresented: $showingAdding) {
-                AddDeckView(isPresented: $showingAdding)
+            .sheet(isPresented: $showingForm) {
+                DeckFormView(isPresented: $showingForm, deck: selectedDeck)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -56,11 +91,12 @@ struct DeckListView : View {
     
     var addButton: some View {
         Button {
-            showingAdding = true;
+            showingForm = true
+            selectedDeck = nil
         }
-        label: {
-            Image(systemName: "plus.circle")
-                .font(Font.system(size: 65))
+    label: {
+        Image(systemName: "plus.circle")
+            .font(Font.system(size: 65))
         }
     }
 }

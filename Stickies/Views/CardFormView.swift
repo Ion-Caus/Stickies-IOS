@@ -1,5 +1,5 @@
 //
-//  AddCardView.swift
+//  CardFormView.swift
 //  Stickies
 //
 //  Created by Ion Caus on 17.06.2022.
@@ -7,17 +7,30 @@
 
 import SwiftUI
 
-struct AddCardView : View {
+struct CardFormView : View {
     @Binding var isPresented: Bool
     @Environment(\.managedObjectContext) var context
     
-    @State var word = ""
-    @State var type = WordType.Phrase
-    @State var isFavourite = false
+    @State var word: String
+    @State var type: WordType
+    @State var isFavourite: Bool
+    @State var synonyms: [String]
+    
     @State var synonym = ""
-    @State var synonyms: [String] = []
     
     let deck: Deck
+    @State var card: Card?
+    
+    init(isPresented: Binding<Bool>, deck: Deck, card: Card? = nil) {
+        _isPresented = isPresented
+        self.deck = deck
+        _card = State(initialValue: card)
+        
+        _word = State(initialValue: card?.word ?? "")
+        _type = State(initialValue: WordType(rawValue: card?.type ?? "") ?? WordType.Phrase)
+        _isFavourite = State(initialValue: card?.isFavourite ?? false)
+        _synonyms = State(initialValue: card?.synonyms ?? [])
+    }
     
     var disableAddButton: Bool {
         return word.isEmpty || synonyms.isEmpty
@@ -35,8 +48,8 @@ struct AddCardView : View {
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
-
-    
+                    
+                    
                 }
                 Section(header: Text("Back Face")) {
                     HStack {
@@ -51,12 +64,12 @@ struct AddCardView : View {
                         }
                     }
                     List {
-                       ForEach(synonyms, id: \.self) { (item) in
-                           Text(item)
-                       }
-                       .onDelete(perform: { offsets in
-                           synonyms.remove(atOffsets: offsets)
-                       })
+                        ForEach(synonyms, id: \.self) { (item) in
+                            Text(item)
+                        }
+                        .onDelete(perform: { offsets in
+                            synonyms.remove(atOffsets: offsets)
+                        })
                     }
                     
                 }
@@ -64,8 +77,8 @@ struct AddCardView : View {
                     Toggle("Is Favourite", isOn: $isFavourite)
                 }
             }
-            .navigationTitle("New card")
-
+            .navigationTitle(card == nil ? "New Card" : "Edit Card")
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading){
                     Button("Cancel") {
@@ -74,8 +87,16 @@ struct AddCardView : View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("Done") {
-                        let _ = Card(word: word, type: type, isFavourite: isFavourite, synonyms: synonyms, deck: deck, context: context)
-        
+                        if (card == nil) {
+                            let _ = Card(word: word, type: type, isFavourite: isFavourite, synonyms: synonyms, deck: deck, context: context)
+                        }
+                        else {
+                            card?.word = word
+                            card?.type = type.rawValue
+                            card?.isFavourite = isFavourite
+                            card?.synonyms = synonyms
+                        }
+                        
                         DataController.shared.save()
                         isPresented = false
                     }
@@ -87,11 +108,12 @@ struct AddCardView : View {
     }
 }
 
-struct AddCardView_Previews: PreviewProvider {
+struct CardFormView_Previews: PreviewProvider {
     static var context = DataController.shared.context
+    
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
-    
-        AddCardView(isPresented: .constant(true), deck: deck)
+        
+        CardFormView(isPresented: .constant(true), deck: deck)
     }
 }

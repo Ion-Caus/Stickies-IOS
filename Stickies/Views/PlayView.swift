@@ -16,6 +16,8 @@ struct PlayView: View {
     @State private var degrees = 0.0
     @State private var isFlipped = false
     
+    let generator = UINotificationFeedbackGenerator()
+    
     init(cards: [Card]) {
         _viewModel = StateObject(wrappedValue: PlayViewModel(cards: cards))
     }
@@ -76,6 +78,7 @@ struct PlayView: View {
     var goodButton: some View  {
         Button {
             withAnimation {
+                generator.notificationOccurred(.success)
                 viewModel.updateCurrentCard(score: 3)
                 nextCard()
             }
@@ -88,6 +91,7 @@ struct PlayView: View {
     var okButton: some View  {
         Button {
             withAnimation {
+                generator.notificationOccurred(.warning)
                 viewModel.updateCurrentCard(score: +1)
                 nextCard()
             }
@@ -100,6 +104,7 @@ struct PlayView: View {
     var badButton: some View  {
         Button {
             withAnimation {
+                generator.notificationOccurred(.error)
                 viewModel.updateCurrentCard(score: -2)
                 nextCard()
             }

@@ -1,5 +1,5 @@
 //
-//  AddDeckView.swift
+//  DeckFormView.swift
 //  Stickies
 //
 //  Created by Ion Caus on 16.07.2022.
@@ -7,12 +7,23 @@
 
 import SwiftUI
 
-struct AddDeckView: View {
+struct DeckFormView: View {
     @Binding var isPresented: Bool
     @Environment(\.managedObjectContext) var context
     
     @State var title = ""
     @State var type = DeckType.Synonym
+    
+    @State var deck: Deck? = nil
+    
+    init(isPresented: Binding<Bool>, deck: Deck? = nil) {
+        self._deck = State(initialValue: deck)
+        self._isPresented = isPresented
+        
+        self._title = State(initialValue: deck?.title ?? "")
+        self._type = State(initialValue: DeckType(rawValue: deck?.type ?? "") ?? DeckType.Synonym)
+        
+    }
     
     var disableAddButton: Bool {
         return title.isEmpty || title.count > 20
@@ -30,25 +41,31 @@ struct AddDeckView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-
-    
+                    
+                    
                 }
             }
-            .navigationTitle("New Deck")
-
+            .navigationTitle(deck == nil ? "New Deck" : "Edit Deck")
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading){
                     Button("Cancel") {
-                        isPresented = false
+                        self.isPresented = false
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("Done") {
-                        let _ = Deck(title: title, type: type, context: context)
-           
+                        if deck == nil {
+                            let _ = Deck(title: title, type: type, context: context)
+                        }
+                        else {
+                            deck?.title = title
+                            deck?.type = type.rawValue
+                        }
+                        
                         DataController.shared.save()
-                        isPresented = false
-
+                        self.isPresented = false
+                        
                     }
                     .disabled(disableAddButton)
                 }
@@ -60,6 +77,6 @@ struct AddDeckView: View {
 
 struct AddDeckView_Previews: PreviewProvider {
     static var previews: some View {
-        AddDeckView(isPresented: .constant(true))
+        DeckFormView(isPresented: .constant(true))
     }
 }

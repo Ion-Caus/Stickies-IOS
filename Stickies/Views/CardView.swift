@@ -19,7 +19,7 @@ struct CardView<MenuItems> : View where MenuItems : View {
     let durationAndDelay : Double = 0.2
     
     //MARK: Flip Card Function
-    func flipCard () {
+    func flipCard() {
         if !isFlipped {
             withAnimation(.linear(duration: durationAndDelay)) {
                 frontDegree = 90
@@ -45,6 +45,7 @@ struct CardView<MenuItems> : View where MenuItems : View {
                     .contextMenu(!isFlipped ? ContextMenu(menuItems: menuItems) : nil)
                 CardBack(synonyms: card.synonyms  ?? [], degree: $backDegree)
             }
+            .foregroundColor(.white)
             .onTapGesture {
                 flipCard()
             }
