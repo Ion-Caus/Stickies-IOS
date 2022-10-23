@@ -27,12 +27,11 @@ struct CardBack : View {
                .stroke(Color.blue.opacity(0.7), lineWidth: 3)
                .padding()
             
-            VStack {
+            VStack(alignment: .center) {
                 Text(synonyms.joined(separator: ", "))
                     .font(.title)
-                    .padding()
-                
             }
+            .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .rotation3DEffect(
@@ -44,7 +43,7 @@ struct CardBack : View {
 
 struct CardBack_Previews: PreviewProvider {
     static var previews: some View {
-        CardBack(synonyms: ["some", "syn"], degree: .constant(0))
+        CardBack(synonyms: ["some", "syn", "sad dsa dsa sss"], degree: .constant(0))
             .padding()
     }
 }

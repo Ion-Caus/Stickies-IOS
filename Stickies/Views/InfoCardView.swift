@@ -71,9 +71,6 @@ struct InfoCardView : View {
                 
                
             }
-            .toolbar {
-                
-            }
         }
     }
 

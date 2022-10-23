@@ -15,30 +15,28 @@ struct CardFront : View {
     
     var body: some View {
         ZStack {
-                       
-           RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 20)
                .fill(Color.yellow.opacity(0.2))
                .shadow(color: .gray, radius: 2, x: 0, y: 0)
                 
 
-           RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 20)
                .fill(Color.yellow.opacity(0.7))
                .padding()
            
-           RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 20)
                .stroke(Color.yellow.opacity(0.7), lineWidth: 3)
                .padding()
             
-            VStack (alignment: .center) {
+            VStack(alignment: .center) {
                 Text(type)
                     .font(.subheadline)
                 
                 Text(word)
                     .font(.title)
                     .bold()
-                    .padding(.bottom)
-                
             }
+            .padding()
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -50,7 +48,7 @@ struct CardFront : View {
 
 struct CardFront_Previews: PreviewProvider {
     static var previews: some View {
-        CardFront(type: "type", word: "word", degree: .constant(0))
+        CardFront(type: "type", word: "word das sa dsa das das dd", degree: .constant(0))
             .padding()
     }
 }

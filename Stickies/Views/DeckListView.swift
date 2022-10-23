@@ -22,6 +22,8 @@ struct DeckListView : View {
     @State private var searchText = ""
     @State private var selectedDeck: Deck? = nil
     
+    @State private var openNotifications = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -85,6 +87,22 @@ struct DeckListView : View {
             .sheet(isPresented: $showingForm) {
                 DeckFormView(isPresented: $showingForm, deck: selectedDeck)
             }
+            .background(NavigationLink(destination: NotificationsView(), isActive: $openNotifications) { EmptyView() })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        
+                       Button {
+                           openNotifications = true
+                       } label: {
+                           Label("Notifications", systemImage: "clock")
+                       }
+                        
+                    } label: {
+                         Image(systemName: "gearshape")
+                    }
+                  }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -94,9 +112,9 @@ struct DeckListView : View {
             showingForm = true
             selectedDeck = nil
         }
-    label: {
-        Image(systemName: "plus.circle")
-            .font(Font.system(size: 65))
+        label: {
+            Image(systemName: "plus.circle")
+                .font(Font.system(size: 65))
         }
     }
 }
