@@ -46,4 +46,8 @@ enum WordType: String, Equatable, CaseIterable {
     case Verb = "Verb"
     case Adjective = "Adjective"
     case Adverb = "Adverb"
+    case Preposition = "Preposition"
+    case Conjunction = "Conjunction"
+    case Pronoun = "Pronoun"
+    case Interjection = "Interjection"
 }

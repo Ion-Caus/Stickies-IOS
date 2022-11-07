@@ -61,7 +61,7 @@ struct SimpleCardListView: View {
             .listStyle(InsetGroupedListStyle())
             .searchable(text: $searchText)
             .onChange(of: searchText) { newValue in
-                cards.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "word contains %@", newValue)
+                cards.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "word contains[C] %@ AND deck == %@", newValue, deck)
             }
             .confirmationDialog("Would you like to delete \(selectedCard?.word ?? "this card")?",
                                 isPresented: $showConfirmation,
