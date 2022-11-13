@@ -54,6 +54,12 @@ struct InfoCardView : View {
                     }
                 }
                 
+                if let usage = card.usageExample {
+                    Section(header: Text("Example")) {
+                        Text(usage)
+                    }
+                }
+                
                 
                 Section(header: Text("Preview")) {
      
@@ -79,7 +85,7 @@ struct InfoCardView_Previews: PreviewProvider {
     
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
-        let card = Card(word: "word", type: WordType.Phrase, isFavourite: true, synonyms: [], deck: deck, context: context)
+        let card = Card(word: "word", type: WordType.Phrase, isFavourite: true, synonyms: [], usageExample: "This is a text.", deck: deck, context: context)
         
         InfoCardView(deck: deck, card: card)
     }

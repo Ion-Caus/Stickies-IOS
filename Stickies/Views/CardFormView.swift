@@ -15,6 +15,7 @@ struct CardFormView : View {
     @State var type: WordType
     @State var isFavourite: Bool
     @State var synonyms: [String]
+    @State var usageExample: String
     
     @State var synonym = ""
     
@@ -30,6 +31,7 @@ struct CardFormView : View {
         _type = State(initialValue: WordType(rawValue: card?.type ?? "") ?? WordType.Phrase)
         _isFavourite = State(initialValue: card?.isFavourite ?? false)
         _synonyms = State(initialValue: card?.synonyms ?? [])
+        _usageExample = State(initialValue: card?.usageExample ?? "")
     }
     
     var disableAddButton: Bool {
@@ -54,8 +56,7 @@ struct CardFormView : View {
                 Section(header: Text("Back Face")) {
                     HStack {
                         TextField(deck.type ?? "Synonym", text: $synonym)
-                        
-                        Spacer()
+                     
                         Button("Add") {
                             synonym = synonym.trimmingCharacters(in: .whitespacesAndNewlines)
                             if (synonym.isEmpty) { return }
@@ -76,6 +77,12 @@ struct CardFormView : View {
                 Section(header: Text("Optional")) {
                     Toggle("Is Favourite", isOn: $isFavourite)
                 }
+                
+                Section(header: Text("Example")) {
+                    TextEditor(text: $usageExample)
+                        .frame(height: 160)
+                
+                }
             }
             .navigationTitle(card == nil ? "New Card" : "Edit Card")
             
@@ -87,14 +94,16 @@ struct CardFormView : View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("Done") {
+                        
                         if (card == nil) {
-                            let _ = Card(word: word, type: type, isFavourite: isFavourite, synonyms: synonyms, deck: deck, context: context)
+                            let _ = Card(word: word, type: type, isFavourite: isFavourite, synonyms: synonyms, usageExample: usageExample, deck: deck, context: context)
                         }
                         else {
                             card?.word = word
                             card?.type = type.rawValue
                             card?.isFavourite = isFavourite
                             card?.synonyms = synonyms
+                            card?.usageExample = usageExample
                         }
                         
                         DataController.shared.save()
