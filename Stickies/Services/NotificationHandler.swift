@@ -8,7 +8,9 @@
 import Foundation
 import UserNotifications
 
-class NotificationHandler {
+class NotificationHandler: ObservableObject {
+    
+    @Published var notifications = [UNNotificationRequest]()
     
     func askPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
@@ -51,19 +53,29 @@ class NotificationHandler {
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request)
+        
+        fetchNotifications()
+    }
+    
+    func removeNotifications(withIdentifiers identifier: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+        fetchNotifications()
     }
     
     func removeAllNotifications() {
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+        fetchNotifications()
     }
     
-    func getNotifications() {
+    func fetchNotifications() {
+        
         let center = UNUserNotificationCenter.current()
         center.getPendingNotificationRequests(completionHandler: { requests in
-            for request in requests {
-                print(request)
-            }
+            DispatchQueue.main.async {
+                 self.notifications = requests
+           }
         })
     }
 }

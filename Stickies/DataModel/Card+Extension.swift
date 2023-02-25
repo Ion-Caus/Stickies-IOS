@@ -10,7 +10,7 @@ import CoreData
 
 extension Card {
     
-    convenience init(word: String, type: WordType, isFavourite: Bool, synonyms: [String], usageExample: String = "",
+    convenience init(word: String, type: WordType, isFavourite: Bool, synonyms: [String], usageExample: String? = nil,
                      deck: Deck, context: NSManagedObjectContext) {
         self.init(context: context)
         self.id = UUID()
@@ -22,7 +22,7 @@ extension Card {
         self.type = type.rawValue
         self.isFavourite = isFavourite
         self.synonyms = synonyms
-        self.usageExample = usageExample.trimmingCharacters(in: .whitespaces).isEmpty ? nil : usageExample
+        self.usageExample = usageExample
         self.deck = deck
     }
     

@@ -11,6 +11,8 @@ struct SimpleCardListView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) private var context
     
+    @EnvironmentObject var voiceRecorder: VoiceRecorderManager
+    
     @FetchRequest private var cards: FetchedResults<Card>
     
     @State private var showConfirmation = false
@@ -35,25 +37,24 @@ struct SimpleCardListView: View {
                         Text(card.word ?? "NO TITLE")
                             .foregroundColor(Color.primary)
                     }
-                    
-                        .swipeActions(allowsFullSwipe: false) {
-                            Button(role: .destructive) {
-                                selectedCard = card
-                                showConfirmation = true
-                                
-                            } label: {
-                                Label("Delete", systemImage: "trash.fill")
-                            }
+                    .swipeActions(allowsFullSwipe: false) {
+                        Button(role: .destructive) {
+                            selectedCard = card
+                            showConfirmation = true
                             
-                            
-                            Button {
-                                selectedCard = card
-                                showingForm = true
-                            } label: {
-                                Label("Edit", systemImage: "pencil")
-                            }
-                            .tint(.gray)
+                        } label: {
+                            Label("Delete", systemImage: "trash.fill")
                         }
+                        
+                        
+                        Button {
+                            selectedCard = card
+                            showingForm = true
+                        } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        .tint(.gray)
+                    }
                     
                 }
                 
@@ -61,7 +62,9 @@ struct SimpleCardListView: View {
             .listStyle(InsetGroupedListStyle())
             .searchable(text: $searchText)
             .onChange(of: searchText) { newValue in
-                cards.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "word contains[C] %@ AND deck == %@", newValue, deck)
+                cards.nsPredicate = newValue.isEmpty
+                ? NSPredicate(format: "deck == %@", deck)
+                : NSPredicate(format: "word contains[C] %@ AND deck == %@", newValue, deck)
             }
             .confirmationDialog("Would you like to delete \(selectedCard?.word ?? "this card")?",
                                 isPresented: $showConfirmation,

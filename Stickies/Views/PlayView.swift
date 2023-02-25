@@ -29,9 +29,16 @@ struct PlayView: View {
             GeometryReader { geometry in
                 VStack {
                     HStack (alignment: .center, spacing: 15) {
-                        backButton
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        label: {
+                            HStack {
+                                Image(systemName: "chevron.backward.circle")
+                                Text("Cards").bold()
+                            }
+                        }
                         
-                        Text("Cards").bold()
                         Spacer()
                     }
                     .font(.title)
@@ -64,15 +71,6 @@ struct PlayView: View {
             .padding(.bottom)
         }
         
-    }
-    
-    var backButton: some View {
-        Button {
-            presentationMode.wrappedValue.dismiss()
-        }
-        label: {
-            Image(systemName: "chevron.backward.circle")
-        }
     }
     
     var goodButton: some View  {
