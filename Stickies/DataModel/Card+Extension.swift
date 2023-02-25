@@ -11,7 +11,7 @@ import CoreData
 extension Card {
     
     convenience init(word: String, type: WordType, isFavourite: Bool, synonyms: [String], usageExample: String? = nil,
-                     deck: Deck, context: NSManagedObjectContext) {
+                     phoneticTranscription: String? = nil, deck: Deck, context: NSManagedObjectContext) {
         self.init(context: context)
         self.id = UUID()
         self.createdDate = Date()
@@ -23,6 +23,7 @@ extension Card {
         self.isFavourite = isFavourite
         self.synonyms = synonyms
         self.usageExample = usageExample
+        self.phoneticTranscription = phoneticTranscription
         self.deck = deck
     }
     

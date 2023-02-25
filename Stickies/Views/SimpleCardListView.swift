@@ -11,8 +11,6 @@ struct SimpleCardListView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) private var context
     
-    @EnvironmentObject var voiceRecorder: VoiceRecorderManager
-    
     @FetchRequest private var cards: FetchedResults<Card>
     
     @State private var showConfirmation = false
@@ -24,7 +22,7 @@ struct SimpleCardListView: View {
     
     init(deck: Deck) {
         _cards = FetchRequest(fetchRequest: Card.fetchBy(deck: deck), animation: .easeInOut)
-        
+
         self.deck = deck
     }
     
@@ -118,7 +116,7 @@ struct SimpleCardListView: View {
     }
     
     var playButton: some View {
-        NavigationLink(destination: PlayView(cards: Array(cards))) {
+        NavigationLink(destination: PlayView(cards: Array(cards), language: deck.language)) {
             Image(systemName: "play.circle")
         }
         .font(Font.system(size: 65))

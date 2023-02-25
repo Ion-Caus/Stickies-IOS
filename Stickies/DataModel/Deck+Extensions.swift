@@ -10,12 +10,12 @@ import CoreData
 
 extension Deck {
     
-    convenience init(title: String, type: DeckType, context: NSManagedObjectContext) {
+    convenience init(title: String, type: DeckType, language: String = Constants.DefaultLanguage, context: NSManagedObjectContext) {
         self.init(context: context)
         self.id = UUID()
         self.title = title
         self.type = type.rawValue
-        
+        self.language = language
     }
     
     static func fetch() -> NSFetchRequest<Deck> {
@@ -24,13 +24,6 @@ extension Deck {
         
         return request
     }
-    
-//    private var synon: String
-//
-//    var synons : [String] {
-//        get { return synon.components(separatedBy: ",") }
-//        set { synon = newValue.joined(separator: ",")}
-//    }
 }
 
 enum DeckType: String, Equatable, CaseIterable {

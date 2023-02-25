@@ -10,6 +10,7 @@ import SwiftUI
 struct CardFront : View {
     let type : String
     let word : String
+    let isFavourite: Bool
     
     @Binding var degree : Double
     
@@ -38,17 +39,36 @@ struct CardFront : View {
             }
             .padding()
             
+            if (isFavourite) {
+                heart.padding()
+            }
+                
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .rotation3DEffect(
             Angle(degrees: degree),
             axis: (x: 0, y: 1, z: 0.01))
     }
+    
+    var heart: some View {
+        HStack {
+            Spacer()
+            VStack(alignment: .leading) {
+                Image(systemName: "heart.fill")
+                    .foregroundColor(.red)
+                    .opacity(0.7)
+                    .font(.title)
+                Spacer()
+            }
+           
+        }
+        .padding()
+    }
 }
 
 struct CardFront_Previews: PreviewProvider {
     static var previews: some View {
-        CardFront(type: "type", word: "word das sa dsa das das dd", degree: .constant(0))
+        CardFront(type: "type", word: "word das sa dsa das das dd", isFavourite: true, degree: .constant(0))
             .padding()
     }
 }

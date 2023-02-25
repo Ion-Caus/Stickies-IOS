@@ -22,7 +22,8 @@ struct DeckListView : View {
     @State private var searchText = ""
     @State private var selectedDeck: Deck? = nil
     
-    @State private var openNotifications = false
+    @State private var isNavigationActive = false
+    @State private var navigateTo: AnyView?
     
     var body: some View {
         NavigationView {
@@ -40,8 +41,7 @@ struct DeckListView : View {
                             } label: {
                                 Label("Delete", systemImage: "trash.fill")
                             }
-                            
-                            
+                                
                             Button {
                                 selectedDeck = deck
                                 showingForm = true
@@ -50,9 +50,7 @@ struct DeckListView : View {
                             }
                             .tint(.gray)
                         }
-                        
                     }
-                    
                 }
                 .listStyle(InsetGroupedListStyle())
                 .searchable(text: $searchText)
@@ -87,16 +85,26 @@ struct DeckListView : View {
             .sheet(isPresented: $showingForm) {
                 DeckFormView(isPresented: $showingForm, deck: selectedDeck)
             }
-            .background(NavigationLink(destination: NotificationsView(), isActive: $openNotifications) { EmptyView() })
+            .background(NavigationLink(destination: navigateTo, isActive: $isNavigationActive) { EmptyView() })
+           
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         
                        Button {
-                           openNotifications = true
+                           navigateTo = AnyView(NotificationsView())
+                           isNavigationActive = true
+                           
                        } label: {
                            Label("Notifications", systemImage: "clock")
                        }
+                        
+                        Button {
+                            navigateTo = AnyView(SpeechSettingsView())
+                            isNavigationActive = true
+                        } label: {
+                            Label("Speech Settings", systemImage: "mouth")
+                        }
                         
                     } label: {
                          Image(systemName: "gearshape")

@@ -7,36 +7,9 @@
 
 import SwiftUI
 
-struct WeekDay: Identifiable {
-    let name: String
-    let id: Int
-    var isOn: Bool = true
-}
-
-struct WeekDayToggle: View {
-    @Binding var weekDay: WeekDay
-
-    @State private var isOn = true
-
-    var body: some View {
-        ZStack {
-            if weekDay.isOn {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.yellow.opacity(0.9))
-            }
-            
-            Text(weekDay.name)
-                .bold()
-                
-        }
-        .onTapGesture {
-            weekDay.isOn.toggle()
-        }
-        .frame(width: 40, height: 40, alignment: .center)
-    }
-}
-
 struct NotificationsView: View {
+    
+    @StateObject var notifier = NotificationHandler()
     
     @State var weekDays = [
         WeekDay(name: "M",  id: 2),
@@ -48,8 +21,6 @@ struct NotificationsView: View {
         WeekDay(name: "S", id: 1)]
     
     @State private var selectedDate = Date()
-
-    @StateObject var notifier = NotificationHandler()
     
     let notificationTitle = "⚠️It's learning time.⚠️"
     let notificationBody = "Improve your mind now."
@@ -62,7 +33,7 @@ struct NotificationsView: View {
                     WeekDayToggle(weekDay: weekDay)
                 }
             }
-            .padding(.vertical)
+            .padding(.bottom)
             
             DatePicker("Pick a time:", selection: $selectedDate, displayedComponents: .hourAndMinute)
             
@@ -96,7 +67,6 @@ struct NotificationsView: View {
                     
                     HStack {
                         if let date = trigger.nextTriggerDate() {
-                        
                             Text(formatDate(date, to: "HH:mm EEEE"))
                         }
                     }
@@ -136,6 +106,7 @@ struct NotificationsView: View {
                 }
               }
         }
+        .navigationTitle("Notifications")
     }
     
     func formatDate(_ date: Date, to format: String) -> String {
@@ -149,6 +120,9 @@ struct NotificationsView: View {
 
 struct NotificationsView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsView()
+        Group {
+           
+            NotificationsView()
+        }
     }
 }

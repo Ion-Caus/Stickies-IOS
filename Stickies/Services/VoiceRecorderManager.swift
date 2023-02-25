@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 import SwiftUI
 
-class VoiceRecorderManager : NSObject , ObservableObject , AVAudioPlayerDelegate {
+class VoiceRecorderManager : NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     var audioRecorder : AVAudioRecorder?
     var audioPlayer : AVAudioPlayer?

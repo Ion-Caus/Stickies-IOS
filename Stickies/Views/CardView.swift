@@ -41,7 +41,7 @@ struct CardView<MenuItems> : View where MenuItems : View {
     var body: some View {
         if let card = card {
             ZStack {
-                CardFront(type: card.type ?? "", word: card.word ?? "", degree: $frontDegree)
+                CardFront(type: card.type ?? "", word: card.word ?? "", isFavourite: card.isFavourite, degree: $frontDegree)
                     .contextMenu(!isFlipped ? ContextMenu(menuItems: menuItems) : nil)
                 CardBack(synonyms: card.synonyms  ?? [], degree: $backDegree)
             }

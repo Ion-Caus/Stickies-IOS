@@ -13,7 +13,6 @@
 		500EB4C3289FFDEE000A59F7 /* NoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB4C2289FFDEE000A59F7 /* NoCard.swift */; };
 		500ED8E229059AE700EB4D59 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500ED8E129059AE600EB4D59 /* NotificationHandler.swift */; };
 		500ED8E429059EFE00EB4D59 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500ED8E329059EFE00EB4D59 /* NotificationsView.swift */; };
-		50168BD3288215C200ABF8EF /* DeckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD2288215C200ABF8EF /* DeckListViewModel.swift */; };
 		50168BD52882209500ABF8EF /* DeckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD42882209500ABF8EF /* DeckListView.swift */; };
 		50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD72883204300ABF8EF /* Deck+Extensions.swift */; };
 		50168BDA28834ECE00ABF8EF /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD928834ECD00ABF8EF /* DeckFormView.swift */; };
@@ -23,12 +22,19 @@
 		505D84922842D57D00AEC836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84912842D57D00AEC836 /* Assets.xcassets */; };
 		505D84952842D57D00AEC836 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84942842D57D00AEC836 /* Preview Assets.xcassets */; };
 		5060F52B285D187A004E9142 /* CardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060F52A285D187A004E9142 /* CardFormView.swift */; };
-		50751D2028D13733009942D1 /* PronunciationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50751D1F28D13732009942D1 /* PronunciationView.swift */; };
 		507B4A99292C0DAB00FC97AF /* VoiceRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B4A98292C0DAA00FC97AF /* VoiceRecorderManager.swift */; };
 		507B4A9B292C0F0400FC97AF /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B4A9A292C0F0400FC97AF /* Recording.swift */; };
+		507C6B5729AA8FD000B39734 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C6B5629AA8FD000B39734 /* SequenceExtensions.swift */; };
+		507C6B5929AA973400B39734 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C6B5829AA973400B39734 /* Constants.swift */; };
+		507C6B5B29AA9FD200B39734 /* HearPronunciationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */; };
 		5083796128907719001F78AB /* CardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083796028907718001F78AB /* CardConstants.swift */; };
 		508379632890798E001F78AB /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508379622890798E001F78AB /* PlayViewModel.swift */; };
 		508C77F928D129CC009031C7 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C77F828D129CC009031C7 /* AudioManager.swift */; };
+		508FFD2C29AA5AB70084B7D4 /* SpeechSynthesiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD2B29AA5AB70084B7D4 /* SpeechSynthesiser.swift */; };
+		508FFD2E29AA5F860084B7D4 /* WeekDayToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */; };
+		508FFD3129AA60500084B7D4 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD3029AA60500084B7D4 /* WeekDay.swift */; };
+		508FFD3329AA6C3D0084B7D4 /* SpeechSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */; };
+		508FFD3529AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD3429AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift */; };
 		50A5399F28E0B46C002E06AA /* InfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5399E28E0B46C002E06AA /* InfoCardView.swift */; };
 		50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */; };
 		50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08B2284EA7FA00678A3E /* DataController.swift */; };
@@ -47,7 +53,6 @@
 		500EB4C2289FFDEE000A59F7 /* NoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCard.swift; sourceTree = "<group>"; };
 		500ED8E129059AE600EB4D59 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		500ED8E329059EFE00EB4D59 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
-		50168BD2288215C200ABF8EF /* DeckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModel.swift; sourceTree = "<group>"; };
 		50168BD42882209500ABF8EF /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
 		50168BD72883204300ABF8EF /* Deck+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+Extensions.swift"; sourceTree = "<group>"; };
 		50168BD928834ECD00ABF8EF /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
@@ -59,12 +64,19 @@
 		505D84942842D57D00AEC836 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		505D84962842D57D00AEC836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060F52A285D187A004E9142 /* CardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormView.swift; sourceTree = "<group>"; };
-		50751D1F28D13732009942D1 /* PronunciationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PronunciationView.swift; sourceTree = "<group>"; };
 		507B4A98292C0DAA00FC97AF /* VoiceRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderManager.swift; sourceTree = "<group>"; };
 		507B4A9A292C0F0400FC97AF /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		507C6B5629AA8FD000B39734 /* SequenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
+		507C6B5829AA973400B39734 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearPronunciationButton.swift; sourceTree = "<group>"; };
 		5083796028907718001F78AB /* CardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConstants.swift; sourceTree = "<group>"; };
 		508379622890798E001F78AB /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
 		508C77F828D129CC009031C7 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		508FFD2B29AA5AB70084B7D4 /* SpeechSynthesiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesiser.swift; sourceTree = "<group>"; };
+		508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayToggle.swift; sourceTree = "<group>"; };
+		508FFD3029AA60500084B7D4 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
+		508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSettingsView.swift; sourceTree = "<group>"; };
+		508FFD3429AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerExtensions.swift; sourceTree = "<group>"; };
 		50A5399E28E0B46C002E06AA /* InfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardView.swift; sourceTree = "<group>"; };
 		50CC08B0284EA70500678A3E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		50CC08B2284EA7FA00678A3E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -96,16 +108,19 @@
 				50FEF018284D594600FA8373 /* CardBack.swift */,
 				5083796028907718001F78AB /* CardConstants.swift */,
 				500EB4C2289FFDEE000A59F7 /* NoCard.swift */,
+				508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		50168BDB288353FC00ABF8EF /* Extentions */ = {
+		50168BDB288353FC00ABF8EF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				50168BDC2883544900ABF8EF /* ViewExtensions.swift */,
+				508FFD3429AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift */,
+				507C6B5629AA8FD000B39734 /* SequenceExtensions.swift */,
 			);
-			path = Extentions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		505D84812842D57900AEC836 = {
@@ -130,10 +145,12 @@
 				508C77F728D129B2009031C7 /* Services */,
 				50168BD628831FFD00ABF8EF /* Components */,
 				50CC08B6284EB3CD00678A3E /* DataModel */,
-				50168BDB288353FC00ABF8EF /* Extentions */,
+				508FFD2F29AA60270084B7D4 /* Models */,
+				50168BDB288353FC00ABF8EF /* Extensions */,
 				50FEF015284D589A00FA8373 /* ViewModels */,
 				50FEF014284D588F00FA8373 /* Views */,
 				505D848D2842D57900AEC836 /* StickiesApp.swift */,
+				507C6B5829AA973400B39734 /* Constants.swift */,
 				505D84962842D57D00AEC836 /* Info.plist */,
 				505D84912842D57D00AEC836 /* Assets.xcassets */,
 				505D84932842D57D00AEC836 /* Preview Content */,
@@ -155,8 +172,18 @@
 				508C77F828D129CC009031C7 /* AudioManager.swift */,
 				500ED8E129059AE600EB4D59 /* NotificationHandler.swift */,
 				507B4A98292C0DAA00FC97AF /* VoiceRecorderManager.swift */,
+				508FFD2B29AA5AB70084B7D4 /* SpeechSynthesiser.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		508FFD2F29AA60270084B7D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				507B4A9A292C0F0400FC97AF /* Recording.swift */,
+				508FFD3029AA60500084B7D4 /* WeekDay.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		50CC08B6284EB3CD00678A3E /* DataModel */ = {
@@ -166,7 +193,6 @@
 				50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */,
 				50168BD72883204300ABF8EF /* Deck+Extensions.swift */,
 				50168BDE28835B8700ABF8EF /* Card+Extension.swift */,
-				507B4A9A292C0F0400FC97AF /* Recording.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -183,8 +209,9 @@
 				5060F52A285D187A004E9142 /* CardFormView.swift */,
 				500EA5252871F90A005A2C83 /* PlayView.swift */,
 				50A5399E28E0B46C002E06AA /* InfoCardView.swift */,
-				50751D1F28D13732009942D1 /* PronunciationView.swift */,
+				507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */,
 				500ED8E329059EFE00EB4D59 /* NotificationsView.swift */,
+				508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,7 +219,6 @@
 		50FEF015284D589A00FA8373 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				50168BD2288215C200ABF8EF /* DeckListViewModel.swift */,
 				508379622890798E001F78AB /* PlayViewModel.swift */,
 			);
 			path = ViewModels;
@@ -270,25 +296,30 @@
 				500EA5282871FD33005A2C83 /* Background.swift in Sources */,
 				50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */,
 				50168BDD2883544900ABF8EF /* ViewExtensions.swift in Sources */,
+				508FFD2C29AA5AB70084B7D4 /* SpeechSynthesiser.swift in Sources */,
 				50FEF01F284D594700FA8373 /* AspectListView.swift in Sources */,
 				50CC08B5284EAF1B00678A3E /* CardFront.swift in Sources */,
 				50FEF01C284D594600FA8373 /* CardBack.swift in Sources */,
-				50751D2028D13733009942D1 /* PronunciationView.swift in Sources */,
 				507B4A9B292C0F0400FC97AF /* Recording.swift in Sources */,
 				50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */,
 				507B4A99292C0DAB00FC97AF /* VoiceRecorderManager.swift in Sources */,
 				50A5399F28E0B46C002E06AA /* InfoCardView.swift in Sources */,
 				50FEF01D284D594700FA8373 /* CardView.swift in Sources */,
 				50168BDA28834ECE00ABF8EF /* DeckFormView.swift in Sources */,
-				50168BD3288215C200ABF8EF /* DeckListViewModel.swift in Sources */,
+				508FFD3529AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift in Sources */,
 				500EB4C3289FFDEE000A59F7 /* NoCard.swift in Sources */,
 				50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */,
+				508FFD2E29AA5F860084B7D4 /* WeekDayToggle.swift in Sources */,
+				508FFD3129AA60500084B7D4 /* WeekDay.swift in Sources */,
+				507C6B5929AA973400B39734 /* Constants.swift in Sources */,
 				50168BDF28835B8700ABF8EF /* Card+Extension.swift in Sources */,
 				508379632890798E001F78AB /* PlayViewModel.swift in Sources */,
 				505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */,
 				500ED8E429059EFE00EB4D59 /* NotificationsView.swift in Sources */,
 				50FEF01E284D594700FA8373 /* StickiesView.swift in Sources */,
 				5083796128907719001F78AB /* CardConstants.swift in Sources */,
+				508FFD3329AA6C3D0084B7D4 /* SpeechSettingsView.swift in Sources */,
+				507C6B5B29AA9FD200B39734 /* HearPronunciationButton.swift in Sources */,
 				500EA5262871F90A005A2C83 /* PlayView.swift in Sources */,
 				500EA52A287200E9005A2C83 /* CardListView.swift in Sources */,
 				5060F52B285D187A004E9142 /* CardFormView.swift in Sources */,
@@ -296,6 +327,7 @@
 				50E8A7E928DF8675003421B1 /* SimpleCardListView.swift in Sources */,
 				50168BD52882209500ABF8EF /* DeckListView.swift in Sources */,
 				500ED8E229059AE700EB4D59 /* NotificationHandler.swift in Sources */,
+				507C6B5729AA8FD000B39734 /* SequenceExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

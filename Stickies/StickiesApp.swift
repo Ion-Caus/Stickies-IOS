@@ -11,13 +11,10 @@ import SwiftUI
 struct StickiesApp: App {
     private var dataController = DataController.shared
     
-    @StateObject private var voiceRecorder = VoiceRecorderManager()
-    
     var body: some Scene {
         WindowGroup {
             DeckListView()
                 .environment(\.managedObjectContext, dataController.context)
-                .environmentObject(voiceRecorder)
         }
     }
 }

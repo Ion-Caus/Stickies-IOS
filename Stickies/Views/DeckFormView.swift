@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct DeckFormView: View {
     @Binding var isPresented: Bool
     @Environment(\.managedObjectContext) var context
     
-    @State var title = ""
+    @State var title: String
     @State var type = DeckType.Synonym
+    @State var language: String
+    
+    let availableLanguages: [String]
     
     @State var deck: Deck? = nil
     
@@ -22,6 +26,12 @@ struct DeckFormView: View {
         
         self._title = State(initialValue: deck?.title ?? "")
         self._type = State(initialValue: DeckType(rawValue: deck?.type ?? "") ?? DeckType.Synonym)
+        self._language = State(initialValue: deck?.language ?? "en-US")
+        
+        self.availableLanguages = AVSpeechSynthesisVoice
+            .speechVoices()
+            .map({ $0.language })
+            .unique()
         
     }
     
@@ -41,8 +51,22 @@ struct DeckFormView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    
-                    
+                  
+                    HStack {
+                        Text("Language:")
+                        
+                        Spacer()
+                        
+                        Picker("Language", selection: $language) {
+                            ForEach(availableLanguages, id: \.self) { value in
+                                Text(value).tag(value)
+                            }
+                        }
+                        .pickerStyle(MenuPickerStyle())
+                        .padding(.horizontal)
+                    }
+                   
+                   
                 }
             }
             .navigationTitle(deck == nil ? "New Deck" : "Edit Deck")
@@ -56,11 +80,12 @@ struct DeckFormView: View {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("Done") {
                         if deck == nil {
-                            let _ = Deck(title: title, type: type, context: context)
+                            let _ = Deck(title: title, type: type, language: language, context: context)
                         }
                         else {
                             deck?.title = title
                             deck?.type = type.rawValue
+                            deck?.language = language
                         }
                         
                         DataController.shared.save()

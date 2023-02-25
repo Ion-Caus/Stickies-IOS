@@ -18,8 +18,12 @@ struct PlayView: View {
     
     let generator = UINotificationFeedbackGenerator()
     
-    init(cards: [Card]) {
+    let language: String
+    
+    init(cards: [Card], language: String?) {
         _viewModel = StateObject(wrappedValue: PlayViewModel(cards: cards))
+        
+        self.language = language ?? Constants.DefaultLanguage
     }
     
     var body: some View {
@@ -40,6 +44,11 @@ struct PlayView: View {
                         }
                         
                         Spacer()
+                        
+                        HearPronunciationButton(
+                            language: language,
+                            word: viewModel.card?.word,
+                            phoneticTranscription: viewModel.card?.phoneticTranscription)
                     }
                     .font(.title)
                     .padding([.top, .horizontal])
@@ -130,6 +139,6 @@ struct PlayView_Previews: PreviewProvider {
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
         let card = Card(word: "Test", type: WordType.Noun, isFavourite: true, synonyms: ["?", "??"], deck: deck, context: context)
-        PlayView(cards: [card])
+        PlayView(cards: [card], language: Constants.DefaultLanguage)
     }
 }

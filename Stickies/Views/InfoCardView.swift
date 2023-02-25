@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InfoCardView : View {
+    
     let deck: Deck
     let card: Card
     
@@ -15,13 +16,11 @@ struct InfoCardView : View {
         Form {
             Section(header: Text("Front Face")) {
                 HStack {
-                    Text(card.word ?? "Word")
+                    Text(card.word ?? "???")
                     
-                    if (card.isFavourite) {
-                        Spacer()
-                        Image(systemName: "heart.fill")
-                            .foregroundColor(.red)
-                    }
+                    Spacer()
+                    HearPronunciationButton(language: deck.language, word: card.word, phoneticTranscription: card.phoneticTranscription)
+                    
                 }
                 
                 Text(card.type ?? WordType.Phrase.rawValue)
@@ -46,20 +45,6 @@ struct InfoCardView : View {
                 }
             }
             
-            Section(header: Text("Optional")) {
-                Text("Recall score: \(card.recallScore)")
-                
-                if let createdDate:Date = card.createdDate {
-                    Text("Created: \(createdDate.formatted(date: .abbreviated, time: .shortened))")
-                    
-                }
-                
-                if let modifiedDate:Date = card.modifiedDate {
-                    Text("Last updated: \(modifiedDate.formatted(date: .abbreviated, time: .shortened))")
-                    
-                }
-            }
-            
             if let usage = card.usageExample {
                 if !usage.isEmpty {
                     Section(header: Text("Example")) {
@@ -68,9 +53,25 @@ struct InfoCardView : View {
                 }
             }
             
+            if let phoneticTranscription = card.phoneticTranscription, !phoneticTranscription.isEmpty {
+                Section(header: Text("Pronunciation")) {
+                        Text(phoneticTranscription)
+                }
+            }
+            
+            Section(header: Text("Optional")) {
+                Text("Recall score: \(card.recallScore)")
+                
+                if let createdDate:Date = card.createdDate {
+                    Text("Created: \(createdDate.formatted(date: .abbreviated, time: .shortened))")
+                }
+                
+                if let modifiedDate:Date = card.modifiedDate {
+                    Text("Last updated: \(modifiedDate.formatted(date: .abbreviated, time: .shortened))")
+                }
+            }
             
             Section(header: Text("Preview")) {
-                
                 VStack(alignment: .center) {
                     CardView(card: card) {
                         EmptyView()
@@ -81,9 +82,7 @@ struct InfoCardView : View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            
-            
-            
+
         }
         .navigationTitle("Information")
         
