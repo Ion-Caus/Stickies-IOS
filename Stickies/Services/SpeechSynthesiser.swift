@@ -19,7 +19,7 @@ class SpeechSynthesiser : NSObject, ObservableObject {
     init(language: String = Constants.DefaultLanguage) {
         self.language = language
         
-        rate = UserDefaults.standard.float(forKey: "speech.utterance.rate")
+        rate = UserDefaults.standard.float(forKey: AppStorageKeys.SpeechUtteranceRate)
         
         // Ducking existing audio to play this audio
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: .duckOthers)

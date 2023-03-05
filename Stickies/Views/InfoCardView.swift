@@ -23,7 +23,11 @@ struct InfoCardView : View {
                     
                 }
                 
-                Text(card.type ?? WordType.Phrase.rawValue)
+                if let type = card.type {
+                    Text(type)
+                        .foregroundColor(.gray)
+                }
+               
             }
             Section(header: Text("Back Face")) {
                 List {
@@ -60,24 +64,36 @@ struct InfoCardView : View {
             }
             
             Section(header: Text("Optional")) {
-                Text("Recall score: \(card.recallScore)")
+                if let recallScore = card.recallScore {
+                    HStack(spacing: 10) {
+                        Text("Recall score:")
+                        Spacer()
+                        Text(String(recallScore))
+                    }
+                }
                 
                 if let createdDate:Date = card.createdDate {
-                    Text("Created: \(createdDate.formatted(date: .abbreviated, time: .shortened))")
+                    HStack(spacing: 10) {
+                        Text("Created:")
+                        Spacer()
+                        Text(createdDate.formatted(date: .abbreviated, time: .shortened))
+                    }
                 }
                 
                 if let modifiedDate:Date = card.modifiedDate {
-                    Text("Last updated: \(modifiedDate.formatted(date: .abbreviated, time: .shortened))")
+                    HStack(spacing: 10) {
+                        Text("Last updated:")
+                        Spacer()
+                        Text(modifiedDate.formatted(date: .abbreviated, time: .shortened))
+                    }
                 }
             }
             
             Section(header: Text("Preview")) {
                 VStack(alignment: .center) {
-                    CardView(card: card) {
-                        EmptyView()
-                    }
-                    .frame(width: CGFloat(250))
-                    .aspectRatio(3/4, contentMode: .fit)
+                    CardView(card: card)
+                    .aspectRatio(3/4, contentMode: .fill)
+                    .frame(width: 250, height: 350)
                     .padding()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

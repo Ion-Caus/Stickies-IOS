@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500C152D29B3E7810017ABA0 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 500C152C29B3E7810017ABA0 /* SwiftUICharts */; };
+		500C152F29B541CF0017ABA0 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C152E29B541CF0017ABA0 /* AppIcon.swift */; };
 		500EA5262871F90A005A2C83 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EA5252871F90A005A2C83 /* PlayView.swift */; };
 		500EA5282871FD33005A2C83 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EA5272871FD33005A2C83 /* Background.swift */; };
 		500EA52A287200E9005A2C83 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EA529287200E9005A2C83 /* CardListView.swift */; };
@@ -17,7 +19,7 @@
 		50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD72883204300ABF8EF /* Deck+Extensions.swift */; };
 		50168BDA28834ECE00ABF8EF /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD928834ECD00ABF8EF /* DeckFormView.swift */; };
 		50168BDD2883544900ABF8EF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BDC2883544900ABF8EF /* ViewExtensions.swift */; };
-		50168BDF28835B8700ABF8EF /* Card+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BDE28835B8700ABF8EF /* Card+Extension.swift */; };
+		50168BDF28835B8700ABF8EF /* Card+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BDE28835B8700ABF8EF /* Card+Extensions.swift */; };
 		505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D848D2842D57900AEC836 /* StickiesApp.swift */; };
 		505D84922842D57D00AEC836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84912842D57D00AEC836 /* Assets.xcassets */; };
 		505D84952842D57D00AEC836 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84942842D57D00AEC836 /* Preview Assets.xcassets */; };
@@ -29,6 +31,12 @@
 		507C6B5B29AA9FD200B39734 /* HearPronunciationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */; };
 		5083796128907719001F78AB /* CardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083796028907718001F78AB /* CardConstants.swift */; };
 		508379632890798E001F78AB /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508379622890798E001F78AB /* PlayViewModel.swift */; };
+		508BB43729AD0E9000DA8EAD /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB43629AD0E9000DA8EAD /* NetworkErrors.swift */; };
+		508BB43929AD5B4E00DA8EAD /* TranslationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB43829AD5B4E00DA8EAD /* TranslationSettingsView.swift */; };
+		508BB43B29AD5FD100DA8EAD /* SecretTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB43A29AD5FD100DA8EAD /* SecretTextField.swift */; };
+		508BB43F29AD706200DA8EAD /* TextFieldWithDebounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB43E29AD706200DA8EAD /* TextFieldWithDebounce.swift */; };
+		508BB44129AD753500DA8EAD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB44029AD753500DA8EAD /* StringExtensions.swift */; };
+		508BB44329AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB44229AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift */; };
 		508C77F928D129CC009031C7 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C77F828D129CC009031C7 /* AudioManager.swift */; };
 		508FFD2C29AA5AB70084B7D4 /* SpeechSynthesiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD2B29AA5AB70084B7D4 /* SpeechSynthesiser.swift */; };
 		508FFD2E29AA5F860084B7D4 /* WeekDayToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */; };
@@ -39,6 +47,7 @@
 		50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */; };
 		50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08B2284EA7FA00678A3E /* DataController.swift */; };
 		50CC08B5284EAF1B00678A3E /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08B4284EAF1B00678A3E /* CardFront.swift */; };
+		50D97F5629AC160E00113CFF /* TranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D97F5529AC160D00113CFF /* TranslateManager.swift */; };
 		50E8A7E928DF8675003421B1 /* SimpleCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E8A7E828DF8675003421B1 /* SimpleCardListView.swift */; };
 		50FEF01C284D594600FA8373 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEF018284D594600FA8373 /* CardBack.swift */; };
 		50FEF01D284D594700FA8373 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEF019284D594600FA8373 /* CardView.swift */; };
@@ -47,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		500C152E29B541CF0017ABA0 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		500EA5252871F90A005A2C83 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 		500EA5272871FD33005A2C83 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		500EA529287200E9005A2C83 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
@@ -57,7 +67,7 @@
 		50168BD72883204300ABF8EF /* Deck+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+Extensions.swift"; sourceTree = "<group>"; };
 		50168BD928834ECD00ABF8EF /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
 		50168BDC2883544900ABF8EF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		50168BDE28835B8700ABF8EF /* Card+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Extension.swift"; sourceTree = "<group>"; };
+		50168BDE28835B8700ABF8EF /* Card+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Extensions.swift"; sourceTree = "<group>"; };
 		505D848A2842D57900AEC836 /* Stickies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stickies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		505D848D2842D57900AEC836 /* StickiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickiesApp.swift; sourceTree = "<group>"; };
 		505D84912842D57D00AEC836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +81,12 @@
 		507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearPronunciationButton.swift; sourceTree = "<group>"; };
 		5083796028907718001F78AB /* CardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardConstants.swift; sourceTree = "<group>"; };
 		508379622890798E001F78AB /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
+		508BB43629AD0E9000DA8EAD /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		508BB43829AD5B4E00DA8EAD /* TranslationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationSettingsView.swift; sourceTree = "<group>"; };
+		508BB43A29AD5FD100DA8EAD /* SecretTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretTextField.swift; sourceTree = "<group>"; };
+		508BB43E29AD706200DA8EAD /* TextFieldWithDebounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithDebounce.swift; sourceTree = "<group>"; };
+		508BB44029AD753500DA8EAD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		508BB44229AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranslateApiDataPoint+Extensions.swift"; sourceTree = "<group>"; };
 		508C77F828D129CC009031C7 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		508FFD2B29AA5AB70084B7D4 /* SpeechSynthesiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesiser.swift; sourceTree = "<group>"; };
 		508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayToggle.swift; sourceTree = "<group>"; };
@@ -81,6 +97,7 @@
 		50CC08B0284EA70500678A3E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		50CC08B2284EA7FA00678A3E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		50CC08B4284EAF1B00678A3E /* CardFront.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
+		50D97F5529AC160D00113CFF /* TranslateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateManager.swift; sourceTree = "<group>"; };
 		50E8A7E828DF8675003421B1 /* SimpleCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCardListView.swift; sourceTree = "<group>"; };
 		50FEF018284D594600FA8373 /* CardBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
 		50FEF019284D594600FA8373 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -93,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				500C152D29B3E7810017ABA0 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +127,9 @@
 				5083796028907718001F78AB /* CardConstants.swift */,
 				500EB4C2289FFDEE000A59F7 /* NoCard.swift */,
 				508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */,
+				508BB43A29AD5FD100DA8EAD /* SecretTextField.swift */,
+				508BB43E29AD706200DA8EAD /* TextFieldWithDebounce.swift */,
+				500C152E29B541CF0017ABA0 /* AppIcon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -119,6 +140,7 @@
 				50168BDC2883544900ABF8EF /* ViewExtensions.swift */,
 				508FFD3429AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift */,
 				507C6B5629AA8FD000B39734 /* SequenceExtensions.swift */,
+				508BB44029AD753500DA8EAD /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -173,6 +195,7 @@
 				500ED8E129059AE600EB4D59 /* NotificationHandler.swift */,
 				507B4A98292C0DAA00FC97AF /* VoiceRecorderManager.swift */,
 				508FFD2B29AA5AB70084B7D4 /* SpeechSynthesiser.swift */,
+				50D97F5529AC160D00113CFF /* TranslateManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -182,6 +205,7 @@
 			children = (
 				507B4A9A292C0F0400FC97AF /* Recording.swift */,
 				508FFD3029AA60500084B7D4 /* WeekDay.swift */,
+				508BB43629AD0E9000DA8EAD /* NetworkErrors.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,7 +216,8 @@
 				50CC08B2284EA7FA00678A3E /* DataController.swift */,
 				50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */,
 				50168BD72883204300ABF8EF /* Deck+Extensions.swift */,
-				50168BDE28835B8700ABF8EF /* Card+Extension.swift */,
+				50168BDE28835B8700ABF8EF /* Card+Extensions.swift */,
+				508BB44229AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -212,6 +237,7 @@
 				507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */,
 				500ED8E329059EFE00EB4D59 /* NotificationsView.swift */,
 				508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */,
+				508BB43829AD5B4E00DA8EAD /* TranslationSettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +266,9 @@
 			dependencies = (
 			);
 			name = Stickies;
+			packageProductDependencies = (
+				500C152C29B3E7810017ABA0 /* SwiftUICharts */,
+			);
 			productName = Stickies;
 			productReference = 505D848A2842D57900AEC836 /* Stickies.app */;
 			productType = "com.apple.product-type.application";
@@ -267,6 +296,9 @@
 				Base,
 			);
 			mainGroup = 505D84812842D57900AEC836;
+			packageReferences = (
+				500C152B29B3E7810017ABA0 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 505D848B2842D57900AEC836 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -300,19 +332,26 @@
 				50FEF01F284D594700FA8373 /* AspectListView.swift in Sources */,
 				50CC08B5284EAF1B00678A3E /* CardFront.swift in Sources */,
 				50FEF01C284D594600FA8373 /* CardBack.swift in Sources */,
+				500C152F29B541CF0017ABA0 /* AppIcon.swift in Sources */,
+				508BB44129AD753500DA8EAD /* StringExtensions.swift in Sources */,
 				507B4A9B292C0F0400FC97AF /* Recording.swift in Sources */,
 				50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */,
 				507B4A99292C0DAB00FC97AF /* VoiceRecorderManager.swift in Sources */,
+				50D97F5629AC160E00113CFF /* TranslateManager.swift in Sources */,
 				50A5399F28E0B46C002E06AA /* InfoCardView.swift in Sources */,
 				50FEF01D284D594700FA8373 /* CardView.swift in Sources */,
 				50168BDA28834ECE00ABF8EF /* DeckFormView.swift in Sources */,
+				508BB43B29AD5FD100DA8EAD /* SecretTextField.swift in Sources */,
+				508BB43F29AD706200DA8EAD /* TextFieldWithDebounce.swift in Sources */,
 				508FFD3529AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift in Sources */,
 				500EB4C3289FFDEE000A59F7 /* NoCard.swift in Sources */,
 				50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */,
+				508BB44329AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift in Sources */,
 				508FFD2E29AA5F860084B7D4 /* WeekDayToggle.swift in Sources */,
 				508FFD3129AA60500084B7D4 /* WeekDay.swift in Sources */,
 				507C6B5929AA973400B39734 /* Constants.swift in Sources */,
-				50168BDF28835B8700ABF8EF /* Card+Extension.swift in Sources */,
+				50168BDF28835B8700ABF8EF /* Card+Extensions.swift in Sources */,
+				508BB43929AD5B4E00DA8EAD /* TranslationSettingsView.swift in Sources */,
 				508379632890798E001F78AB /* PlayViewModel.swift in Sources */,
 				505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */,
 				500ED8E429059EFE00EB4D59 /* NotificationsView.swift in Sources */,
@@ -328,6 +367,7 @@
 				50168BD52882209500ABF8EF /* DeckListView.swift in Sources */,
 				500ED8E229059AE700EB4D59 /* NotificationHandler.swift in Sources */,
 				507C6B5729AA8FD000B39734 /* SequenceExtensions.swift in Sources */,
+				508BB43729AD0E9000DA8EAD /* NetworkErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +560,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		500C152B29B3E7810017ABA0 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		500C152C29B3E7810017ABA0 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 500C152B29B3E7810017ABA0 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */ = {

@@ -53,29 +53,30 @@ struct CardListView: View {
                     items: Array(cards),
                     aspectRation: CardConstants.aspectRatio)
                 { card in
-                    CardView(card: card) {
-                        Group {
-                            Button {
-                                card.type = "edited"
-                                DataController.shared.save()
-                            } label: {
-                                Label("Edit", systemImage: "pencil")
-                            }
-                            Divider()
-                            Button(role: .destructive) {
-                                withAnimation {
-                                    context.delete(card)
-                                    DataController.shared.save()
-                                    
-                                }
-                            } label: {
-                                Label("Delete", systemImage: "trash")
-                                    .foregroundColor(.red)
-                                   
-                            }
-                            .foregroundColor(.red)
-                        }
-                    }
+                    CardView(card: card)
+//                    CardView(card: card) {
+//                        Group {
+//                            Button {
+//                                card.type = "edited"
+//                                DataController.shared.save()
+//                            } label: {
+//                                Label("Edit", systemImage: "pencil")
+//                            }
+//                            Divider()
+//                            Button(role: .destructive) {
+//                                withAnimation {
+//                                    context.delete(card)
+//                                    DataController.shared.save()
+//
+//                                }
+//                            } label: {
+//                                Label("Delete", systemImage: "trash")
+//                                    .foregroundColor(.red)
+//
+//                            }
+//                            .foregroundColor(.red)
+//                        }
+//                    }
                 }
                 
             

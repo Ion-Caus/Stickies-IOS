@@ -10,10 +10,49 @@ import SwiftUI
 
 struct StickiesView: View {
     
+    @State private var isNavigationActive = false
+    @State private var navigateTo: AnyView?
+    
     var body: some View {
-        DeckListView()
+        NavigationView {
+            DeckListView()
+                .background(NavigationLink(destination: navigateTo, isActive: $isNavigationActive) {
+                    EmptyView()
+                })
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Button {
+                                navigateTo = AnyView(NotificationsView())
+                                isNavigationActive = true
+                                
+                            } label: {
+                                Label("Notifications", systemImage: "clock")
+                            }
+                            
+                            Button {
+                                navigateTo = AnyView(SpeechSettingsView())
+                                isNavigationActive = true
+                            } label: {
+                                Label("Speech Settings", systemImage: "mouth")
+                            }
+                            
+                            Button {
+                                navigateTo = AnyView(TranslationSettingsView())
+                                isNavigationActive = true
+                            } label: {
+                                Label("Translation Settings", systemImage: "character.book.closed")
+                            }
+                            
+                        } label: {
+                            Image(systemName: "gearshape")
+                        }
+                    }
+                }
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
-
+    
 }
 
 struct StickiesView_Previews: PreviewProvider {

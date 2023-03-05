@@ -53,7 +53,7 @@ struct PlayView: View {
                     .font(.title)
                     .padding([.top, .horizontal])
                     
-                    CardView(card: viewModel.card) { EmptyView() }
+                    CardView(card: viewModel.card)
                         .aspectRatio(CardConstants.aspectRatio, contentMode: .fit)
                         .frame(width: geometry.size.width * CardConstants.widthFromScreen,
                                height: geometry.size.height * CardConstants.heightFromScreen)

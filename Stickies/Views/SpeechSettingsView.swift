@@ -10,8 +10,8 @@ import AVFAudio
 
 struct SpeechSettingsView: View {
     
-    @AppStorage("speech.utterance.rate") var rate: Double = Double(AVSpeechUtteranceDefaultSpeechRate)
-    @AppStorage("speech.utterance.volume") var volume: Double = 0.8
+    @AppStorage(AppStorageKeys.SpeechUtteranceRate) var rate: Double = Double(AVSpeechUtteranceDefaultSpeechRate)
+    @AppStorage(AppStorageKeys.SpeechUtteranceVolume) var volume: Double = 0.8
     
     var body: some View {
         Form {
@@ -19,9 +19,9 @@ struct SpeechSettingsView: View {
                 Slider(value: $rate, in: 0.0...1.0, step: 0.1)
             }
             
-            Section(header: Text("Volume")) {
-                Slider(value: $volume, in: 0.0...1.0, step: 0.1)
-            }
+//            Section(header: Text("Volume")) {
+//                Slider(value: $volume, in: 0.0...1.0, step: 0.1)
+//            }
         }
         .navigationTitle("Speech Settings")
     }

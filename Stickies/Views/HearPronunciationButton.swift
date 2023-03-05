@@ -33,6 +33,7 @@ struct HearPronunciationButton : View {
             } label : {
                 Image(systemName: "ear")
             }
+            .buttonStyle(BorderlessButtonStyle())
         }
         
         

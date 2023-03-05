@@ -28,10 +28,26 @@ struct CardBack : View {
                .padding()
             
             VStack(alignment: .center) {
-                Text(synonyms.joined(separator: ", "))
-                    .font(.title)
+                GeometryReader { geometry in
+                        ScrollView(.vertical) {
+                            ScrollView(.vertical, showsIndicators: false){
+                                ForEach(synonyms, id:\.self) { synonym in
+                                    Text(synonym)
+                                        .multilineTextAlignment(.center)
+                                        .font(.title2)
+                                        .padding(5)
+                                }
+                                .frame(width: geometry.size.width)      // Make the scroll view full-width
+                                .frame(minHeight: geometry.size.height) // Set the content’s min height to the parent
+                            }
+            
+                            
+                        }
+                    }
             }
             .padding()
+           
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .rotation3DEffect(
@@ -43,8 +59,11 @@ struct CardBack : View {
 
 struct CardBack_Previews: PreviewProvider {
     static var previews: some View {
-        CardBack(synonyms: ["some", "syn", "sad dsa dsa sss"], degree: .constant(0))
+        CardBack(synonyms: ["some", "what u say?", "ok bro"], degree: .constant(0))
+            .frame(width: 250, height: 350)
+            .aspectRatio(3/4, contentMode: .fit)
             .padding()
+            
     }
 }
 

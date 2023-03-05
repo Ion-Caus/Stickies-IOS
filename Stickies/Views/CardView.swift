@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-struct CardView<MenuItems> : View where MenuItems : View {
+struct CardView : View  {
     let card: Card?
-    
-    let menuItems: () -> MenuItems
     
     @State var frontDegree: Double = 0.0
     @State var backDegree: Double = -90.0
@@ -42,7 +40,6 @@ struct CardView<MenuItems> : View where MenuItems : View {
         if let card = card {
             ZStack {
                 CardFront(type: card.type ?? "", word: card.word ?? "", isFavourite: card.isFavourite, degree: $frontDegree)
-                    .contextMenu(!isFlipped ? ContextMenu(menuItems: menuItems) : nil)
                 CardBack(synonyms: card.synonyms  ?? [], degree: $backDegree)
             }
             .foregroundColor(.white)

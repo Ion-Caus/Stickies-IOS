@@ -13,7 +13,7 @@ struct StickiesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DeckListView()
+            StickiesView()
                 .environment(\.managedObjectContext, dataController.context)
         }
     }

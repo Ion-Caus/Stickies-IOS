@@ -20,8 +20,13 @@
         <attribute name="type" attributeType="String"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Card" inverseName="deck" inverseEntity="Card"/>
     </entity>
+    <entity name="TranslateApiDataPoint" representedClassName="TranslateApiDataPoint" syncable="YES" codeGenerationType="class">
+        <attribute name="charsSent" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
         <element name="Card" positionX="-54" positionY="-63" width="128" height="194"/>
         <element name="Deck" positionX="-239.2609252929688" positionY="-31.56515502929688" width="128" height="104"/>
+        <element name="TranslateApiDataPoint" positionX="-144" positionY="27" width="128" height="59"/>
     </elements>
 </model>

@@ -25,6 +25,13 @@ struct CardFormView : View {
     let deck: Deck
     @State var card: Card?
     
+    @State var isFetching = false
+    @State var translationSuggestion: String?
+    
+    var systemLanguage = Locale.current.identifier
+    
+    let translator = TranslateManager.shared
+    
     init(isPresented: Binding<Bool>, deck: Deck, card: Card? = nil) {
         _isPresented = isPresented
         self.deck = deck
@@ -49,7 +56,12 @@ struct CardFormView : View {
                 Section(header: Text("Front Face")) {
                     
                     HStack {
-                        TextField("Word", text: $word)
+//                        TextFieldWithDebounce("Word", debouncedText: $word)
+//                            .onChange(of: word) { _ in
+//                                fetchTranslation()
+//                            }
+                        
+                        TextField("Word", text: $word, onCommit: fetchTranslation)
                     
                         Spacer()
                             
@@ -63,19 +75,53 @@ struct CardFormView : View {
                     }
                     .pickerStyle(MenuPickerStyle())
                     
-                    
                 }
-                Section(header: Text("Back Face")) {
+                Section(header: HStack {
+                    Text("Back Face")
+                    
+                    if isFetching {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                    }
+                }) {
                     HStack {
                         TextField(deck.type ?? "Synonym", text: $synonym)
                         
+                        Spacer()
+                        
                         Button("Add") {
-                            synonym = synonym.trimmingCharacters(in: .whitespacesAndNewlines)
-                            if (synonym.isEmpty) { return }
-                            synonyms.append(synonym)
+                            add(synonym: synonym)
                             synonym = ""
                         }
+                        .buttonStyle(BorderlessButtonStyle())
                     }
+                    
+                    if let translation = translationSuggestion {
+                        HStack {
+                            Text(translation)
+                                .italic()
+                            
+                            Spacer()
+                            
+                            Button {
+                                add(synonym: translation)
+                                translationSuggestion = nil
+                            } label: {
+                                Image(systemName: "plus.circle")
+                            }
+                        }
+                        .foregroundColor(.gray)
+                        .opacity(0.8)
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button(role: .destructive) {
+                                translationSuggestion = nil
+
+                            } label: {
+                                Label("Delete", systemImage: "trash.fill")
+                            }
+                        }
+                    }
+                    
                     List {
                         ForEach(synonyms, id: \.self) { (item) in
                             Text(item)
@@ -111,29 +157,82 @@ struct CardFormView : View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("Done") {
-                        let example = usageExample.trimmingCharacters(in: .whitespaces).isEmpty ? nil : usageExample
-                        
-                        if (card == nil) {
-                            let _ = Card(word: word, type: type, isFavourite: isFavourite, synonyms: synonyms, usageExample: example, phoneticTranscription: phoneticTranscription, deck: deck, context: context)
-                        }
-                        else {
-                            card?.word = word
-                            card?.type = type.rawValue
-                            card?.isFavourite = isFavourite
-                            card?.synonyms = synonyms
-                            card?.usageExample = example
-                            card?.phoneticTranscription = phoneticTranscription
-                        }
-                        
-                        DataController.shared.save()
+                        upsertCard()
                         isPresented = false
                     }
                     .disabled(disableAddButton)
                 }
-                
             }
         }
     }
+    
+    func add(synonym: String) {
+        let trimmed = synonym.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard (!trimmed.isEmpty) else { return }
+        
+        synonyms.insert(trimmed, at: 0)
+    }
+    
+    func fetchTranslation() {
+        guard let source = deck.language else { return }
+        
+        if word.isEmpty {
+            self.translationSuggestion = ""
+            return
+        }
+        
+        guard deck.type == DeckType.Translation.rawValue
+                && synonyms.isEmpty
+        else { return }
+       
+        let text = word.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !text.isEmpty else { return }
+        
+        let params = TranslateParams(source: source, target: "en", text: text)
+        
+        Task {
+            isFetching = true
+            let transition = try? await translator.translate(params: params)
+            translationSuggestion = transition?.htmlToString
+            isFetching = false
+            
+            incrementSentChars(count: text.count)
+        }
+    }
+    
+    func incrementSentChars(count: Int) {
+        let charsSent = UserDefaults.standard.integer(forKey: AppStorageKeys.TranslateCharsSent)
+        UserDefaults.standard.setValue(charsSent + count, forKey: AppStorageKeys.TranslateCharsSent)
+        UserDefaults.standard.synchronize()
+    }
+    
+    func upsertCard() {
+        let example = usageExample.trimmingCharacters(in: .whitespaces).isEmpty ? nil : usageExample
+        
+        if (card == nil) {
+            let _ = Card(
+                word: word,
+                type: type,
+                isFavourite: isFavourite,
+                synonyms: synonyms,
+                usageExample: example,
+                phoneticTranscription: phoneticTranscription,
+                deck: deck,
+                context: context)
+        }
+        else {
+            card?.word = word
+            card?.type = type.rawValue
+            card?.isFavourite = isFavourite
+            card?.synonyms = synonyms
+            card?.usageExample = example
+            card?.phoneticTranscription = phoneticTranscription
+        }
+        
+        DataController.shared.save()
+    }
+    
 }
 
 struct CardFormView_Previews: PreviewProvider {
