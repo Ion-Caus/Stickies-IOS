@@ -24,6 +24,13 @@ extension Deck {
         
         return request
     }
+    
+    static func fetch(limit: Int) -> NSFetchRequest<Deck> {
+        let request: NSFetchRequest<Deck> = Deck.fetchRequest()
+        request.sortDescriptors = [ NSSortDescriptor(keyPath: \Deck.title, ascending: true)]
+        request.fetchLimit = limit
+        return request
+    }
 }
 
 enum DeckType: String, Equatable, CaseIterable {

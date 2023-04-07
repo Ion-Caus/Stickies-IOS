@@ -36,4 +36,17 @@ class DataController {
             print(error.localizedDescription)
         }
     }
+    
+    func delete(fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try context.executeAndMergeChanges(using: deleteRequest)
+        }
+        catch {
+            context.rollback()
+            print(error.localizedDescription)
+        }
+       
+    }
 }

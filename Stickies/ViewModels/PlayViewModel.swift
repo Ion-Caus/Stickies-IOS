@@ -54,8 +54,19 @@ class PlayViewModel: ObservableObject {
             return
         }
         
+        let now = Date()
         card.recallScore += score
-        card.modifiedDate = Date()
+        card.modifiedDate = now
+        
+        if let cardId = card.id {
+            let _ = CardEntry(
+                cardId: cardId,
+                createdDate: now,
+                score: score,
+                cardScore: card.recallScore,
+                context: DataController.shared.context)
+        }
+        
         
         DataController.shared.save()
     }

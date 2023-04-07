@@ -32,8 +32,18 @@ struct SimpleCardListView: View {
                 ForEach(cards, id: \.id) { card in
                     NavigationLink(destination: InfoCardView(deck: deck, card: card))
                     {
-                        Text(card.word ?? "NO TITLE")
-                            .foregroundColor(Color.primary)
+                        HStack {
+                            Text(card.word ?? "NO TITLE")
+                                .foregroundColor(Color.primary)
+                            
+                            Spacer()
+                            
+                            if card.isFavourite {
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(.red)
+                            }
+                        }
+                      
                     }
                     .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive) {

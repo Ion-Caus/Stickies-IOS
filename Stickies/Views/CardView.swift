@@ -14,6 +14,10 @@ struct CardView : View  {
     @State var backDegree: Double = -90.0
     @State var isFlipped = false
     
+    init(card: Card?) {
+        self.card = card
+    }
+    
     let durationAndDelay : Double = 0.2
     
     //MARK: Flip Card Function
@@ -40,7 +44,9 @@ struct CardView : View  {
         if let card = card {
             ZStack {
                 CardFront(type: card.type ?? "", word: card.word ?? "", isFavourite: card.isFavourite, degree: $frontDegree)
+                    .opacity(backDegree == 0 ? 0  : 1)
                 CardBack(synonyms: card.synonyms  ?? [], degree: $backDegree)
+                    .opacity(frontDegree == 0 ? 0 : 1)
             }
             .foregroundColor(.white)
             .onTapGesture {

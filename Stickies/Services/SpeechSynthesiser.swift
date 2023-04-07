@@ -49,12 +49,15 @@ class SpeechSynthesiser : NSObject, ObservableObject {
     private func speak(_ utterance: AVSpeechUtterance) {
         if synthesizer.isSpeaking { return }
         
-        synthesizer.delegate = self
-       
-        utterance.voice = AVSpeechSynthesisVoice(language: language)
-        utterance.rate = rate
-        
-        synthesizer.speak(utterance)
+        DispatchQueue.main.async {
+            
+            self.synthesizer.delegate = self
+           
+            utterance.voice = AVSpeechSynthesisVoice(language: self.language)
+            utterance.rate = self.rate
+            
+            self.synthesizer.speak(utterance)
+        }
     }
     
 }

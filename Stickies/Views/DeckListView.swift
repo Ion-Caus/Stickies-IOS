@@ -28,7 +28,15 @@ struct DeckListView : View {
                 List {
                     ForEach(decks, id: \.id) { deck in
                         NavigationLink(destination: SimpleCardListView(deck: deck)) {
-                            Text(deck.title ?? "NO TITLE")
+                            HStack {
+                                Text(deck.title ?? "NO TITLE")
+                                
+                                Spacer()
+                                
+                                Text(deck.type ?? "")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
                         }
                         .swipeActions(allowsFullSwipe: false) {
                             Button(role: .destructive) {

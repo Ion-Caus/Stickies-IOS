@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		500C152D29B3E7810017ABA0 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 500C152C29B3E7810017ABA0 /* SwiftUICharts */; };
 		500C152F29B541CF0017ABA0 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500C152E29B541CF0017ABA0 /* AppIcon.swift */; };
 		500EA5262871F90A005A2C83 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EA5252871F90A005A2C83 /* PlayView.swift */; };
 		500EA5282871FD33005A2C83 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EA5272871FD33005A2C83 /* Background.swift */; };
@@ -24,8 +23,18 @@
 		505D84922842D57D00AEC836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84912842D57D00AEC836 /* Assets.xcassets */; };
 		505D84952842D57D00AEC836 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84942842D57D00AEC836 /* Preview Assets.xcassets */; };
 		5060F52B285D187A004E9142 /* CardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060F52A285D187A004E9142 /* CardFormView.swift */; };
+		506F9AC229E0256400197C3F /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9AB529E0256400197C3F /* BarChartView.swift */; };
+		506F9AC629E0256400197C3F /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9ABA29E0256400197C3F /* LineChartView.swift */; };
+		506F9AC729E0256400197C3F /* LineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9ABB29E0256400197C3F /* LineChartData.swift */; };
+		506F9AC829E0256400197C3F /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9ABD29E0256400197C3F /* LineView.swift */; };
+		506F9AC929E0256400197C3F /* LinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9ABE29E0256400197C3F /* LinePath.swift */; };
+		506F9ACA29E0256400197C3F /* ChartIndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9ABF29E0256400197C3F /* ChartIndicatorPoint.swift */; };
+		506F9ACB29E0256400197C3F /* ChartLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9AC029E0256400197C3F /* ChartLabels.swift */; };
+		506F9ACC29E0256400197C3F /* LineChartParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9AC129E0256400197C3F /* LineChartParameters.swift */; };
+		506F9ACE29E028CA00197C3F /* CardsPlayedBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9ACD29E028CA00197C3F /* CardsPlayedBarChart.swift */; };
 		507B4A99292C0DAB00FC97AF /* VoiceRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B4A98292C0DAA00FC97AF /* VoiceRecorderManager.swift */; };
 		507B4A9B292C0F0400FC97AF /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507B4A9A292C0F0400FC97AF /* Recording.swift */; };
+		507C2CF929B90AC6001A9DAC /* GroupBoxLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C2CF829B90AC6001A9DAC /* GroupBoxLink.swift */; };
 		507C6B5729AA8FD000B39734 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C6B5629AA8FD000B39734 /* SequenceExtensions.swift */; };
 		507C6B5929AA973400B39734 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C6B5829AA973400B39734 /* Constants.swift */; };
 		507C6B5B29AA9FD200B39734 /* HearPronunciationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */; };
@@ -36,15 +45,20 @@
 		508BB43B29AD5FD100DA8EAD /* SecretTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB43A29AD5FD100DA8EAD /* SecretTextField.swift */; };
 		508BB43F29AD706200DA8EAD /* TextFieldWithDebounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB43E29AD706200DA8EAD /* TextFieldWithDebounce.swift */; };
 		508BB44129AD753500DA8EAD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB44029AD753500DA8EAD /* StringExtensions.swift */; };
-		508BB44329AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB44229AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift */; };
 		508C77F928D129CC009031C7 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C77F828D129CC009031C7 /* AudioManager.swift */; };
+		508DC00729C3DB7800C657ED /* CardsPlayedLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DC00629C3DB7800C657ED /* CardsPlayedLineChart.swift */; };
+		508DC00929C3DE0E00C657ED /* CardEntry+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DC00829C3DE0E00C657ED /* CardEntry+Extensions.swift */; };
+		508DC00B29C4790700C657ED /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DC00A29C4790600C657ED /* DateExtensions.swift */; };
+		508DC00D29C4D4BF00C657ED /* AnalyticsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DC00C29C4D4BE00C657ED /* AnalyticsSettingsView.swift */; };
+		508DC00F29C4DA8E00C657ED /* NSManagedObjectContextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DC00E29C4DA8D00C657ED /* NSManagedObjectContextExtensions.swift */; };
 		508FFD2C29AA5AB70084B7D4 /* SpeechSynthesiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD2B29AA5AB70084B7D4 /* SpeechSynthesiser.swift */; };
 		508FFD2E29AA5F860084B7D4 /* WeekDayToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */; };
 		508FFD3129AA60500084B7D4 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD3029AA60500084B7D4 /* WeekDay.swift */; };
 		508FFD3329AA6C3D0084B7D4 /* SpeechSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */; };
 		508FFD3529AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508FFD3429AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift */; };
+		5090B5E129B7F3CB008FD635 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5090B5DF29B7F3CB008FD635 /* DataModel.xcdatamodeld */; };
+		5090B5E529B7FBF7008FD635 /* DeckListPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090B5E429B7FBF7008FD635 /* DeckListPreview.swift */; };
 		50A5399F28E0B46C002E06AA /* InfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5399E28E0B46C002E06AA /* InfoCardView.swift */; };
-		50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */; };
 		50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08B2284EA7FA00678A3E /* DataController.swift */; };
 		50CC08B5284EAF1B00678A3E /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CC08B4284EAF1B00678A3E /* CardFront.swift */; };
 		50D97F5629AC160E00113CFF /* TranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D97F5529AC160D00113CFF /* TranslateManager.swift */; };
@@ -74,8 +88,18 @@
 		505D84942842D57D00AEC836 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		505D84962842D57D00AEC836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5060F52A285D187A004E9142 /* CardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormView.swift; sourceTree = "<group>"; };
+		506F9AB529E0256400197C3F /* BarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		506F9ABA29E0256400197C3F /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		506F9ABB29E0256400197C3F /* LineChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartData.swift; sourceTree = "<group>"; };
+		506F9ABD29E0256400197C3F /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		506F9ABE29E0256400197C3F /* LinePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinePath.swift; sourceTree = "<group>"; };
+		506F9ABF29E0256400197C3F /* ChartIndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartIndicatorPoint.swift; sourceTree = "<group>"; };
+		506F9AC029E0256400197C3F /* ChartLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartLabels.swift; sourceTree = "<group>"; };
+		506F9AC129E0256400197C3F /* LineChartParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartParameters.swift; sourceTree = "<group>"; };
+		506F9ACD29E028CA00197C3F /* CardsPlayedBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPlayedBarChart.swift; sourceTree = "<group>"; };
 		507B4A98292C0DAA00FC97AF /* VoiceRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecorderManager.swift; sourceTree = "<group>"; };
 		507B4A9A292C0F0400FC97AF /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		507C2CF829B90AC6001A9DAC /* GroupBoxLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBoxLink.swift; sourceTree = "<group>"; };
 		507C6B5629AA8FD000B39734 /* SequenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
 		507C6B5829AA973400B39734 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearPronunciationButton.swift; sourceTree = "<group>"; };
@@ -86,15 +110,20 @@
 		508BB43A29AD5FD100DA8EAD /* SecretTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretTextField.swift; sourceTree = "<group>"; };
 		508BB43E29AD706200DA8EAD /* TextFieldWithDebounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithDebounce.swift; sourceTree = "<group>"; };
 		508BB44029AD753500DA8EAD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		508BB44229AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranslateApiDataPoint+Extensions.swift"; sourceTree = "<group>"; };
 		508C77F828D129CC009031C7 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		508DC00629C3DB7800C657ED /* CardsPlayedLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPlayedLineChart.swift; sourceTree = "<group>"; };
+		508DC00829C3DE0E00C657ED /* CardEntry+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardEntry+Extensions.swift"; sourceTree = "<group>"; };
+		508DC00A29C4790600C657ED /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		508DC00C29C4D4BE00C657ED /* AnalyticsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSettingsView.swift; sourceTree = "<group>"; };
+		508DC00E29C4DA8D00C657ED /* NSManagedObjectContextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtensions.swift; sourceTree = "<group>"; };
 		508FFD2B29AA5AB70084B7D4 /* SpeechSynthesiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesiser.swift; sourceTree = "<group>"; };
 		508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayToggle.swift; sourceTree = "<group>"; };
 		508FFD3029AA60500084B7D4 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSettingsView.swift; sourceTree = "<group>"; };
 		508FFD3429AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerExtensions.swift; sourceTree = "<group>"; };
+		5090B5E029B7F3CB008FD635 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		5090B5E429B7FBF7008FD635 /* DeckListPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListPreview.swift; sourceTree = "<group>"; };
 		50A5399E28E0B46C002E06AA /* InfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardView.swift; sourceTree = "<group>"; };
-		50CC08B0284EA70500678A3E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		50CC08B2284EA7FA00678A3E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		50CC08B4284EAF1B00678A3E /* CardFront.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
 		50D97F5529AC160D00113CFF /* TranslateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateManager.swift; sourceTree = "<group>"; };
@@ -110,7 +139,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				500C152D29B3E7810017ABA0 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +157,9 @@
 				508FFD2D29AA5F860084B7D4 /* WeekDayToggle.swift */,
 				508BB43A29AD5FD100DA8EAD /* SecretTextField.swift */,
 				508BB43E29AD706200DA8EAD /* TextFieldWithDebounce.swift */,
+				507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */,
 				500C152E29B541CF0017ABA0 /* AppIcon.swift */,
+				507C2CF829B90AC6001A9DAC /* GroupBoxLink.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -137,10 +167,12 @@
 		50168BDB288353FC00ABF8EF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				508DC00A29C4790600C657ED /* DateExtensions.swift */,
 				50168BDC2883544900ABF8EF /* ViewExtensions.swift */,
 				508FFD3429AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift */,
 				507C6B5629AA8FD000B39734 /* SequenceExtensions.swift */,
 				508BB44029AD753500DA8EAD /* StringExtensions.swift */,
+				508DC00E29C4DA8D00C657ED /* NSManagedObjectContextExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -164,6 +196,7 @@
 		505D848C2842D57900AEC836 /* Stickies */ = {
 			isa = PBXGroup;
 			children = (
+				506F9AB329E0256400197C3F /* Charts */,
 				508C77F728D129B2009031C7 /* Services */,
 				50168BD628831FFD00ABF8EF /* Components */,
 				50CC08B6284EB3CD00678A3E /* DataModel */,
@@ -186,6 +219,45 @@
 				505D84942842D57D00AEC836 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		506F9AB329E0256400197C3F /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				506F9AB429E0256400197C3F /* BarChart */,
+				506F9AB929E0256400197C3F /* LineChart */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		506F9AB429E0256400197C3F /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				506F9AB529E0256400197C3F /* BarChartView.swift */,
+			);
+			path = BarChart;
+			sourceTree = "<group>";
+		};
+		506F9AB929E0256400197C3F /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				506F9ABA29E0256400197C3F /* LineChartView.swift */,
+				506F9ABB29E0256400197C3F /* LineChartData.swift */,
+				506F9ABC29E0256400197C3F /* Components */,
+				506F9AC129E0256400197C3F /* LineChartParameters.swift */,
+			);
+			path = LineChart;
+			sourceTree = "<group>";
+		};
+		506F9ABC29E0256400197C3F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				506F9ABD29E0256400197C3F /* LineView.swift */,
+				506F9ABE29E0256400197C3F /* LinePath.swift */,
+				506F9ABF29E0256400197C3F /* ChartIndicatorPoint.swift */,
+				506F9AC029E0256400197C3F /* ChartLabels.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		508C77F728D129B2009031C7 /* Services */ = {
@@ -213,11 +285,11 @@
 		50CC08B6284EB3CD00678A3E /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				5090B5DF29B7F3CB008FD635 /* DataModel.xcdatamodeld */,
 				50CC08B2284EA7FA00678A3E /* DataController.swift */,
-				50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */,
 				50168BD72883204300ABF8EF /* Deck+Extensions.swift */,
 				50168BDE28835B8700ABF8EF /* Card+Extensions.swift */,
-				508BB44229AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift */,
+				508DC00829C3DE0E00C657ED /* CardEntry+Extensions.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -227,6 +299,7 @@
 			children = (
 				50FEF01A284D594600FA8373 /* StickiesView.swift */,
 				50168BD42882209500ABF8EF /* DeckListView.swift */,
+				5090B5E429B7FBF7008FD635 /* DeckListPreview.swift */,
 				50168BD928834ECD00ABF8EF /* DeckFormView.swift */,
 				50FEF019284D594600FA8373 /* CardView.swift */,
 				500EA529287200E9005A2C83 /* CardListView.swift */,
@@ -234,10 +307,12 @@
 				5060F52A285D187A004E9142 /* CardFormView.swift */,
 				500EA5252871F90A005A2C83 /* PlayView.swift */,
 				50A5399E28E0B46C002E06AA /* InfoCardView.swift */,
-				507C6B5A29AA9FD200B39734 /* HearPronunciationButton.swift */,
+				508DC00629C3DB7800C657ED /* CardsPlayedLineChart.swift */,
+				506F9ACD29E028CA00197C3F /* CardsPlayedBarChart.swift */,
 				500ED8E329059EFE00EB4D59 /* NotificationsView.swift */,
 				508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */,
 				508BB43829AD5B4E00DA8EAD /* TranslationSettingsView.swift */,
+				508DC00C29C4D4BE00C657ED /* AnalyticsSettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,7 +342,6 @@
 			);
 			name = Stickies;
 			packageProductDependencies = (
-				500C152C29B3E7810017ABA0 /* SwiftUICharts */,
 			);
 			productName = Stickies;
 			productReference = 505D848A2842D57900AEC836 /* Stickies.app */;
@@ -297,7 +371,6 @@
 			);
 			mainGroup = 505D84812842D57900AEC836;
 			packageReferences = (
-				500C152B29B3E7810017ABA0 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 505D848B2842D57900AEC836 /* Products */;
 			projectDirPath = "";
@@ -326,27 +399,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				500EA5282871FD33005A2C83 /* Background.swift in Sources */,
+				506F9ACA29E0256400197C3F /* ChartIndicatorPoint.swift in Sources */,
 				50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */,
+				506F9ACB29E0256400197C3F /* ChartLabels.swift in Sources */,
 				50168BDD2883544900ABF8EF /* ViewExtensions.swift in Sources */,
 				508FFD2C29AA5AB70084B7D4 /* SpeechSynthesiser.swift in Sources */,
+				506F9ACC29E0256400197C3F /* LineChartParameters.swift in Sources */,
+				508DC00B29C4790700C657ED /* DateExtensions.swift in Sources */,
+				508DC00929C3DE0E00C657ED /* CardEntry+Extensions.swift in Sources */,
 				50FEF01F284D594700FA8373 /* AspectListView.swift in Sources */,
+				506F9AC229E0256400197C3F /* BarChartView.swift in Sources */,
 				50CC08B5284EAF1B00678A3E /* CardFront.swift in Sources */,
+				506F9AC729E0256400197C3F /* LineChartData.swift in Sources */,
+				506F9AC829E0256400197C3F /* LineView.swift in Sources */,
 				50FEF01C284D594600FA8373 /* CardBack.swift in Sources */,
 				500C152F29B541CF0017ABA0 /* AppIcon.swift in Sources */,
 				508BB44129AD753500DA8EAD /* StringExtensions.swift in Sources */,
+				506F9AC929E0256400197C3F /* LinePath.swift in Sources */,
 				507B4A9B292C0F0400FC97AF /* Recording.swift in Sources */,
 				50CC08B3284EA7FA00678A3E /* DataController.swift in Sources */,
 				507B4A99292C0DAB00FC97AF /* VoiceRecorderManager.swift in Sources */,
+				508DC00D29C4D4BF00C657ED /* AnalyticsSettingsView.swift in Sources */,
 				50D97F5629AC160E00113CFF /* TranslateManager.swift in Sources */,
 				50A5399F28E0B46C002E06AA /* InfoCardView.swift in Sources */,
+				5090B5E529B7FBF7008FD635 /* DeckListPreview.swift in Sources */,
 				50FEF01D284D594700FA8373 /* CardView.swift in Sources */,
 				50168BDA28834ECE00ABF8EF /* DeckFormView.swift in Sources */,
 				508BB43B29AD5FD100DA8EAD /* SecretTextField.swift in Sources */,
 				508BB43F29AD706200DA8EAD /* TextFieldWithDebounce.swift in Sources */,
 				508FFD3529AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift in Sources */,
 				500EB4C3289FFDEE000A59F7 /* NoCard.swift in Sources */,
-				50CC08B1284EA70500678A3E /* DataModel.xcdatamodeld in Sources */,
-				508BB44329AEB88000DA8EAD /* TranslateApiDataPoint+Extensions.swift in Sources */,
+				5090B5E129B7F3CB008FD635 /* DataModel.xcdatamodeld in Sources */,
 				508FFD2E29AA5F860084B7D4 /* WeekDayToggle.swift in Sources */,
 				508FFD3129AA60500084B7D4 /* WeekDay.swift in Sources */,
 				507C6B5929AA973400B39734 /* Constants.swift in Sources */,
@@ -358,10 +441,15 @@
 				50FEF01E284D594700FA8373 /* StickiesView.swift in Sources */,
 				5083796128907719001F78AB /* CardConstants.swift in Sources */,
 				508FFD3329AA6C3D0084B7D4 /* SpeechSettingsView.swift in Sources */,
+				506F9ACE29E028CA00197C3F /* CardsPlayedBarChart.swift in Sources */,
+				508DC00F29C4DA8E00C657ED /* NSManagedObjectContextExtensions.swift in Sources */,
 				507C6B5B29AA9FD200B39734 /* HearPronunciationButton.swift in Sources */,
+				506F9AC629E0256400197C3F /* LineChartView.swift in Sources */,
+				508DC00729C3DB7800C657ED /* CardsPlayedLineChart.swift in Sources */,
 				500EA5262871F90A005A2C83 /* PlayView.swift in Sources */,
 				500EA52A287200E9005A2C83 /* CardListView.swift in Sources */,
 				5060F52B285D187A004E9142 /* CardFormView.swift in Sources */,
+				507C2CF929B90AC6001A9DAC /* GroupBoxLink.swift in Sources */,
 				508C77F928D129CC009031C7 /* AudioManager.swift in Sources */,
 				50E8A7E928DF8675003421B1 /* SimpleCardListView.swift in Sources */,
 				50168BD52882209500ABF8EF /* DeckListView.swift in Sources */,
@@ -425,7 +513,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -480,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -561,32 +649,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		500C152B29B3E7810017ABA0 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		500C152C29B3E7810017ABA0 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 500C152B29B3E7810017ABA0 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
-
 /* Begin XCVersionGroup section */
-		50CC08AF284EA70500678A3E /* DataModel.xcdatamodeld */ = {
+		5090B5DF29B7F3CB008FD635 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				50CC08B0284EA70500678A3E /* DataModel.xcdatamodel */,
+				5090B5E029B7F3CB008FD635 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 50CC08B0284EA70500678A3E /* DataModel.xcdatamodel */;
+			currentVersion = 5090B5E029B7F3CB008FD635 /* DataModel.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
