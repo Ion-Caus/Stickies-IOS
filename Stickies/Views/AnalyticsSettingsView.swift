@@ -26,8 +26,18 @@ struct AnalyticsSettingsView: View {
                         VStack {
                             Text(entry.createdDate?.formatted() ?? "")
                         }
+                        .swipeActions(allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                DataController.shared.context.delete(entry)
+                                DataController.shared.save()
+                                
+                            } label: {
+                                Label("Delete", systemImage: "trash.fill")
+                            }
+                        }
                        
                     }
+                    
                 }
                 
             }

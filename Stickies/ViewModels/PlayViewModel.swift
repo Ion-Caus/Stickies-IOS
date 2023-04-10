@@ -14,13 +14,12 @@ class PlayViewModel: ObservableObject {
     
     private var iterator: Array<Card>.Iterator
 
-    init(cards: [Card]) {
-        
+    init(cards: [Card], playMode: PlayMode) {
         let today = Date()
         for card in cards {
             let cardDate = card.modifiedDate ?? Date()
             
-            if cardDate == today {continue}
+            if cardDate == today { continue }
             
             let numberOfDays = Calendar.current.dateComponents([.day], from: cardDate, to: today)
                 
@@ -31,28 +30,27 @@ class PlayViewModel: ObservableObject {
             }
         }
         
-       
-        let sortedCards = cards.isEmpty
-            ? cards
-            : cards
-                .shuffled() // randomize
-                .sorted(by: { $0.recallScore < $1.recallScore })
+        let shuffledCards = cards.shuffled() // randomize
         
-        self.cards = sortedCards
+        let preparedCards: [Card]
+        switch playMode {
+            case .random:
+                preparedCards = shuffledCards
+            case .worstToBest:
+                preparedCards = shuffledCards.sorted(by: { $0.recallScore < $1.recallScore })
+            }
         
-        iterator = sortedCards.makeIterator()
+        self.cards = preparedCards
+        iterator = preparedCards.makeIterator()
         card = iterator.next()
     }
-    
     
     func nextCard() {
         card = iterator.next()
     }
     
     func updateCurrentCard(score: Int16) {
-        guard let card = card else {
-            return
-        }
+        guard let card = card else { return }
         
         let now = Date()
         card.recallScore += score
@@ -66,7 +64,6 @@ class PlayViewModel: ObservableObject {
                 cardScore: card.recallScore,
                 context: DataController.shared.context)
         }
-        
         
         DataController.shared.save()
     }

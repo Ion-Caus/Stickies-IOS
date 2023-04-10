@@ -20,8 +20,8 @@ struct PlayView: View {
     
     let language: String
     
-    init(cards: [Card], language: String?) {
-        _viewModel = StateObject(wrappedValue: PlayViewModel(cards: cards))
+    init(cards: [Card], language: String?, playMode: PlayMode = .worstToBest) {
+        _viewModel = StateObject(wrappedValue: PlayViewModel(cards: cards, playMode: playMode))
         
         self.language = language ?? Constants.DefaultLanguage
     }
@@ -32,32 +32,13 @@ struct PlayView: View {
             
             GeometryReader { geometry in
                 VStack {
-                    HStack (alignment: .center, spacing: 15) {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                        label: {
-                            HStack {
-                                Image(systemName: "chevron.backward.circle")
-                                Text("Cards").bold()
-                            }
-                        }
-                        
-                        Spacer()
-                        
-                        HearPronunciationButton(
-                            language: language,
-                            word: viewModel.card?.word,
-                            phoneticTranscription: viewModel.card?.phoneticTranscription)
-                    }
-                    .font(.title)
-                    .padding([.top, .horizontal])
+                    navigationBar
                     
                     CardView(card: viewModel.card)
                         .aspectRatio(CardConstants.aspectRatio, contentMode: .fit)
                         .frame(width: geometry.size.width * CardConstants.widthFromScreen,
                                height: geometry.size.height * CardConstants.heightFromScreen)
-                        .padding(30)
+                        .padding(20)
                         .transition(.scale)
                         .rotation3DEffect(
                             .degrees(degrees),
@@ -74,12 +55,36 @@ struct PlayView: View {
                     
                     Spacer()
                 }
+                
             }
             .foregroundColor(.white)
             .navigationBarHidden(true)
             .padding(.bottom)
         }
         
+    }
+    
+    var navigationBar: some View {
+        HStack (alignment: .center, spacing: 15) {
+            Button {
+                presentationMode.wrappedValue.dismiss()
+            }
+            label: {
+                HStack {
+                    Image(systemName: "chevron.backward.circle")
+                    Text("Cards").bold()
+                }
+            }
+            
+            Spacer()
+            
+            HearPronunciationButton(
+                language: language,
+                word: viewModel.card?.word,
+                phoneticTranscription: viewModel.card?.phoneticTranscription)
+        }
+        .font(.title)
+        .padding([.top, .horizontal])
     }
     
     var goodButton: some View  {

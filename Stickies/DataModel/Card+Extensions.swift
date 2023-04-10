@@ -41,6 +41,13 @@ extension Card {
 
         return request
     }
+    
+    static func fetchWorst() -> NSFetchRequest<Card> {
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        request.sortDescriptors = [ NSSortDescriptor(keyPath: \Card.recallScore, ascending: true)]
+        request.fetchLimit = 20
+        return request
+    }
 }
 
 enum WordType: String, Equatable, CaseIterable {

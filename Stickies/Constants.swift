@@ -17,4 +17,6 @@ struct AppStorageKeys {
     
     // NB: both the input and output chars are taken into account when calculating the limit
     static let TranslateCharsSent = "translate.chars.sent"
+    
+    static let PlayMode = "play.playmode"
 }

@@ -31,6 +31,10 @@ extension Deck {
         request.fetchLimit = limit
         return request
     }
+    
+    public var cardList: [Card] {
+        return Array(cards as? Set<Card> ?? [])
+    }
 }
 
 enum DeckType: String, Equatable, CaseIterable {

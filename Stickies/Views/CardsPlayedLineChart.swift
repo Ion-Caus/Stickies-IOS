@@ -7,40 +7,29 @@
 
 import SwiftUI
 
-struct CardsPlayedGraph: View {
+struct CardsPlayedLineChart: View {
     
     @FetchRequest
     private var entries: FetchedResults<CardEntry>
     
     @State
-    private var data = [LineChartData]()
+    private var data: [LineChartData] = []
     
-    private var days = [Date]()
+    @State
+    private var selectedElement: BarChart.DataSet.DataElement?
     
-    @Environment(\.scenePhase) var scenePhase
+    private let paddingTrailing: CGFloat = 40
     
+    @State
+    private var updatedAt: Date = Date.now
     let daysBack: Int
     
     init(daysBack: Int) {
         self.daysBack = (daysBack > 1) ? daysBack : 1
         
-        let cal = Calendar.current
-        let midnight = cal.startOfDay(for: Date())
+        let interval = DateInterval.tomorrowTo(daysBack: daysBack)
         
-        let tomorrow = cal.date(byAdding: .day, value: 1, to: midnight)!
-    
-        var date = midnight
-        
-        for _ in 1 ... daysBack {
-            days.insert(date, at: 0)
-            date = cal.date(byAdding: .day, value: -1, to: date)!
-        }
-        
-        let from = days.first!
-        let end = tomorrow
-        
-        
-        _entries = FetchRequest(fetchRequest: CardEntry.fetch(from: from, to: end), animation: .easeInOut)
+        _entries = FetchRequest(fetchRequest: CardEntry.fetch(from: interval.start, to: interval.end), animation: .easeInOut)
     }
     
     var body: some View {
@@ -64,73 +53,82 @@ struct CardsPlayedGraph: View {
         )
         
         return VStack {
-            
-            ZStack {                
+            ZStack {
                 let max = data.max { $0.value < $1.value }
-                
+             
                 if let maxValue = max?.value {
-                    VStack {
-                        ZStack {
-                            Divider()
-                                .padding(.trailing, 50)
-                            Text(String(maxValue))
-                                .foregroundColor(.gray)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                        
-                        Spacer()
-                        
-                        ZStack {
-                            Divider()
-                                .padding(.trailing, 50)
-                            Text(String(maxValue / 2))
-                                .foregroundColor(.gray)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                        
-                        Spacer()
-                        
-                        ZStack {
-                            Divider()
-                                .padding(.trailing, 50)
-                            Text("0")
-                                .foregroundColor(.gray)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                    }
-                    .padding(.bottom, 5)
-                    .padding(.top)
+                    createCoordinatePlane(maxValue: maxValue, minValue: 0.0)
                 }
                 
                 LineChartView(lineChartParameters: chartParameters)
-                    .padding(.trailing, 40)
-                
+                    .padding(.top)
+                    .padding(.trailing, paddingTrailing)
+                  
             }
             .frame(height: 250)
         }
         .onAppear {
-            let grouped = Dictionary(
-                grouping: entries.map { $0 },
-                by: { $0.createdDate?.onlyDate }
-            )
-
-            self.data = days.compactMap { key in
+            Task {
+                let interval = DateInterval.tomorrowTo(daysBack: daysBack)
                 
-                LineChartData(
-                    Double(grouped[key]?.count ?? 0),
-                    timestamp: key,
-                    label: key.formatted(.dateTime.day().month(.wide))
-                )
+                if !updatedAt.hasSame(.day, as: Date.now) {
+                    let interval = DateInterval.tomorrowTo(daysBack: daysBack)
+                    entries.nsPredicate = CardEntry.periodPredicate(from: interval.start, to: interval.end)
+                    updatedAt = Date.now
+                }
+                
+                self.data = createData(dates: interval.enumerateDates())
             }
         }
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
-                print("Active")
-                
-//                guard days.last == Date.now else {
-//
-//                }
-           }
+    }
+    
+    @ViewBuilder
+    func createCoordinatePlane(maxValue: Double, minValue: Double) -> some View {
+        VStack {
+            ZStack {
+                Divider()
+                    .padding(.trailing, paddingTrailing)
+                Text("\(maxValue, specifier: "%.0f")")
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            
+            Spacer()
+            
+            ZStack {
+                Divider()
+                    .padding(.trailing, paddingTrailing)
+                Text("\((maxValue - minValue) / 2, specifier: "%.0f")")
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            
+            Spacer()
+            
+            ZStack {
+                Divider()
+                    .padding(.trailing, paddingTrailing)
+                Text("\(minValue, specifier: "%.0f")")
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
+        .padding(.bottom, 10)
+        .padding(.top, 5)
+    }
+    
+    func createData(dates: [Date]) -> [LineChartData] {
+        let grouped = Dictionary(
+            grouping: entries.map { $0 },
+            by: { $0.createdDate?.onlyDate }
+        )
+
+        return dates.compactMap { key in
+            LineChartData(
+                Double(grouped[key]?.count ?? 0),
+                timestamp: key,
+                label: key.formatted(.dateTime.day().month(.wide))
+            )
         }
     }
     
@@ -138,6 +136,6 @@ struct CardsPlayedGraph: View {
 
 struct CardsPlayedGraph_Previews: PreviewProvider {
     static var previews: some View {
-        CardsPlayedGraph(daysBack: 7)
+        CardsPlayedLineChart(daysBack: 7)
     }
 }

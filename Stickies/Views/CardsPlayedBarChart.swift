@@ -8,46 +8,33 @@
 import SwiftUI
 
 struct CardsPlayedBarChart : View {
-    @Environment(\.scenePhase) var scenePhase
-    
     @FetchRequest
     private var entries: FetchedResults<CardEntry>
     
     @State
-    private var dataSet = BarChart.DataSet(elements: [], selectionColor: Color.red)
+    private var elements: [BarChart.DataSet.DataElement] = []
     
-    @State
-    private var selectedElement: BarChart.DataSet.DataElement?
+//    @State
+//    private var selectedElement: BarChart.DataSet.DataElement?
     
-    private var days = [Date]()
     private let paddingTrailing: CGFloat = 40
     
+    @State
+    private var updatedAt: Date = Date.now
     let daysBack: Int
     
     init(daysBack: Int) {
         self.daysBack = (daysBack > 1) ? daysBack : 1
         
-        let cal = Calendar.current
-        let midnight = cal.startOfDay(for: Date())
+        let interval = DateInterval.tomorrowTo(daysBack: daysBack)
         
-        let tomorrow = cal.date(byAdding: .day, value: 1, to: midnight)!
-        
-        var date = midnight
-        
-        for _ in 1 ... daysBack {
-            days.insert(date, at: 0)
-            date = cal.date(byAdding: .day, value: -1, to: date)!
-        }
-        
-        let from = days.first!
-        let end = tomorrow
-        
-        
-        _entries = FetchRequest(fetchRequest: CardEntry.fetch(from: from, to: end), animation: .easeInOut)
+        _entries = FetchRequest(fetchRequest: CardEntry.fetch(from: interval.start, to: interval.end), animation: .easeInOut)
     }
     
     var body: some View {
-        VStack {
+        let dataSet = BarChart.DataSet(elements: elements, selectionColor: Color.gray.opacity(0.7))
+
+        return VStack {
             ZStack {
                 let max = dataSet.elements
                     .flatMap{ $0.bars }
@@ -58,37 +45,24 @@ struct CardsPlayedBarChart : View {
                 }
                 
                 let barWidth = daysBack > 7 ? 6.0 : 12.0
-                BarChart(dataSet: dataSet, selectedElement: $selectedElement, barWidth: barWidth)
+                BarChart(dataSet: dataSet, selectedElement: .constant(nil), barWidth: barWidth)
                     .padding(.top)
                     .padding(.trailing, paddingTrailing)
             }
             .frame(height: 250)
         }
         .onAppear {
-            let grouped = Dictionary(
-                grouping: entries.map { $0 },
-                by: { $0.createdDate?.onlyDate }
-            )
-            
-            let elements: [BarChart.DataSet.DataElement] = days.compactMap { key in
+            Task {
+                let interval = DateInterval.tomorrowTo(daysBack: daysBack)
                 
-                let value = Double(grouped[key]?.count ?? 0)
-                let color = value < 5 ? Color.gray : Color.red
+                if !updatedAt.hasSame(.day, as: Date.now) {
+                    let interval = DateInterval.tomorrowTo(daysBack: daysBack)
+                    entries.nsPredicate = CardEntry.periodPredicate(from: interval.start, to: interval.end)
+                    updatedAt = Date.now
+                }
                 
-                return BarChart.DataSet.DataElement(
-                    date: key,
-                    xLabel: key.formatted(.dateTime.weekday()),
-                    bars: [
-                        BarChart.DataSet.DataElement.Bar(value: value, color: color)
-                    ])
+                self.elements = createDataElements(dates: interval.enumerateDates())
             }
-                    
-            dataSet = BarChart.DataSet(elements: elements, selectionColor: Color.gray.opacity(0.7))
-        }
-        .onChange(of: scenePhase) { newPhase in
-//            if newPhase == .active {
-//                print("Active")
-//            }
         }
     }
     
@@ -127,6 +101,24 @@ struct CardsPlayedBarChart : View {
         .padding(.top, 5)
     }
     
+    func createDataElements(dates: [Date]) -> [BarChart.DataSet.DataElement] {
+        let grouped = Dictionary(
+            grouping: entries.map { $0 },
+            by: { $0.createdDate?.onlyDate }
+        )
+        
+        return dates.compactMap { key in
+            let value = Double(grouped[key]?.count ?? 0)
+            let color = value < 5 ? Color.gray : Color.red
+            
+            return BarChart.DataSet.DataElement(
+                date: key,
+                xLabel: key.formatted(.dateTime.weekday()),
+                bars: [
+                    BarChart.DataSet.DataElement.Bar(value: value, color: color)
+                ])
+        }
+    }
 }
 struct CardsPlayedBarChart_Previews: PreviewProvider {
     static var previews: some View {

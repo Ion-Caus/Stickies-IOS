@@ -19,9 +19,10 @@ struct StickiesView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    deckListPreviewGroup
-                    
                     cardsPlayedBarChart
+                    deckListPreviewGroup
+                    playPreviewGroup
+                    
                 }
                 .padding()
             }
@@ -41,7 +42,7 @@ struct StickiesView: View {
     
     var deckListPreviewGroup: some View {
         GroupBoxLink(destination: DeckListView()){
-            DeckListPreview()
+            //DeckListPreview()
         } label: {
             HStack {
                 Label("Decks", systemImage: "list.dash")
@@ -52,7 +53,24 @@ struct StickiesView: View {
             .foregroundColor(.red)
             .padding(.bottom, 5)
             
-            Text("Create new decks and keep improving.")
+            Text("Create new decks and new cards.")
+        }
+    }
+    
+    var playPreviewGroup: some View {
+        GroupBoxLink(destination: PlaySetupView()){
+
+        } label: {
+            HStack {
+                Label("Play", systemImage: "play.fill")
+                
+                Spacer()
+                Image(systemName: "chevron.right")
+            }
+            .foregroundColor(.red)
+            .padding(.bottom, 5)
+            
+            Text("Test your knowledge. Keep improving!")
         }
     }
     

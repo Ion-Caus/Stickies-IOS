@@ -17,6 +17,8 @@ struct SimpleCardListView: View {
     @State private var showingForm = false
     @State private var searchText = ""
     
+    @State var open = false
+    
     let deck: Deck
     @State private var selectedCard: Card?
     
@@ -87,24 +89,21 @@ struct SimpleCardListView: View {
                     
                 }
             }
-            .toolbar {
-                addButton
-            }
-            
             
             VStack {
                 Spacer()
                 HStack(alignment: .bottom, spacing: 10) {
-                    playButton
+                    addButton
                 }
+                .font(Font.system(size: 65))
                 .padding(.bottom)
             }
-            
         }
         .navigationTitle(deck.title ?? "Stickies")
         .sheet(isPresented: $showingForm) {
             CardFormView(isPresented: $showingForm, deck: deck, card: selectedCard)
         }
+      
     }
     var backButton: some View {
         Button {
@@ -124,14 +123,6 @@ struct SimpleCardListView: View {
             Image(systemName: "plus.circle")
         }
     }
-    
-    var playButton: some View {
-        NavigationLink(destination: PlayView(cards: Array(cards), language: deck.language)) {
-            Image(systemName: "play.circle")
-        }
-        .font(Font.system(size: 65))
-    }
-    
 }
 
 struct SimpleCardListView_Previews: PreviewProvider {

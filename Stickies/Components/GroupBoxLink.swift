@@ -26,7 +26,6 @@ struct GroupBoxLink<Destination, Content, Label>: View where Label : View, Conte
                 content
             } label: {
                 label
-                Divider()
             }
         }
         .buttonStyle(PlainButtonStyle())
