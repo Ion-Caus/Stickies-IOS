@@ -142,7 +142,7 @@ struct PlayView: View {
 struct PlayView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     static var previews: some View {
-        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
         let card = Card(word: "Test", type: WordType.Noun, isFavourite: true, synonyms: ["?", "??"], deck: deck, context: context)
         PlayView(cards: [card], language: Constants.DefaultLanguage)
     }

@@ -13,8 +13,9 @@ struct DeckFormView: View {
     @Environment(\.managedObjectContext) var context
     
     @State var title: String
-    @State var type = DeckType.Synonym
-    @State var language: String
+    @State var type: DeckType
+    @State var deckLanguage: String
+    @State var translationLanguage: String
     
     let availableLanguages: [String]
     
@@ -26,7 +27,8 @@ struct DeckFormView: View {
         
         self._title = State(initialValue: deck?.title ?? "")
         self._type = State(initialValue: DeckType(rawValue: deck?.type ?? "") ?? DeckType.Synonym)
-        self._language = State(initialValue: deck?.language ?? "en-US")
+        self._deckLanguage = State(initialValue: deck?.deckLanguage ?? Constants.DefaultLanguage)
+        self._translationLanguage = State(initialValue: deck?.translationLanguage ?? Constants.DefaultLanguage)
         
         self.availableLanguages = AVSpeechSynthesisVoice
             .speechVoices()
@@ -54,19 +56,29 @@ struct DeckFormView: View {
                   
                     HStack {
                         Text("Language:")
-                        
                         Spacer()
-                        
-                        Picker("Language", selection: $language) {
+                        Picker("Language", selection: $deckLanguage) {
                             ForEach(availableLanguages, id: \.self) { value in
-                                Text(value).tag(value)
+                                Text(value.localeLanguageName).tag(value)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
                         .padding(.horizontal)
                     }
-                   
-                   
+                    
+                    if type == .Translation {
+                        HStack {
+                            Text("Translation Language:")
+                            Spacer()
+                            Picker("Translation Language", selection: $translationLanguage) {
+                                ForEach(availableLanguages, id: \.self) { value in
+                                    Text(value.localeLanguageName).tag(value)
+                                }
+                            }
+                            .pickerStyle(MenuPickerStyle())
+                            .padding(.horizontal)
+                        }
+                    }
                 }
             }
             .navigationTitle(deck == nil ? "New Deck" : "Edit Deck")
@@ -80,12 +92,16 @@ struct DeckFormView: View {
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button("Done") {
                         if deck == nil {
-                            let _ = Deck(title: title, type: type, language: language, context: context)
+                            let _ = Deck(title: title, type: type,
+                                         deckLanguage: deckLanguage,
+                                         translationLanguage: translationLanguage,
+                                         context: context)
                         }
                         else {
                             deck?.title = title
                             deck?.type = type.rawValue
-                            deck?.language = language
+                            deck?.deckLanguage = deckLanguage
+                            deck?.translationLanguage = type == .Translation ? translationLanguage : nil
                         }
                         
                         DataController.shared.save()

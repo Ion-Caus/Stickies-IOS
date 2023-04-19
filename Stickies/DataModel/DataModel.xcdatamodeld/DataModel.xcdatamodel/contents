@@ -20,15 +20,17 @@
         <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Deck" representedClassName="Deck" syncable="YES" codeGenerationType="class">
+        <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="deckLanguage" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="language" attributeType="String" defaultValueString="en-US"/>
         <attribute name="title" attributeType="String"/>
+        <attribute name="translationLanguage" optional="YES" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Card" inverseName="deck" inverseEntity="Card"/>
     </entity>
     <elements>
         <element name="Card" positionX="-54" positionY="-63" width="128" height="194"/>
-        <element name="Deck" positionX="-239.2609252929688" positionY="-31.56515502929688" width="128" height="104"/>
         <element name="CardEntry" positionX="-144" positionY="27" width="128" height="89"/>
+        <element name="Deck" positionX="-239.2609252929688" positionY="-31.56515502929688" width="128" height="134"/>
     </elements>
 </model>

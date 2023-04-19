@@ -9,54 +9,134 @@ import SwiftUI
 
 struct PlaySetupView: View {
     @FetchRequest(
-        fetchRequest: Deck.fetch(),
-        animation: .easeInOut)
+        fetchRequest: Deck.fetch()
+    )
     private var decks: FetchedResults<Deck>
+    
+    @State private var selectedDecks = Set<Deck>()
+    @State private var selectionMode = false
     
     @AppStorage(AppStorageKeys.PlayMode) var playMode: PlayMode = .worstToBest
     
     var body: some View {
+        let _ = Self._printChanges()
         
-        VStack {
+        ZStack {
+            VStack {
+                settings
+                
+                GroupBox {
+                    HStack {
+                        HStack {
+                            Toggle("Multiple decks", isOn: $selectionMode)
+                                .toggleStyle(.button)
+                                .tint(.mint)
+                        }
+                        
+                        Spacer()
+                    }
+                } label: {
+                    Text("Custom modes")
+                        .padding(.bottom, 5)
+                }
+                .padding()
+                
+                SectionList(groups: Dictionary(grouping: Array(decks), by: {$0.displayLanguages()})) { deck in
+                    createListItem(with: deck).tag(deck.id)
+                }
+              
+            }
+            .onAppear() {
+                print("aprea")
+                selectionMode = false
+                selectedDecks.removeAll()
+            }
             
-            Text("Settings")
+            VStack {
+                Spacer()
+                if selectedDecks.count > 0 {
+                    if let cards = try? DataController.shared.context.fetch(Card.fetchBy(decks: Array(selectedDecks))) {
+                       
+                        let playView = PlayView(cards: cards, language: selectedDecks.first?.deckLanguage, playMode: playMode)
+                        NavigationLink(destination: playView) {
+                            Image(systemName: "play.circle")
+                                .font(.system(size: 65))
+                        }
+                    }
+                    
+                }
+            }
+            .padding(.bottom)
+        }
+        .navigationTitle("Play time")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    //MARK: ---- view builders ----
+    var settings: some View {
+        HStack {
             Picker("Play mode", selection: $playMode) {
                 Image(systemName: "shuffle.circle").tag(PlayMode.random)
                 Image(systemName: "arrow.up.arrow.down.circle").tag(PlayMode.worstToBest)
             }
             .pickerStyle(SegmentedPickerStyle())
-            
-            Text("Choose deck")
-            List {
-                if let worstCards = try? DataController.shared.context.fetch(Card.fetchWorst()) {
-                    NavigationLink(destination: PlayView(cards: worstCards, language: nil, playMode: playMode)) {
-                        HStack {
-                            Text("Worst cards")
-                            
-                        }
-                    }
+            .frame(width: 120)
+        }
+    }
+    
+    @ViewBuilder
+    func createListItem(with deck: Deck) -> some View {
+        if selectionMode {
+            Button {
+                if selectedDecks.contains(deck) {
+                    selectedDecks.remove(deck)
+                }
+                else {
+                    selectedDecks.insert(deck)
                 }
                 
-                ForEach(decks, id: \.id) { deck in
-                    NavigationLink(destination: PlayView(cards: deck.cardList, language: deck.language, playMode: playMode)) {
-                        HStack {
-                            Text(deck.title ?? "NO TITLE")
-                            
-                            Spacer()
-                            
-                            Text(deck.type ?? "")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        }
+            } label: {
+                HStack {
+                    if selectedDecks.contains(deck) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.blue)
                     }
+                    else {
+                        Image(systemName: "circle")
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Text(deck.title ?? "NO TITLE")
                 }
             }
-            .listStyle(InsetGroupedListStyle())
-            
+            .disabled(!canSelectDeck(deck: deck))
+            .foregroundColor(canSelectDeck(deck: deck) ? .primary : .gray)
             
         }
-        
-        .navigationTitle("Play time")
+        else {
+            navigationLinkToPlay(deck: deck)
+        }
+    }
+    
+    @ViewBuilder
+    func navigationLinkToPlay(deck: Deck) -> some View {
+        NavigationLink(destination: PlayView(cards: deck.cardList, language: deck.deckLanguage, playMode: playMode)) {
+            HStack {
+                Text(deck.title ?? "NO TITLE")
+                Spacer()
+                Text(deck.type ?? "")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+        }
+    }
+    
+    //MARK: ---- functions ----
+    func canSelectDeck(deck: Deck) -> Bool {
+        if let firstDeck = selectedDecks.first {
+            return deck.type == firstDeck.type && deck.deckLanguage == firstDeck.deckLanguage
+        }
+        return true
     }
 }
 

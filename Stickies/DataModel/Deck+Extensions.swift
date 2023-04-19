@@ -9,13 +9,17 @@ import Foundation
 import CoreData
 
 extension Deck {
-    
-    convenience init(title: String, type: DeckType, language: String = Constants.DefaultLanguage, context: NSManagedObjectContext) {
+    convenience init(title: String, type: DeckType,
+                     deckLanguage: String,
+                     translationLanguage: String? = nil,
+                     context: NSManagedObjectContext) {
         self.init(context: context)
         self.id = UUID()
         self.title = title
         self.type = type.rawValue
-        self.language = language
+        self.deckLanguage = deckLanguage
+        self.translationLanguage = type == .Translation ? translationLanguage : nil
+        self.createdDate = Date()
     }
     
     static func fetch() -> NSFetchRequest<Deck> {
@@ -34,6 +38,14 @@ extension Deck {
     
     public var cardList: [Card] {
         return Array(cards as? Set<Card> ?? [])
+    }
+    
+    func displayLanguages() -> String {
+        guard let deckLanguage = self.deckLanguage?.localeLanguageName else { return "" }
+            
+        guard let translationLanguage = self.translationLanguage?.localeLanguageName else { return "\(deckLanguage)" }
+        
+        return "\(deckLanguage) -> \(translationLanguage)"
     }
 }
 

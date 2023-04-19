@@ -115,7 +115,7 @@ struct CardListView: View {
     }
     
     var playButton: some View {
-        NavigationLink(destination: PlayView(cards: Array(cards), language: deck.language)) {
+        NavigationLink(destination: PlayView(cards: Array(cards), language: deck.deckLanguage)) {
             Image(systemName: "play.circle")
         }
         .font(Font.system(size: 65))
@@ -126,7 +126,7 @@ struct CardListView: View {
 struct CardListView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     static var previews: some View {
-        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
         CardListView(deck: deck)
             .previewInterfaceOrientation(.portrait)
     }

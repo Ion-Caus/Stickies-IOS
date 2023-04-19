@@ -65,7 +65,7 @@ struct CardFormView : View {
                     
                         Spacer()
                             
-                        HearPronunciationButton(language: deck.language, word: word, phoneticTranscription: phoneticTranscription)
+                        HearPronunciationButton(language: deck.deckLanguage, word: word, phoneticTranscription: phoneticTranscription)
                     }
                     
                     Picker("Type", selection: $type) {
@@ -175,7 +175,8 @@ struct CardFormView : View {
     }
     
     func fetchTranslation() {
-        guard let source = deck.language else { return }
+        guard let source = deck.deckLanguage,
+              let target = deck.translationLanguage else { return }
         
         if word.isEmpty {
             self.translationSuggestion = ""
@@ -189,7 +190,7 @@ struct CardFormView : View {
         let text = word.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
         
-        let params = TranslateParams(source: source, target: "en", text: text)
+        let params = TranslateParams(source: source, target: target, text: text)
         
         Task {
             isFetching = true
@@ -239,7 +240,7 @@ struct CardFormView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
-        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
         
         CardFormView(isPresented: .constant(true), deck: deck)
     }

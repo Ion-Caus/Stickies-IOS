@@ -19,7 +19,7 @@ struct InfoCardView : View {
                     Text(card.word ?? "???")
                     
                     Spacer()
-                    HearPronunciationButton(language: deck.language, word: card.word, phoneticTranscription: card.phoneticTranscription)
+                    HearPronunciationButton(language: deck.deckLanguage, word: card.word, phoneticTranscription: card.phoneticTranscription)
                     
                 }
                 
@@ -109,7 +109,7 @@ struct InfoCardView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
-        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
         let card = Card(word: "word", type: WordType.Phrase, isFavourite: true, synonyms: [], usageExample: "This is a text.", deck: deck, context: context)
         
         InfoCardView(deck: deck, card: card)

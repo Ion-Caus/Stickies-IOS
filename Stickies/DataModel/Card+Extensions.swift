@@ -42,10 +42,11 @@ extension Card {
         return request
     }
     
-    static func fetchWorst() -> NSFetchRequest<Card> {
+    static func fetchBy(decks: [Deck]) -> NSFetchRequest<Card> {
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         request.sortDescriptors = [ NSSortDescriptor(keyPath: \Card.recallScore, ascending: true)]
-        request.fetchLimit = 20
+        request.predicate = NSPredicate(format: "deck IN %@", decks)
+        request.fetchLimit = 30
         return request
     }
 }

@@ -56,7 +56,6 @@ struct SimpleCardListView: View {
                             Label("Delete", systemImage: "trash.fill")
                         }
                         
-                        
                         Button {
                             selectedCard = card
                             showingForm = true
@@ -105,6 +104,7 @@ struct SimpleCardListView: View {
         }
       
     }
+    
     var backButton: some View {
         Button {
             presentationMode.wrappedValue.dismiss()
@@ -129,7 +129,7 @@ struct SimpleCardListView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
-        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, context: context)
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
         
         SimpleCardListView(deck: deck)
             .previewInterfaceOrientation(.portrait)
