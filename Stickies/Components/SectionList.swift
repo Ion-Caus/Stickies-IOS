@@ -23,7 +23,6 @@ struct SectionList<T, TView>: View where TView: View, T: Identifiable & Hashable
                     }
                 }
             }
-            .id(groups)
         }
         .listStyle(InsetGroupedListStyle())
     }

@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct PlaySetupView: View {
-    @FetchRequest(
-        fetchRequest: Deck.fetch()
-    )
+    @FetchRequest(fetchRequest: Deck.fetch())
     private var decks: FetchedResults<Deck>
     
     @State private var selectedDecks = Set<Deck>()
@@ -19,8 +17,6 @@ struct PlaySetupView: View {
     @AppStorage(AppStorageKeys.PlayMode) var playMode: PlayMode = .worstToBest
     
     var body: some View {
-        let _ = Self._printChanges()
-        
         ZStack {
             VStack {
                 settings
@@ -42,12 +38,12 @@ struct PlaySetupView: View {
                 .padding()
                 
                 SectionList(groups: Dictionary(grouping: Array(decks), by: {$0.displayLanguages()})) { deck in
-                    createListItem(with: deck).tag(deck.id)
+                    createListItem(with: deck)
                 }
+                .id(selectionMode)
               
             }
             .onAppear() {
-                print("aprea")
                 selectionMode = false
                 selectedDecks.removeAll()
             }
@@ -56,14 +52,13 @@ struct PlaySetupView: View {
                 Spacer()
                 if selectedDecks.count > 0 {
                     if let cards = try? DataController.shared.context.fetch(Card.fetchBy(decks: Array(selectedDecks))) {
-                       
+
                         let playView = PlayView(cards: cards, language: selectedDecks.first?.deckLanguage, playMode: playMode)
                         NavigationLink(destination: playView) {
                             Image(systemName: "play.circle")
                                 .font(.system(size: 65))
                         }
                     }
-                    
                 }
             }
             .padding(.bottom)
