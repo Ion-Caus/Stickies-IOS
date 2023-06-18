@@ -32,7 +32,7 @@ struct SimpleCardListView: View {
         ZStack {
             List {
                 ForEach(cards, id: \.id) { card in
-                    NavigationLink(destination: InfoCardView(deck: deck, card: card))
+                    NavigationLink(destination: InfoCardView(card: card))
                     {
                         HStack {
                             Text(card.word ?? "NO TITLE")
@@ -103,15 +103,6 @@ struct SimpleCardListView: View {
             CardFormView(isPresented: $showingForm, deck: deck, card: selectedCard)
         }
       
-    }
-    
-    var backButton: some View {
-        Button {
-            presentationMode.wrappedValue.dismiss()
-        }
-        label: {
-            Image(systemName: "chevron.backward.circle")
-        }
     }
     
     var addButton: some View {

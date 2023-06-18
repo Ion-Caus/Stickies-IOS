@@ -16,7 +16,7 @@ class TextFieldObserver : ObservableObject {
     
     init() {
         $text
-            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.7), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] t in
                 self?.debouncedText = t
             } )

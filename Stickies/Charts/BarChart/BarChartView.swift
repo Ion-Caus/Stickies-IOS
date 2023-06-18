@@ -69,10 +69,10 @@ public struct BarChart: View {
                         ForEach(element.bars) { bar in
                             GeometryReader { geometry in
                                 VStack {
-                                        Rectangle()
-                                            .frame(width: barWidth, height: self.height(for: bar, viewHeight: geometry.size.height, maxValue: self.maxDataSetValue))
-                                            .cornerRadius(barWidth / 2, antialiased: false)
-                                            .foregroundColor(self.selectedElement == element ? self.dataSet.selectionColor ?? bar.color : bar.color)
+                                    Rectangle()
+                                        .frame(width: barWidth, height: self.height(for: bar, viewHeight: geometry.size.height, maxValue: self.maxDataSetValue))
+                                        .cornerRadius(barWidth / 2, antialiased: false)
+                                        .foregroundColor(self.selectedElement == element ? self.dataSet.selectionColor ?? bar.color : bar.color)
                                 }
                                 .frame(maxWidth: .infinity, maxHeight: geometry.size.height, alignment: .bottom)
                             }
@@ -102,7 +102,10 @@ public struct BarChart: View {
     }
 
     private func height(for bar: DataSet.DataElement.Bar, viewHeight: CGFloat, maxValue: Double) -> CGFloat {
-        let height = viewHeight * CGFloat(bar.value / self.maxDataSetValue)
+        let ration = maxValue == 0
+                    ? CGFloat(bar.value)
+                    : CGFloat(bar.value / maxValue)
+        let height = viewHeight * ration
 
         if height < barWidth {
             return barWidth

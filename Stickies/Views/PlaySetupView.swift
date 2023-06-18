@@ -11,49 +11,33 @@ struct PlaySetupView: View {
     @FetchRequest(fetchRequest: Deck.fetch())
     private var decks: FetchedResults<Deck>
     
-    @State private var selectedDecks = Set<Deck>()
-    @State private var selectionMode = false
+    @State private var showingSettings = false
     
-    @AppStorage(AppStorageKeys.PlayMode) var playMode: PlayMode = .worstToBest
+    @State private var selectedDecks = Set<Deck>()
+    @AppStorage(AppStorageKeys.MultipleDecksMode) var multipleDecksMode: Bool = Constants.DefaultMultipleDecksMode
+
+    @AppStorage(AppStorageKeys.ShuffleMode) var shuffleMode: ShuffleMode = Constants.DefaultShuffleMode
+
     
     var body: some View {
         ZStack {
             VStack {
-                settings
-                
-                GroupBox {
-                    HStack {
-                        HStack {
-                            Toggle("Multiple decks", isOn: $selectionMode)
-                                .toggleStyle(.button)
-                                .tint(.mint)
-                        }
-                        
-                        Spacer()
-                    }
-                } label: {
-                    Text("Custom modes")
-                        .padding(.bottom, 5)
-                }
-                .padding()
-                
                 SectionList(groups: Dictionary(grouping: Array(decks), by: {$0.displayLanguages()})) { deck in
                     createListItem(with: deck)
                 }
-                .id(selectionMode)
+                .id(multipleDecksMode)
               
             }
             .onAppear() {
-                selectionMode = false
                 selectedDecks.removeAll()
             }
             
             VStack {
                 Spacer()
                 if selectedDecks.count > 0 {
-                    if let cards = try? DataController.shared.context.fetch(Card.fetchBy(decks: Array(selectedDecks))) {
+                    if let cards = try? DataController.shared.context.fetch(Card.fetchBy(decks: Array(selectedDecks), limit: 50)) {
 
-                        let playView = PlayView(cards: cards, language: selectedDecks.first?.deckLanguage, playMode: playMode)
+                        let playView = PlayView(cards: cards, language: selectedDecks.first?.deckLanguage, shuffleMode: shuffleMode)
                         NavigationLink(destination: playView) {
                             Image(systemName: "play.circle")
                                 .font(.system(size: 65))
@@ -63,25 +47,24 @@ struct PlaySetupView: View {
             }
             .padding(.bottom)
         }
-        .navigationTitle("Play time")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    //MARK: ---- view builders ----
-    var settings: some View {
-        HStack {
-            Picker("Play mode", selection: $playMode) {
-                Image(systemName: "shuffle.circle").tag(PlayMode.random)
-                Image(systemName: "arrow.up.arrow.down.circle").tag(PlayMode.worstToBest)
+        .navigationTitle("Play Time")
+        .sheet(isPresented: $showingSettings) {
+            // HalfSheet is a bit broken, fix it
+            PlaySettingsView(isPresented: $showingSettings)
+        }
+        .toolbar {
+            Button {
+                showingSettings = true
+            } label: {
+                Image(systemName: "gearshape")
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .frame(width: 120)
         }
     }
     
+    //MARK: ---- view builders ----
     @ViewBuilder
     func createListItem(with deck: Deck) -> some View {
-        if selectionMode {
+        if multipleDecksMode {
             Button {
                 if selectedDecks.contains(deck) {
                     selectedDecks.remove(deck)
@@ -101,7 +84,7 @@ struct PlaySetupView: View {
                             .foregroundColor(.gray)
                     }
                     
-                    Text(deck.title ?? "NO TITLE")
+                    createLabel(deck: deck)
                 }
             }
             .disabled(!canSelectDeck(deck: deck))
@@ -115,15 +98,20 @@ struct PlaySetupView: View {
     
     @ViewBuilder
     func navigationLinkToPlay(deck: Deck) -> some View {
-        NavigationLink(destination: PlayView(cards: deck.cardList, language: deck.deckLanguage, playMode: playMode)) {
+        NavigationLink(destination: PlayView(cards: deck.cardList, language: deck.deckLanguage, shuffleMode: shuffleMode)) {
             HStack {
-                Text(deck.title ?? "NO TITLE")
-                Spacer()
-                Text(deck.type ?? "")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+                createLabel(deck: deck)
             }
         }
+    }
+    
+    @ViewBuilder
+    func createLabel(deck: Deck) -> some View {
+        Text(deck.title ?? "NO TITLE")
+        Spacer()
+        Text(deck.type ?? "")
+            .font(.footnote)
+            .foregroundColor(.gray)
     }
     
     //MARK: ---- functions ----

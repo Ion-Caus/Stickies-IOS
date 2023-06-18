@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@main
+ @main
 struct StickiesApp: App {
     private var dataController = DataController.shared
     

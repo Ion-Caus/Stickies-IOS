@@ -20,8 +20,8 @@ struct PlayView: View {
     
     let language: String
     
-    init(cards: [Card], language: String?, playMode: PlayMode = .worstToBest) {
-        _viewModel = StateObject(wrappedValue: PlayViewModel(cards: cards, playMode: playMode))
+    init(cards: [Card], language: String?, shuffleMode: ShuffleMode = .worstToBest) {
+        _viewModel = StateObject(wrappedValue: PlayViewModel(cards: cards, shuffleMode: shuffleMode))
         
         self.language = language ?? Constants.DefaultLanguage
     }

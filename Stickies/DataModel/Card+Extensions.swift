@@ -25,6 +25,7 @@ extension Card {
         self.usageExample = usageExample
         self.phoneticTranscription = phoneticTranscription
         self.deck = deck
+        self.searchableText = synonyms.joined(separator: "\n")
     }
     
     static func fetch() -> NSFetchRequest<Card> {
@@ -42,11 +43,11 @@ extension Card {
         return request
     }
     
-    static func fetchBy(decks: [Deck]) -> NSFetchRequest<Card> {
+    static func fetchBy(decks: [Deck], limit: Int) -> NSFetchRequest<Card> {
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         request.sortDescriptors = [ NSSortDescriptor(keyPath: \Card.recallScore, ascending: true)]
         request.predicate = NSPredicate(format: "deck IN %@", decks)
-        request.fetchLimit = 30
+        request.fetchLimit = limit
         return request
     }
 }

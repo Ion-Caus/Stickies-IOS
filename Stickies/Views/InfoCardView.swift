@@ -9,7 +9,6 @@ import SwiftUI
 
 struct InfoCardView : View {
     
-    let deck: Deck
     let card: Card
     
     var body: some View {
@@ -19,7 +18,7 @@ struct InfoCardView : View {
                     Text(card.word ?? "???")
                     
                     Spacer()
-                    HearPronunciationButton(language: deck.deckLanguage, word: card.word, phoneticTranscription: card.phoneticTranscription)
+                    HearPronunciationButton(language: card.deck?.deckLanguage, word: card.word, phoneticTranscription: card.phoneticTranscription)
                     
                 }
                 
@@ -112,6 +111,6 @@ struct InfoCardView_Previews: PreviewProvider {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
         let card = Card(word: "word", type: WordType.Phrase, isFavourite: true, synonyms: [], usageExample: "This is a text.", deck: deck, context: context)
         
-        InfoCardView(deck: deck, card: card)
+        InfoCardView(card: card)
     }
 }

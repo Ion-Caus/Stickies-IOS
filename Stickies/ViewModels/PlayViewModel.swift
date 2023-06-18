@@ -14,7 +14,7 @@ class PlayViewModel: ObservableObject {
     
     private var iterator: Array<Card>.Iterator
 
-    init(cards: [Card], playMode: PlayMode) {
+    init(cards: [Card], shuffleMode: ShuffleMode) {
         let today = Date()
         for card in cards {
             let cardDate = card.modifiedDate ?? Date()
@@ -33,7 +33,7 @@ class PlayViewModel: ObservableObject {
         let shuffledCards = cards.shuffled() // randomize
         
         let preparedCards: [Card]
-        switch playMode {
+        switch shuffleMode {
             case .random:
                 preparedCards = shuffledCards
             case .worstToBest:

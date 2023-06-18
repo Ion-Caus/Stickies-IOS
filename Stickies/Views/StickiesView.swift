@@ -23,6 +23,8 @@ struct StickiesView: View {
                     deckListPreviewGroup
                     playPreviewGroup
                     
+                    searchCardsGroup
+                    
                 }
                 .padding()
             }
@@ -40,9 +42,26 @@ struct StickiesView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
+    var searchCardsGroup: some View {
+        GroupBoxLink(destination: SearchCardsView()) {
+            
+        } label: {
+            HStack {
+                Label("Search cards", systemImage: "magnifyingglass")
+                
+                Spacer()
+                Image(systemName: "chevron.right")
+            }
+            .foregroundColor(.red)
+            .padding(.bottom, 5)
+            
+            Text("Search any card in any deck.")
+        }
+    }
+    
     var deckListPreviewGroup: some View {
-        GroupBoxLink(destination: DeckListView()){
-            //DeckListPreview()
+        GroupBoxLink(destination: DeckListView()) {
+            
         } label: {
             HStack {
                 Label("Decks", systemImage: "list.dash")
@@ -77,7 +96,6 @@ struct StickiesView: View {
     var cardsPlayedBarChart: some View {
         GroupBox {
             CardsPlayedBarChart(daysBack: daysBack)
-            
         } label: {
             HStack {
                 Label("Overview", systemImage: "chart.bar.xaxis")

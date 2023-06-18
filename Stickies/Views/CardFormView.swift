@@ -229,6 +229,7 @@ struct CardFormView : View {
             card?.synonyms = synonyms
             card?.usageExample = example
             card?.phoneticTranscription = phoneticTranscription
+            card?.searchableText = synonyms.joined(separator: "\n")
         }
         
         DataController.shared.save()
