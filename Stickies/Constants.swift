@@ -23,4 +23,6 @@ struct AppStorageKeys {
     
     static let MultipleDecksMode = "play.decks.multiple"
     static let ShuffleMode = "play.shuffle.mode"
+    
+    static let RequiredCardsPlayed = "goal.required.cards.played"
 }

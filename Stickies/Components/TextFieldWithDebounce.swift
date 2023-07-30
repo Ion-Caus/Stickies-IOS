@@ -37,10 +37,9 @@ struct TextFieldWithDebounce : View {
     }
     
     var body: some View {
-
         TextField(title, text: $textObserver.text)
             .onReceive(textObserver.$debouncedText) { (val) in
-            debouncedText = val
-        }
+                debouncedText = val
+            }
     }
 }

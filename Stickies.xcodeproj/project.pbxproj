@@ -17,6 +17,7 @@
 		5014D5432A3F971000253FD2 /* PlaySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5014D5422A3F971000253FD2 /* PlaySettingsView.swift */; };
 		5014D5472A3F9EAB00253FD2 /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5014D5462A3F9EAB00253FD2 /* HalfSheet.swift */; };
 		5014D5492A3F9F2900253FD2 /* HalfSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5014D5482A3F9F2900253FD2 /* HalfSheetController.swift */; };
+		5014D54D2A536CE900253FD2 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5014D54C2A536CE800253FD2 /* SearchBar.swift */; };
 		50168BD52882209500ABF8EF /* DeckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD42882209500ABF8EF /* DeckListView.swift */; };
 		50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD72883204300ABF8EF /* Deck+Extensions.swift */; };
 		50168BDA28834ECE00ABF8EF /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50168BD928834ECD00ABF8EF /* DeckFormView.swift */; };
@@ -62,6 +63,8 @@
 		5090B5E129B7F3CB008FD635 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5090B5DF29B7F3CB008FD635 /* DataModel.xcdatamodeld */; };
 		5090B5E529B7FBF7008FD635 /* DeckListPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090B5E429B7FBF7008FD635 /* DeckListPreview.swift */; };
 		50A5399F28E0B46C002E06AA /* InfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5399E28E0B46C002E06AA /* InfoCardView.swift */; };
+		50A6DFEC2A59DFC9005E21B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A6DFEB2A59DFC9005E21B4 /* SettingsView.swift */; };
+		50A6DFEE2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A6DFED2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift */; };
 		50ADCCEB29F1DCE300A924FD /* SearchCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADCCEA29F1DCE300A924FD /* SearchCardsView.swift */; };
 		50AECFB929E3593500B80AF0 /* ShuffleMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AECFB829E3593500B80AF0 /* ShuffleMode.swift */; };
 		50AECFBF29E3671900B80AF0 /* PlaySetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AECFBE29E3671900B80AF0 /* PlaySetupView.swift */; };
@@ -88,6 +91,7 @@
 		5014D5422A3F971000253FD2 /* PlaySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySettingsView.swift; sourceTree = "<group>"; };
 		5014D5462A3F9EAB00253FD2 /* HalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheet.swift; sourceTree = "<group>"; };
 		5014D5482A3F9F2900253FD2 /* HalfSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetController.swift; sourceTree = "<group>"; };
+		5014D54C2A536CE800253FD2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		50168BD42882209500ABF8EF /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
 		50168BD72883204300ABF8EF /* Deck+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+Extensions.swift"; sourceTree = "<group>"; };
 		50168BD928834ECD00ABF8EF /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 		5090B5E029B7F3CB008FD635 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		5090B5E429B7FBF7008FD635 /* DeckListPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListPreview.swift; sourceTree = "<group>"; };
 		50A5399E28E0B46C002E06AA /* InfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardView.swift; sourceTree = "<group>"; };
+		50A6DFEB2A59DFC9005E21B4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		50A6DFED2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulIconLabelStyle.swift; sourceTree = "<group>"; };
 		50ADCCEA29F1DCE300A924FD /* SearchCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardsView.swift; sourceTree = "<group>"; };
 		50AECFB829E3593500B80AF0 /* ShuffleMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleMode.swift; sourceTree = "<group>"; };
 		50AECFBE29E3671900B80AF0 /* PlaySetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySetupView.swift; sourceTree = "<group>"; };
@@ -179,6 +185,8 @@
 				507C2CF829B90AC6001A9DAC /* GroupBoxLink.swift */,
 				5014D5462A3F9EAB00253FD2 /* HalfSheet.swift */,
 				5014D5482A3F9F2900253FD2 /* HalfSheetController.swift */,
+				5014D54C2A536CE800253FD2 /* SearchBar.swift */,
+				50A6DFED2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -337,6 +345,7 @@
 				508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */,
 				508BB43829AD5B4E00DA8EAD /* TranslationSettingsView.swift */,
 				508DC00C29C4D4BE00C657ED /* AnalyticsSettingsView.swift */,
+				50A6DFEB2A59DFC9005E21B4 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,6 +436,7 @@
 				50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */,
 				506F9ACB29E0256400197C3F /* ChartLabels.swift in Sources */,
 				50168BDD2883544900ABF8EF /* ViewExtensions.swift in Sources */,
+				50A6DFEC2A59DFC9005E21B4 /* SettingsView.swift in Sources */,
 				508FFD2C29AA5AB70084B7D4 /* SpeechSynthesiser.swift in Sources */,
 				506F9ACC29E0256400197C3F /* LineChartParameters.swift in Sources */,
 				508DC00B29C4790700C657ED /* DateExtensions.swift in Sources */,
@@ -448,6 +458,8 @@
 				508DC00D29C4D4BF00C657ED /* AnalyticsSettingsView.swift in Sources */,
 				50D97F5629AC160E00113CFF /* TranslateManager.swift in Sources */,
 				50A5399F28E0B46C002E06AA /* InfoCardView.swift in Sources */,
+				50A6DFEE2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift in Sources */,
+				5014D54D2A536CE900253FD2 /* SearchBar.swift in Sources */,
 				5090B5E529B7FBF7008FD635 /* DeckListPreview.swift in Sources */,
 				50FEF01D284D594700FA8373 /* CardView.swift in Sources */,
 				50168BDA28834ECE00ABF8EF /* DeckFormView.swift in Sources */,

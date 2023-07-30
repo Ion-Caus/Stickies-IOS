@@ -56,9 +56,15 @@ public struct BarChart: View {
     public let dataSet: DataSet
     @Binding public var selectedElement: DataSet.DataElement?
     public let barWidth: CGFloat
+    public let defaultMaxDataSetValue: Double
 
     private var maxDataSetValue: Double {
-        dataSet.elements.flatMap { $0.bars.map { $0.value } }.max() ?? Double.leastNonzeroMagnitude
+        
+        guard let max = dataSet.elements.flatMap({ $0.bars.map { $0.value } }).max(), max > defaultMaxDataSetValue else {
+            return defaultMaxDataSetValue
+        }
+        
+        return max
     }
 
     public var body: some View {
@@ -95,10 +101,11 @@ public struct BarChart: View {
     /// - Parameters:
     ///   - dataSet: Data to be displayed
     ///   - selectedElement: Element that has been selected by the user by tapping
-    public init(dataSet: BarChart.DataSet, selectedElement: Binding<DataSet.DataElement?>, barWidth: CGFloat = 6) {
+    public init(dataSet: BarChart.DataSet, selectedElement: Binding<DataSet.DataElement?>, barWidth: CGFloat = 6, defaultMaxDataSetValue: Double = Double.leastNonzeroMagnitude) {
         self.dataSet = dataSet
         self._selectedElement = selectedElement
         self.barWidth = barWidth
+        self.defaultMaxDataSetValue = defaultMaxDataSetValue
     }
 
     private func height(for bar: DataSet.DataElement.Bar, viewHeight: CGFloat, maxValue: Double) -> CGFloat {

@@ -9,25 +9,23 @@ import SwiftUI
 
 struct SearchCardsView: View {
     
+    // return empty list
     @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "word contains[C] %@", ""), animation: .easeInOut)
     private var cards: FetchedResults<Card>
     
     @State private var searchText = ""
-
     @State private var selectedCard: Card?
+    
+    @FocusState private var focused: Bool
 
     var body: some View {
         VStack {
-            Spacer()
-            HStack {
-                Image(systemName: "magnifyingglass")
-                TextFieldWithDebounce("Search...", debouncedText: $searchText)
-                    .onChange(of: searchText) { newValue in
-                        cards.nsPredicate = NSPredicate(format: "word contains[C] %@ OR searchableText contains[C] %@", newValue, newValue)
-                    }
-            }
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding(.horizontal)
+            
+            SearchBar(searchText: $searchText)
+                .onChange(of: searchText) { newValue in
+                    cards.nsPredicate = NSPredicate(format: "word contains[C] %@ OR searchableText contains[C] %@", newValue, newValue)
+                }
+                .padding([.horizontal, .top])
             
             if !searchText.isEmpty {
                 List {

@@ -15,10 +15,10 @@ private struct CardIcon: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(AppIcon.backgroundColor, lineWidth: 20)
-               .padding()
+                .padding()
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
-               .padding()
+                .padding()
             
             VStack(alignment: .center) {
                 Text(type)

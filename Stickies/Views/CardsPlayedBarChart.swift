@@ -14,6 +14,9 @@ struct CardsPlayedBarChart : View {
     @State
     private var elements: [BarChart.DataSet.DataElement] = []
     
+    @AppStorage(AppStorageKeys.RequiredCardsPlayed)
+    private var requiredCardsPlayed: Double = 30
+    
 //    @State
 //    private var selectedElement: BarChart.DataSet.DataElement?
     
@@ -41,11 +44,12 @@ struct CardsPlayedBarChart : View {
                     .max { $0.value < $1.value }
              
                 if let maxValue = max?.value {
-                    createCoordinatePlane(maxValue: maxValue, minValue: 0.0)
+                    
+                    createCoordinatePlane(maxValue: maxValue < requiredCardsPlayed ? requiredCardsPlayed : maxValue, minValue: 0.0)
                 }
                 
                 let barWidth = daysBack > 7 ? 6.0 : 12.0
-                BarChart(dataSet: dataSet, selectedElement: .constant(nil), barWidth: barWidth)
+                BarChart(dataSet: dataSet, selectedElement: .constant(nil), barWidth: barWidth, defaultMaxDataSetValue: requiredCardsPlayed)
                     .padding(.top)
                     .padding(.trailing, paddingTrailing)
             }
