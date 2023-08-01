@@ -9,59 +9,41 @@ import Foundation
 import CoreData
 
 class PlayViewModel: ObservableObject {
-    @Published var cards: [Card]
     @Published var card: Card?
     
-    private var iterator: Array<Card>.Iterator
+    private var cards: [Card]
+    private let scheduler: Scheduler
 
     init(cards: [Card], shuffleMode: ShuffleMode) {
-        let today = Date()
-        for card in cards {
-            let cardDate = card.modifiedDate ?? Date()
-            
-            if cardDate == today { continue }
-            
-            let numberOfDays = Calendar.current.dateComponents([.day], from: cardDate, to: today)
-                
-            let deduction = Int16(Double(numberOfDays.day!) * 0.8)
-            
-            if (card.recallScore - deduction > 0) {
-                card.recallScore -= deduction
-            }
+        self.cards = cards
+        
+        switch shuffleMode {
+        case .random:
+            scheduler = Shuffler(cards: cards)
+        case .spacedRepetition:
+            scheduler = SpacedRepetitionScheduler(cards: &self.cards)
         }
         
-        let shuffledCards = cards.shuffled() // randomize
-        
-        let preparedCards: [Card]
-        switch shuffleMode {
-            case .random:
-                preparedCards = shuffledCards
-            case .worstToBest:
-                preparedCards = shuffledCards.sorted(by: { $0.recallScore < $1.recallScore })
-            }
-        
-        self.cards = preparedCards
-        iterator = preparedCards.makeIterator()
-        card = iterator.next()
+        card = scheduler.getNextCard()
     }
     
     func nextCard() {
-        card = iterator.next()
+        card = scheduler.getNextCard()
     }
     
-    func updateCurrentCard(score: Int16) {
-        guard let card = card else { return }
+    func updateCurrentCard(review: Review) {
+        guard var card = card else { return }
+        
+        scheduler.answer(card: &card, with: review)
         
         let now = Date()
-        card.recallScore += score
         card.modifiedDate = now
         
         if let cardId = card.id {
             let _ = CardEntry(
                 cardId: cardId,
                 createdDate: now,
-                score: score,
-                cardScore: card.recallScore,
+                review: review,
                 context: DataController.shared.context)
         }
         

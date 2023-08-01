@@ -52,7 +52,7 @@ struct StickiesView: View {
             .foregroundColor(.red)
             .padding(.bottom, 5)
             
-            Text("Search any card in any deck.")
+            Text("Search for any card in any deck.")
         }
     }
     

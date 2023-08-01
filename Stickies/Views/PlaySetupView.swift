@@ -32,20 +32,8 @@ struct PlaySetupView: View {
                 selectedDecks.removeAll()
             }
             
-            VStack {
-                Spacer()
-                if selectedDecks.count > 0 {
-                    if let cards = try? DataController.shared.context.fetch(Card.fetchBy(decks: Array(selectedDecks), limit: 50)) {
-
-                        let playView = PlayView(cards: cards, language: selectedDecks.first?.deckLanguage, shuffleMode: shuffleMode)
-                        NavigationLink(destination: playView) {
-                            Image(systemName: "play.circle")
-                                .font(.system(size: 65))
-                        }
-                    }
-                }
-            }
-            .padding(.bottom)
+            multipleDecksPlayButton
+            
         }
         .navigationTitle("Play Time")
         .sheet(isPresented: $showingSettings) {
@@ -59,6 +47,23 @@ struct PlaySetupView: View {
                 Image(systemName: "gearshape")
             }
         }
+    }
+    
+    var multipleDecksPlayButton: some View {
+        VStack {
+            Spacer()
+            if selectedDecks.count > 0 {
+                if let cards = try? DataController.shared.context.fetch(Card.fetchBy(decks: Array(selectedDecks), limit: 50)) {
+
+                    let playView = PlayView(cards: cards, language: selectedDecks.first?.deckLanguage, shuffleMode: shuffleMode)
+                    NavigationLink(destination: playView) {
+                        Image(systemName: "play.circle")
+                            .font(.system(size: 65))
+                    }
+                }
+            }
+        }
+        .padding(.bottom)
     }
     
     //MARK: ---- view builders ----

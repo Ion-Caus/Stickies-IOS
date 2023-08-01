@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Card" representedClassName="Card" syncable="YES" codeGenerationType="class">
         <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="due_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="interval" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isFavourite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="modifiedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="phoneticTranscription" optional="YES" attributeType="String"/>
-        <attribute name="recallScore" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="queueType_" optional="YES" attributeType="String"/>
         <attribute name="searchableText" optional="YES" attributeType="String"/>
         <attribute name="synonyms" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="type" attributeType="String"/>
         <attribute name="usageExample" optional="YES" attributeType="String"/>
-        <attribute name="word" attributeType="String"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
         <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="cards" inverseEntity="Deck"/>
     </entity>
     <entity name="CardEntry" representedClassName="CardEntry" syncable="YES" codeGenerationType="class">
         <attribute name="cardId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="cardScore" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="score" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="review" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Deck" representedClassName="Deck" syncable="YES" codeGenerationType="class">
         <attribute name="createdDate" attributeType="Date" usesScalarValueType="NO"/>
@@ -29,9 +30,4 @@
         <attribute name="type" attributeType="String"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Card" inverseName="deck" inverseEntity="Card"/>
     </entity>
-    <elements>
-        <element name="Card" positionX="-54" positionY="-63" width="128" height="209"/>
-        <element name="CardEntry" positionX="-144" positionY="27" width="128" height="89"/>
-        <element name="Deck" positionX="-239.2609252929688" positionY="-31.56515502929688" width="128" height="134"/>
-    </elements>
 </model>

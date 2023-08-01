@@ -34,7 +34,7 @@ struct TranslationSettingsView: View {
                
             }
         }
-        .navigationTitle("Translation Settings")
+        .navigationTitle("Translation")
     }
 }
 

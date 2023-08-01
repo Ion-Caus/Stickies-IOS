@@ -16,15 +16,16 @@ struct AnalyticsSettingsView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("All entries")) {
-                Button("Delete all card entries") {
-                    DataController.shared.delete(fetchRequest: CardEntry.fetchRequest())
-                }
-                
+            Section(header: Text("Entries")) {
                 List {
                     ForEach(cardEntries) { entry in
-                        VStack {
-                            Text(entry.createdDate?.formatted() ?? "")
+                        HStack {
+                            Text(entry.review ?? "No review")
+                            
+                            if let createdDate = entry.createdDate {
+                                Text(createdDate.formatted(date: .abbreviated, time: .shortened))
+                            }
+                            
                         }
                         .swipeActions(allowsFullSwipe: true) {
                             Button(role: .destructive) {
@@ -37,12 +38,22 @@ struct AnalyticsSettingsView: View {
                         }
                        
                     }
-                    
                 }
-                
             }
         }
-        .navigationTitle("Analytics Settings")
+        .navigationTitle("Analytics")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    DataController.shared.delete(fetchRequest: CardEntry.fetchRequest())
+                } label: {
+                    Image(systemName: "trash.circle")
+                        .foregroundColor(.red)
+                }
+               
+            }
+        }
+        
     }
 }
 

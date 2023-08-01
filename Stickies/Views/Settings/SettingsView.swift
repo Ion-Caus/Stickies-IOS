@@ -11,34 +11,31 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             List {
-
                 Section {
-                    VStack(alignment: .leading) {
-                        Text("Ion")
-                            .font(.title)
-                            .bold()
-                        Text("Daily goal: 30 cards")
-                            .font(.body)
-                    }
-                    .padding()
-                } header: {
-                    Text("Profile")
-                }
-                .headerProminence(.increased)
-
-                Section {
-                    NavigationLink(destination: NotificationsView()) {
-                        Label("Notifications", systemImage: "clock.fill")
-                            .labelStyle(ColorfulIconLabelStyle(color: .yellow))
-                    }
                     NavigationLink(destination: SpeechSettingsView()) {
                         Label("Speech", systemImage: "mouth.fill")
                             .labelStyle(ColorfulIconLabelStyle(color: .red))
                     }
                     NavigationLink(destination: TranslationSettingsView()) {
                         Label("Translation", systemImage: "character.book.closed.fill")
-                            .labelStyle(ColorfulIconLabelStyle(color: .green))
+                            .labelStyle(ColorfulIconLabelStyle(color: .cyan))
                     }
+                
+                    NavigationLink(destination: SchedulerSettingsView()) {
+                        Label("Scheduler", systemImage: "calendar.day.timeline.left")
+                            .labelStyle(ColorfulIconLabelStyle(color: .purple))
+                    }
+                } header: {
+                    Text("General")
+                }
+                .headerProminence(.increased)
+                
+                Section {
+                    NavigationLink(destination: NotificationsView()) {
+                        Label("Notifications", systemImage: "clock.fill")
+                            .labelStyle(ColorfulIconLabelStyle(color: .blue))
+                    }
+                    
                     NavigationLink(destination: AnalyticsSettingsView()) {
                         Label("Analytics", systemImage: "chart.bar.fill")
                             .labelStyle(ColorfulIconLabelStyle(color: .blue))
@@ -46,10 +43,7 @@ struct SettingsView: View {
                     
                     Label("About", systemImage: "info")
                         .labelStyle(ColorfulIconLabelStyle(color: .gray))
-                } header: {
-                    Text("General")
                 }
-                .headerProminence(.increased)
                 
                 Section {
                     Label("Tip Jar", systemImage: "dollarsign.circle")
@@ -61,7 +55,7 @@ struct SettingsView: View {
                     Text("Support")
                 }
                 .headerProminence(.increased)
-          
+                
             }
             .listStyle(InsetGroupedListStyle())
         }

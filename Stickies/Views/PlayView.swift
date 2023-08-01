@@ -20,7 +20,7 @@ struct PlayView: View {
     
     let language: String
     
-    init(cards: [Card], language: String?, shuffleMode: ShuffleMode = .worstToBest) {
+    init(cards: [Card], language: String?, shuffleMode: ShuffleMode = Constants.DefaultShuffleMode) {
         _viewModel = StateObject(wrappedValue: PlayViewModel(cards: cards, shuffleMode: shuffleMode))
         
         self.language = language ?? Constants.DefaultLanguage
@@ -47,13 +47,34 @@ struct PlayView: View {
                     
                     HStack(alignment: .center, spacing: 40) {
                         goodButton
-                        okButton
+                        //okButton
                         badButton
                     }
                     .font(Font.system(size: 50))
                     .padding(30)
                     
                     Spacer()
+              
+                    VStack {
+                        if let card = viewModel.card {
+                            //MARK: Find another solution
+                            
+                            
+                            //Text("\(card.queueType_ ?? "") \(card.interval)min")
+                            let formatter = DateComponentsFormatter()
+                            let _ = formatter.allowedUnits = [.day, .hour, .minute]
+                            let _ = formatter.unitsStyle = .abbreviated
+                            
+                            Text("\(formatter.string(from: TimeInterval(card.interval * 60)) ?? "")")
+                            
+                            if let due:Date = card.due_ {
+                                Text(due.formatted(date: .abbreviated, time: .shortened))
+                            }
+                          
+                        }
+                        
+                    }
+                    
                 }
                 
             }
@@ -91,38 +112,40 @@ struct PlayView: View {
         Button {
             withAnimation {
                 generator.notificationOccurred(.success)
-                viewModel.updateCurrentCard(score: 3)
+                viewModel.updateCurrentCard(review: .Good)
                 nextCard()
             }
         }
         label: {
             Image(systemName: "hand.thumbsup")
+                .foregroundColor(.green)
         }
     }
     
-    var okButton: some View  {
-        Button {
-            withAnimation {
-                generator.notificationOccurred(.warning)
-                viewModel.updateCurrentCard(score: +1)
-                nextCard()
-            }
-        }
-        label: {
-            Image(systemName: "circle.bottomhalf.fill")
-        }
-    }
+//    var okButton: some View  {
+//        Button {
+//            withAnimation {
+//                generator.notificationOccurred(.warning)
+//                viewModel.updateCurrentCard(review: +1)
+//                nextCard()
+//            }
+//        }
+//        label: {
+//            Image(systemName: "circle.bottomhalf.fill")
+//        }
+//    }
     
     var badButton: some View  {
         Button {
             withAnimation {
                 generator.notificationOccurred(.error)
-                viewModel.updateCurrentCard(score: -2)
+                viewModel.updateCurrentCard(review: .Again)
                 nextCard()
             }
         }
         label: {
             Image(systemName: "hand.thumbsdown")
+                .foregroundColor(.red)
         }
     }
     
@@ -144,6 +167,6 @@ struct PlayView_Previews: PreviewProvider {
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
         let card = Card(word: "Test", type: WordType.Noun, isFavourite: true, synonyms: ["?", "??"], deck: deck, context: context)
-        PlayView(cards: [card], language: Constants.DefaultLanguage)
+        PlayView(cards: [card], language: Constants.DefaultLanguage, shuffleMode: .random)
     }
 }

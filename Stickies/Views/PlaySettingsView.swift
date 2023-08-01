@@ -23,12 +23,12 @@ struct PlaySettingsView: View {
             Form {
                 Section {
                     Picker("Shuffle Mode", selection: $shuffleMode) {
-                        Text("Worst to Best").tag(ShuffleMode.worstToBest)
-                        Text("Random").tag(ShuffleMode.random)
+                        ForEach(ShuffleMode.allCases, id: \.self) { value in
+                            Text(value.rawValue).tag(value)
+                        }
                     }
                     .pickerStyle(.inline)
                     .labelsHidden()
-                    
                 }
                 header: {
                     Text("Shuffle Mode")
@@ -37,8 +37,8 @@ struct PlaySettingsView: View {
                     switch shuffleMode {
                         case .random:
                             Text("Cards are random shuffled")
-                        case .worstToBest:
-                            Text("Cards are sorted from worst to best scored")
+                        case .spacedRepetition:
+                            Text("Cards are scheduled for review based on the user's ability to recall the information correctly, optimizing the interval between two reviews to ensure efficiency and retention.")
                     }
                 }
                   

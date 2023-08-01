@@ -62,15 +62,59 @@ struct InfoCardView : View {
                 }
             }
             
-            Section(header: Text("Optional")) {
-                if let recallScore = card.recallScore {
-                    HStack(spacing: 10) {
-                        Text("Recall score:")
-                        Spacer()
-                        Text(String(recallScore))
+            Section(header: Text("Advance")) {
+                HStack(spacing: 10) {
+                    Text("Interval:")
+                    Spacer()
+                    let formatter = DateComponentsFormatter()
+                    let _ = formatter.allowedUnits = [.day, .hour, .minute]
+                    let _ = formatter.unitsStyle = .abbreviated
+                    
+                    Text("\(formatter.string(from: TimeInterval(card.interval * 60)) ?? "")")
+                    
+                    //MARK: delete after
+                    Button {
+                        card.interval = 0
+                        DataController.shared.save()
+                    } label: {
+                        Image(systemName: "delete.left.fill")
                     }
                 }
                 
+                if let due:Date = card.due_ {
+                    HStack(spacing: 10) {
+                        Text("Due:")
+                        Spacer()
+                        Text(due.formatted(date: .abbreviated, time: .shortened))
+                        
+                        //MARK: delete after
+                        Button {
+                            card.due_ = Date.now
+                            DataController.shared.save()
+                        } label: {
+                            Image(systemName: "delete.left.fill")
+                        }
+                    }
+                    
+                }
+                
+                if let queueType = card.queueType_ {
+                    HStack(spacing: 10) {
+                        Text("Queue:")
+                        Spacer()
+                        Text(queueType)
+                        
+                        //MARK: delete after
+                        Button {
+                            card.queueType = QueueType.New
+                            DataController.shared.save()
+                        } label: {
+                            Image(systemName: "delete.left.fill")
+                        }
+                    }
+                    
+                }
+              
                 if let createdDate:Date = card.createdDate {
                     HStack(spacing: 10) {
                         Text("Created:")

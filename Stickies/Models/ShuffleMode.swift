@@ -6,5 +6,6 @@
 //
 
 enum ShuffleMode : String, CaseIterable {
-    case random, worstToBest
+    case random = "Shuffle"
+    case spacedRepetition = "Spaced Repetition"
 }

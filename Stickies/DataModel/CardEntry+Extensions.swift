@@ -10,12 +10,11 @@ import CoreData
 
 extension CardEntry {
     
-    convenience init(cardId: UUID, createdDate: Date, score: Int16, cardScore: Int16, context: NSManagedObjectContext) {
+    convenience init(cardId: UUID, createdDate: Date, review: Review, context: NSManagedObjectContext) {
         self.init(context: context)
         self.cardId = cardId
         self.createdDate = createdDate
-        self.score = score
-        self.cardScore = cardScore
+        self.review = review.rawValue
     }
     
     static func fetch(from: Date, to: Date) -> NSFetchRequest<CardEntry> {

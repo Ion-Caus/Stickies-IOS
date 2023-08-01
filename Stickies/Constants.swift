@@ -8,8 +8,11 @@
 struct Constants {
     static let DefaultLanguage = "en-US"
     
-    static let DefaultShuffleMode: ShuffleMode = .worstToBest
+    static let DefaultShuffleMode: ShuffleMode = .spacedRepetition
     static let DefaultMultipleDecksMode: Bool = false
+    
+    static let DefaultLearningSteps = [ 5, 60, 3 * 60 ]
+    static let DefaultEaseFactor = 2.5
 }
 
 struct AppStorageKeys {
@@ -25,4 +28,7 @@ struct AppStorageKeys {
     static let ShuffleMode = "play.shuffle.mode"
     
     static let RequiredCardsPlayed = "goal.required.cards.played"
+    
+    static let SpacedRepetitionLearningSteps = "spaced-repetition.learning-steps"
+    static let SpacedRepetitionEaseFactor = "spaced-repetition.ease-factor"
 }

@@ -9,6 +9,25 @@ import Foundation
 import CoreData
 
 extension Card {
+    var due: Date {
+        get {
+            due_ ?? Date()
+        }
+        
+        set {
+            due_ = newValue
+        }
+    }
+    
+    var queueType: QueueType {
+        get {
+            QueueType(rawValue: queueType_ ?? "") ?? QueueType.New
+        }
+        
+        set {
+            queueType_ = newValue.rawValue
+        }
+    }
     
     convenience init(word: String, type: WordType, isFavourite: Bool, synonyms: [String], usageExample: String? = nil,
                      phoneticTranscription: String? = nil, deck: Deck, context: NSManagedObjectContext) {
@@ -16,7 +35,6 @@ extension Card {
         self.id = UUID()
         self.createdDate = Date()
         self.modifiedDate = Date()
-        self.recallScore = 0
         
         self.word = word
         self.type = type.rawValue
@@ -26,6 +44,10 @@ extension Card {
         self.phoneticTranscription = phoneticTranscription
         self.deck = deck
         self.searchableText = synonyms.joined(separator: "\n")
+        
+        self.due_ = Date()
+        self.queueType_ = QueueType.New.rawValue
+        self.interval = 0
     }
     
     static func fetch() -> NSFetchRequest<Card> {
@@ -45,7 +67,7 @@ extension Card {
     
     static func fetchBy(decks: [Deck], limit: Int) -> NSFetchRequest<Card> {
         let request: NSFetchRequest<Card> = Card.fetchRequest()
-        request.sortDescriptors = [ NSSortDescriptor(keyPath: \Card.recallScore, ascending: true)]
+        request.sortDescriptors = [ NSSortDescriptor(keyPath: \Card.createdDate, ascending: false)]
         request.predicate = NSPredicate(format: "deck IN %@", decks)
         request.fetchLimit = limit
         return request
@@ -62,4 +84,8 @@ enum WordType: String, Equatable, CaseIterable {
     case Conjunction = "Conjunction"
     case Pronoun = "Pronoun"
     case Interjection = "Interjection"
+}
+
+enum QueueType: String, Equatable, CaseIterable {
+    case New, Learning, Review
 }

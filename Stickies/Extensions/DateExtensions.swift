@@ -8,6 +8,12 @@
 import Foundation
 
 extension Date {
+    var startOfNextDay: Date {
+        return Calendar
+            .current
+            .nextDate(after: self, matching: DateComponents(hour: 0, minute: 0), matchingPolicy: .nextTimePreservingSmallerComponents)!
+    }
+    
     var onlyDate: Date? {
         let calendar = Calendar.current
         let dateComponents = calendar.dateComponents([.year, .month, .day], from: self)

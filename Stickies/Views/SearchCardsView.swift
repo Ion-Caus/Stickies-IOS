@@ -45,16 +45,20 @@ struct SearchCardsView: View {
                                     }
                                 }
                                 
-                                if let synonyms = card.synonyms, !synonyms.isEmpty,
-                                   let matches = synonyms.filter { $0.localizedCaseInsensitiveContains(searchText) },
-                                   !matches.isEmpty {
-                                    
-                                    HStack {
-                                        Text(matches.joined(separator: "; "))
-                                        Spacer()
+                                if let synonyms = card.synonyms, !synonyms.isEmpty
+                                {
+                                
+                                    let matches = synonyms.filter { $0.localizedCaseInsensitiveContains(searchText) }
+                                    if !matches.isEmpty {
+                                        HStack {
+                                            Text(matches.joined(separator: "; "))
+                                            Spacer()
+                                        }
+                                        .padding(.horizontal)
+                                        .foregroundColor(.gray)
                                     }
-                                    .padding(.horizontal)
-                                    .foregroundColor(.gray)
+                                    
+                                    
                                 }                              
                             }
                         }
