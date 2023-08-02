@@ -27,7 +27,7 @@ struct DeckFormView: View {
         
         self._title = State(initialValue: deck?.title ?? "")
         self._type = State(initialValue: DeckType(rawValue: deck?.type ?? "") ?? DeckType.Synonym)
-        self._deckLanguage = State(initialValue: deck?.deckLanguage ?? Constants.DefaultLanguage)
+        self._deckLanguage = State(initialValue: deck?.language__ ?? Constants.DefaultLanguage)
         self._translationLanguage = State(initialValue: deck?.translationLanguage ?? Constants.DefaultLanguage)
         
         self.availableLanguages = AVSpeechSynthesisVoice
@@ -93,14 +93,14 @@ struct DeckFormView: View {
                     Button("Done") {
                         if deck == nil {
                             let _ = Deck(title: title, type: type,
-                                         deckLanguage: deckLanguage,
+                                         language: deckLanguage,
                                          translationLanguage: translationLanguage,
                                          context: context)
                         }
                         else {
                             deck?.title = title
                             deck?.type = type.rawValue
-                            deck?.deckLanguage = deckLanguage
+                            deck?.language__ = deckLanguage
                             deck?.translationLanguage = type == .Translation ? translationLanguage : nil
                         }
                         

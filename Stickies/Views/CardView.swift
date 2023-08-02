@@ -45,7 +45,7 @@ struct CardView : View  {
             ZStack {
                 CardFront(type: card.type ?? "", word: card.word ?? "", isFavourite: card.isFavourite, degree: $frontDegree)
                     .opacity(backDegree == 0 ? 0  : 1)
-                CardBack(synonyms: card.synonyms  ?? [], degree: $backDegree)
+                CardBack(synonyms: card.synonyms___, degree: $backDegree)
                     .opacity(frontDegree == 0 ? 0 : 1)
             }
             .foregroundColor(.white)

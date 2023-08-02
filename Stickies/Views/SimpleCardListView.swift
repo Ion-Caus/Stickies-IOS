@@ -120,7 +120,7 @@ struct SimpleCardListView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
-        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, language: Constants.DefaultLanguage, context: context)
         
         SimpleCardListView(deck: deck)
             .previewInterfaceOrientation(.portrait)

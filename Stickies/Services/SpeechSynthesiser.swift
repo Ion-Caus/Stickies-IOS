@@ -8,56 +8,28 @@
 import Foundation
 import AVFoundation
 
-class SpeechSynthesiser : NSObject, ObservableObject {
-    
-    private let synthesizer = AVSpeechSynthesizer()
-    
-    private let rate: Float
-    
-    let language: String
-    
-    init(language: String = Constants.DefaultLanguage) {
-        self.language = language
-        
-        rate = UserDefaults.standard.float(forKey: AppStorageKeys.SpeechUtteranceRate)
+class SpeechSynthesiser : NSObject {
+    let synthesizer = AVSpeechSynthesizer()
+
+    override init() {
+        super.init()
+        synthesizer.delegate = self
         
         // Ducking existing audio to play this audio
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, options: .duckOthers)
     }
-    
-    func say(_ phrase: String) {
-        
-        let utterance = AVSpeechUtterance(string: phrase)
-        
-        speak(utterance)
-    }
-    
-    func say(_ phrase: String, as phoneticTranscription: String) {
-        
-        let attributedString = NSMutableAttributedString(string: phrase)
-        let pronunciationKey = NSAttributedString.Key(rawValue: AVSpeechSynthesisIPANotationAttribute)
 
-        attributedString.setAttributes(
-            [pronunciationKey: phoneticTranscription],
-            range: NSRange(location: 0, length: attributedString.length))
+    func say(_ phrase: String, in language: String) {
         
-        let utterance = AVSpeechUtterance(attributedString: attributedString)
-        
-        speak(utterance)
-    }
-    
-    private func speak(_ utterance: AVSpeechUtterance) {
         if synthesizer.isSpeaking { return }
         
         DispatchQueue.main.async {
             
-            self.synthesizer.delegate = self
-           
-            utterance.voice = AVSpeechSynthesisVoice(language: self.language)
-            utterance.rate = self.rate
+            let utterance = AVSpeechUtterance(string: phrase)
+            utterance.voice = AVSpeechSynthesisVoice(language: language)
+            utterance.rate = UserDefaults.standard.float(forKey: AppStorageKeys.SpeechUtteranceRate)
             
             self.synthesizer.speak(utterance)
         }
     }
-    
 }

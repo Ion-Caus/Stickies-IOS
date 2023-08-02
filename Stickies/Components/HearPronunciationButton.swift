@@ -9,27 +9,22 @@ import SwiftUI
 
 struct HearPronunciationButton : View {
     
-    let word: String?
-    let phoneticTranscription: String?
+    let text: String?
+    let language: String?
     
-    @StateObject private var speechSynthesiser: SpeechSynthesiser
+    private let synthesiser = SpeechSynthesiser()
     
-    init(language: String?, word: String?, phoneticTranscription: String?) {
-        self.word = word
-        self.phoneticTranscription = phoneticTranscription
-        
-        _speechSynthesiser = StateObject(wrappedValue: SpeechSynthesiser(language: language ?? Constants.DefaultLanguage))
+    init(text: String?, language: String?) {
+        self.text = text
+        self.language = language
     }
     
     var body: some View {
-        if let word = word, !word.isEmpty {
+        if let text = text, !text.isEmpty,
+           let language = language {
+            
             Button {
-                if let transcription = phoneticTranscription, !transcription.isEmpty {
-                    speechSynthesiser.say(word, as: transcription)
-                }
-                else {
-                    speechSynthesiser.say(word)
-                }
+                synthesiser.say(text, in: language)
             } label : {
                 Image(systemName: "ear")
             }

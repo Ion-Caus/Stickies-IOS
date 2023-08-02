@@ -18,7 +18,6 @@ struct CardFormView : View {
     @State var isFavourite: Bool
     @State var synonyms: [String]
     @State var usageExample: String
-    @State var phoneticTranscription: String
     
     @State var synonym = ""
     
@@ -41,9 +40,8 @@ struct CardFormView : View {
         _word = State(initialValue: card?.word ?? "")
         _type = State(initialValue: WordType(rawValue: card?.type ?? "") ?? WordType.Phrase)
         _isFavourite = State(initialValue: card?.isFavourite ?? false)
-        _synonyms = State(initialValue: card?.synonyms ?? [])
+        _synonyms = State(initialValue: card?.synonyms___ ?? [])
         _usageExample = State(initialValue: card?.usageExample ?? "")
-        _phoneticTranscription = State(initialValue: card?.phoneticTranscription ?? "")
     }
     
     var disableAddButton: Bool {
@@ -65,7 +63,7 @@ struct CardFormView : View {
                     
                         Spacer()
                             
-                        HearPronunciationButton(language: deck.deckLanguage, word: word, phoneticTranscription: phoneticTranscription)
+                        HearPronunciationButton(text: word, language: deck.language__)
                     }
                     
                     Picker("Type", selection: $type) {
@@ -137,10 +135,6 @@ struct CardFormView : View {
                     Toggle("Is Favourite", isOn: $isFavourite)
                 }
                 
-                Section(header: Text("Pronunciation")) {
-                    TextField("Phonetic Transcription", text: $phoneticTranscription)
-                }
-                
                 Section(header: Text("Example")) {
                     TextEditor(text: $usageExample)
                         .frame(height: 160)
@@ -175,8 +169,8 @@ struct CardFormView : View {
     }
     
     func fetchTranslation() {
-        guard let source = deck.deckLanguage,
-              let target = deck.translationLanguage else { return }
+        guard let target = deck.translationLanguage else { return }
+        let source = deck.language__
         
         if word.isEmpty {
             self.translationSuggestion = ""
@@ -218,7 +212,6 @@ struct CardFormView : View {
                 isFavourite: isFavourite,
                 synonyms: synonyms,
                 usageExample: example,
-                phoneticTranscription: phoneticTranscription,
                 deck: deck,
                 context: context)
         }
@@ -226,9 +219,8 @@ struct CardFormView : View {
             card?.word = word
             card?.type = type.rawValue
             card?.isFavourite = isFavourite
-            card?.synonyms = synonyms
+            card?.synonyms___ = synonyms
             card?.usageExample = example
-            card?.phoneticTranscription = phoneticTranscription
             card?.searchableText = synonyms.joined(separator: "\n")
         }
         
@@ -241,7 +233,7 @@ struct CardFormView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
-        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, language: Constants.DefaultLanguage, context: context)
         
         CardFormView(isPresented: .constant(true), deck: deck)
     }

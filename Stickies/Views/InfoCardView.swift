@@ -18,8 +18,8 @@ struct InfoCardView : View {
                     Text(card.word ?? "???")
                     
                     Spacer()
-                    HearPronunciationButton(language: card.deck?.deckLanguage, word: card.word, phoneticTranscription: card.phoneticTranscription)
-                    
+
+                    HearPronunciationButton(text: card.word, language: card.deck?.language__)
                 }
                 
                 if let type = card.type {
@@ -30,10 +30,10 @@ struct InfoCardView : View {
             }
             Section(header: Text("Back Face")) {
                 List {
-                    ForEach(card.synonyms ?? [], id: \.self) { (item) in
+                    ForEach(card.synonyms___, id: \.self) { (item) in
                         Text(item)
                     }
-                    if ((card.synonyms?.isEmpty) != false) {
+                    if (card.synonyms___.isEmpty) {
                         Text("No synonyms")
                             .opacity(0.7)
                         
@@ -53,12 +53,6 @@ struct InfoCardView : View {
                     Section(header: Text("Example")) {
                         Text(usage)
                     }
-                }
-            }
-            
-            if let phoneticTranscription = card.phoneticTranscription, !phoneticTranscription.isEmpty {
-                Section(header: Text("Pronunciation")) {
-                        Text(phoneticTranscription)
                 }
             }
             
@@ -89,7 +83,7 @@ struct InfoCardView : View {
                         
                         //MARK: delete after
                         Button {
-                            card.due_ = Date.now
+                            card.due = Date.now
                             DataController.shared.save()
                         } label: {
                             Image(systemName: "delete.left.fill")
@@ -152,7 +146,7 @@ struct InfoCardView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
-        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, deckLanguage: Constants.DefaultLanguage, context: context)
+        let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, language: Constants.DefaultLanguage, context: context)
         let card = Card(word: "word", type: WordType.Phrase, isFavourite: true, synonyms: [], usageExample: "This is a text.", deck: deck, context: context)
         
         InfoCardView(card: card)

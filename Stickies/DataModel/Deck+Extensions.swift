@@ -9,15 +9,25 @@ import Foundation
 import CoreData
 
 extension Deck {
+    
+    var language__: String {
+        get {
+            language_ ?? Constants.DefaultLanguage
+        }
+        set {
+            language_ = newValue
+        }
+    }
+    
     convenience init(title: String, type: DeckType,
-                     deckLanguage: String,
+                     language: String,
                      translationLanguage: String? = nil,
                      context: NSManagedObjectContext) {
         self.init(context: context)
         self.id = UUID()
         self.title = title
         self.type = type.rawValue
-        self.deckLanguage = deckLanguage
+        self.language_ = language
         self.translationLanguage = type == .Translation ? translationLanguage : nil
         self.createdDate = Date()
     }
@@ -41,7 +51,7 @@ extension Deck {
     }
     
     func displayLanguages() -> String {
-        guard let deckLanguage = self.deckLanguage?.localeLanguageName else { return "" }
+        let deckLanguage = self.language__.localeLanguageName
             
         guard let translationLanguage = self.translationLanguage?.localeLanguageName else { return "\(deckLanguage)" }
         
