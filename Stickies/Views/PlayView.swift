@@ -57,15 +57,10 @@ struct PlayView: View {
               
                     VStack {
                         if let card = viewModel.card {
-                            //MARK: Find another solution
+                            //MARK: remove after
                             
-                            
-                            //Text("\(card.queueType_ ?? "") \(card.interval)min")
-                            let formatter = DateComponentsFormatter()
-                            let _ = formatter.allowedUnits = [.day, .hour, .minute]
-                            let _ = formatter.unitsStyle = .abbreviated
-                            
-                            Text("\(formatter.string(from: TimeInterval(card.interval * 60)) ?? "")")
+                            Text(card.queueType.rawValue)
+                            Text(TimeInterval(card.interval * 60).formatted())
                             
                             if let due:Date = card.due_ {
                                 Text(due.formatted(date: .abbreviated, time: .shortened))

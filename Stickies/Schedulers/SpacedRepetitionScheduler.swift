@@ -30,7 +30,7 @@ class SpacedRepetitionScheduler : Scheduler {
     init(cards: inout [Card]) {
         self.cards = cards
         
-        let easeFactor = UserDefaults.standard.double(forKey: AppStorageKeys.SpeechUtteranceRate)
+        let easeFactor = UserDefaults.standard.double(forKey: AppStorageKeys.SpacedRepetitionEaseFactor)
         self.easeFactor = easeFactor != Double.zero ? easeFactor : Constants.DefaultEaseFactor
         
         self.learningSteps = UserDefaults.standard.array(forKey: AppStorageKeys.SpeechUtteranceRate) as? [Int]
@@ -166,6 +166,8 @@ class SpacedRepetitionScheduler : Scheduler {
            
             timeInterval = timeInterval * easeFactor
         }
+        print("\(card.interval) * \(easeFactor)")
+        print(timeInterval)
         
         card.interval = Int64(timeInterval)
         card.due = Date.now.addingTimeInterval(timeInterval * 60)

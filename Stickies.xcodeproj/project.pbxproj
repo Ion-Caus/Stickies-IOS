@@ -27,6 +27,9 @@
 		505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D848D2842D57900AEC836 /* StickiesApp.swift */; };
 		505D84922842D57D00AEC836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84912842D57D00AEC836 /* Assets.xcassets */; };
 		505D84952842D57D00AEC836 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505D84942842D57D00AEC836 /* Preview Assets.xcassets */; };
+		505EE0892A7AFCE6000C69B0 /* SpacedRepetitionSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EE0882A7AFCE6000C69B0 /* SpacedRepetitionSchedulerTests.swift */; };
+		505EE0902A7B00D1000C69B0 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EE08F2A7B00D0000C69B0 /* TestCoreDataStack.swift */; };
+		505EE0922A7B0B3F000C69B0 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EE0912A7B0B3F000C69B0 /* TimeIntervalExtensions.swift */; };
 		5060F52B285D187A004E9142 /* CardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060F52A285D187A004E9142 /* CardFormView.swift */; };
 		506F9AC229E0256400197C3F /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9AB529E0256400197C3F /* BarChartView.swift */; };
 		506F9AC629E0256400197C3F /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F9ABA29E0256400197C3F /* LineChartView.swift */; };
@@ -85,6 +88,16 @@
 		50FEF01F284D594700FA8373 /* AspectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FEF01B284D594600FA8373 /* AspectListView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		505EE08A2A7AFCE6000C69B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 505D84822842D57900AEC836 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 505D84892842D57900AEC836;
+			remoteInfo = Stickies;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		500627252A77FE5600357F9C /* SpacedRepetitionScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedRepetitionScheduler.swift; sourceTree = "<group>"; };
 		500C152E29B541CF0017ABA0 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -108,6 +121,10 @@
 		505D84912842D57D00AEC836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505D84942842D57D00AEC836 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		505D84962842D57D00AEC836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		505EE0862A7AFCE6000C69B0 /* StickiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StickiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		505EE0882A7AFCE6000C69B0 /* SpacedRepetitionSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedRepetitionSchedulerTests.swift; sourceTree = "<group>"; };
+		505EE08F2A7B00D0000C69B0 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		505EE0912A7B0B3F000C69B0 /* TimeIntervalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensions.swift; sourceTree = "<group>"; };
 		5060F52A285D187A004E9142 /* CardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormView.swift; sourceTree = "<group>"; };
 		506F9AB529E0256400197C3F /* BarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		506F9ABA29E0256400197C3F /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
@@ -174,6 +191,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		505EE0832A7AFCE6000C69B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -211,6 +235,7 @@
 				507C6B5629AA8FD000B39734 /* SequenceExtensions.swift */,
 				508BB44029AD753500DA8EAD /* StringExtensions.swift */,
 				508DC00E29C4DA8D00C657ED /* NSManagedObjectContextExtensions.swift */,
+				505EE0912A7B0B3F000C69B0 /* TimeIntervalExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -219,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				505D848C2842D57900AEC836 /* Stickies */,
+				505EE0872A7AFCE6000C69B0 /* StickiesTests */,
 				505D848B2842D57900AEC836 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -227,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				505D848A2842D57900AEC836 /* Stickies.app */,
+				505EE0862A7AFCE6000C69B0 /* StickiesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +285,15 @@
 				505D84942842D57D00AEC836 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		505EE0872A7AFCE6000C69B0 /* StickiesTests */ = {
+			isa = PBXGroup;
+			children = (
+				505EE0882A7AFCE6000C69B0 /* SpacedRepetitionSchedulerTests.swift */,
+				505EE08F2A7B00D0000C69B0 /* TestCoreDataStack.swift */,
+			);
+			path = StickiesTests;
 			sourceTree = "<group>";
 		};
 		506F9AB329E0256400197C3F /* Charts */ = {
@@ -411,17 +447,39 @@
 			productReference = 505D848A2842D57900AEC836 /* Stickies.app */;
 			productType = "com.apple.product-type.application";
 		};
+		505EE0852A7AFCE6000C69B0 /* StickiesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 505EE08E2A7AFCE7000C69B0 /* Build configuration list for PBXNativeTarget "StickiesTests" */;
+			buildPhases = (
+				505EE0822A7AFCE6000C69B0 /* Sources */,
+				505EE0832A7AFCE6000C69B0 /* Frameworks */,
+				505EE0842A7AFCE6000C69B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				505EE08B2A7AFCE6000C69B0 /* PBXTargetDependency */,
+			);
+			name = StickiesTests;
+			productName = StickiesTests;
+			productReference = 505EE0862A7AFCE6000C69B0 /* StickiesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		505D84822842D57900AEC836 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					505D84892842D57900AEC836 = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					505EE0852A7AFCE6000C69B0 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 505D84892842D57900AEC836;
 					};
 				};
 			};
@@ -441,6 +499,7 @@
 			projectRoot = "";
 			targets = (
 				505D84892842D57900AEC836 /* Stickies */,
+				505EE0852A7AFCE6000C69B0 /* StickiesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -452,6 +511,13 @@
 			files = (
 				505D84952842D57D00AEC836 /* Preview Assets.xcassets in Resources */,
 				505D84922842D57D00AEC836 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		505EE0842A7AFCE6000C69B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +580,7 @@
 				50FEF01E284D594700FA8373 /* StickiesView.swift in Sources */,
 				5083796128907719001F78AB /* CardConstants.swift in Sources */,
 				50FE96DB2A79B1E7002842CF /* SchedulerSettingsView.swift in Sources */,
+				505EE0922A7B0B3F000C69B0 /* TimeIntervalExtensions.swift in Sources */,
 				50FE96D42A798BEF002842CF /* Review.swift in Sources */,
 				50FE96D82A798D4B002842CF /* Shuffler.swift in Sources */,
 				508FFD3329AA6C3D0084B7D4 /* SpeechSettingsView.swift in Sources */,
@@ -539,7 +606,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		505EE0822A7AFCE6000C69B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				505EE0892A7AFCE6000C69B0 /* SpacedRepetitionSchedulerTests.swift in Sources */,
+				505EE0902A7B00D1000C69B0 /* TestCoreDataStack.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		505EE08B2A7AFCE6000C69B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 505D84892842D57900AEC836 /* Stickies */;
+			targetProxy = 505EE08A2A7AFCE6000C69B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		505D84972842D57D00AEC836 /* Debug */ = {
@@ -706,6 +790,52 @@
 			};
 			name = Release;
 		};
+		505EE08C2A7AFCE7000C69B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27MAHLJV74;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Ion-Caus.StickiesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stickies.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stickies";
+			};
+			name = Debug;
+		};
+		505EE08D2A7AFCE7000C69B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27MAHLJV74;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Ion-Caus.StickiesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stickies.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stickies";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -723,6 +853,15 @@
 			buildConfigurations = (
 				505D849A2842D57D00AEC836 /* Debug */,
 				505D849B2842D57D00AEC836 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		505EE08E2A7AFCE7000C69B0 /* Build configuration list for PBXNativeTarget "StickiesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				505EE08C2A7AFCE7000C69B0 /* Debug */,
+				505EE08D2A7AFCE7000C69B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

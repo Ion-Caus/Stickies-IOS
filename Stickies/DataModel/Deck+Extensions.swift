@@ -10,7 +10,7 @@ import CoreData
 
 extension Deck {
     
-    var language__: String {
+    var language: String {
         get {
             language_ ?? Constants.DefaultLanguage
         }
@@ -51,7 +51,7 @@ extension Deck {
     }
     
     func displayLanguages() -> String {
-        let deckLanguage = self.language__.localeLanguageName
+        let deckLanguage = self.language.localeLanguageName
             
         guard let translationLanguage = self.translationLanguage?.localeLanguageName else { return "\(deckLanguage)" }
         

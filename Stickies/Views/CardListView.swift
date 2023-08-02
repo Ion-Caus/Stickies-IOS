@@ -115,7 +115,7 @@ struct CardListView: View {
     }
     
     var playButton: some View {
-        NavigationLink(destination: PlayView(cards: Array(cards), language: deck.language__)) {
+        NavigationLink(destination: PlayView(cards: Array(cards), language: deck.language)) {
             Image(systemName: "play.circle")
         }
         .font(Font.system(size: 65))

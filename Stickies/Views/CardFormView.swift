@@ -40,7 +40,7 @@ struct CardFormView : View {
         _word = State(initialValue: card?.word ?? "")
         _type = State(initialValue: WordType(rawValue: card?.type ?? "") ?? WordType.Phrase)
         _isFavourite = State(initialValue: card?.isFavourite ?? false)
-        _synonyms = State(initialValue: card?.synonyms___ ?? [])
+        _synonyms = State(initialValue: card?.listOfSynonyms ?? [])
         _usageExample = State(initialValue: card?.usageExample ?? "")
     }
     
@@ -63,7 +63,7 @@ struct CardFormView : View {
                     
                         Spacer()
                             
-                        HearPronunciationButton(text: word, language: deck.language__)
+                        HearPronunciationButton(text: word, language: deck.language)
                     }
                     
                     Picker("Type", selection: $type) {
@@ -170,7 +170,7 @@ struct CardFormView : View {
     
     func fetchTranslation() {
         guard let target = deck.translationLanguage else { return }
-        let source = deck.language__
+        let source = deck.language
         
         if word.isEmpty {
             self.translationSuggestion = ""
@@ -219,7 +219,7 @@ struct CardFormView : View {
             card?.word = word
             card?.type = type.rawValue
             card?.isFavourite = isFavourite
-            card?.synonyms___ = synonyms
+            card?.listOfSynonyms = synonyms
             card?.usageExample = example
             card?.searchableText = synonyms.joined(separator: "\n")
         }

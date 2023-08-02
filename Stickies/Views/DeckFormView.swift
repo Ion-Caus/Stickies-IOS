@@ -27,7 +27,7 @@ struct DeckFormView: View {
         
         self._title = State(initialValue: deck?.title ?? "")
         self._type = State(initialValue: DeckType(rawValue: deck?.type ?? "") ?? DeckType.Synonym)
-        self._deckLanguage = State(initialValue: deck?.language__ ?? Constants.DefaultLanguage)
+        self._deckLanguage = State(initialValue: deck?.language ?? Constants.DefaultLanguage)
         self._translationLanguage = State(initialValue: deck?.translationLanguage ?? Constants.DefaultLanguage)
         
         self.availableLanguages = AVSpeechSynthesisVoice
@@ -55,8 +55,7 @@ struct DeckFormView: View {
                     .pickerStyle(SegmentedPickerStyle())
                   
                     HStack {
-                        Text("Language:")
-                        Spacer()
+                    
                         Picker("Language", selection: $deckLanguage) {
                             ForEach(availableLanguages, id: \.self) { value in
                                 Text(value.localeLanguageName).tag(value)
@@ -68,8 +67,6 @@ struct DeckFormView: View {
                     
                     if type == .Translation {
                         HStack {
-                            Text("Translation Language:")
-                            Spacer()
                             Picker("Translation Language", selection: $translationLanguage) {
                                 ForEach(availableLanguages, id: \.self) { value in
                                     Text(value.localeLanguageName).tag(value)
@@ -100,7 +97,7 @@ struct DeckFormView: View {
                         else {
                             deck?.title = title
                             deck?.type = type.rawValue
-                            deck?.language__ = deckLanguage
+                            deck?.language = deckLanguage
                             deck?.translationLanguage = type == .Translation ? translationLanguage : nil
                         }
                         

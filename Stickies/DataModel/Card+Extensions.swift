@@ -29,7 +29,7 @@ extension Card {
         }
     }
     
-    var synonyms___: [String] {
+    var listOfSynonyms: [String] {
         get {
             synonyms ?? []
         }

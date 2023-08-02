@@ -19,7 +19,7 @@ struct InfoCardView : View {
                     
                     Spacer()
 
-                    HearPronunciationButton(text: card.word, language: card.deck?.language__)
+                    HearPronunciationButton(text: card.word, language: card.deck?.language)
                 }
                 
                 if let type = card.type {
@@ -30,10 +30,10 @@ struct InfoCardView : View {
             }
             Section(header: Text("Back Face")) {
                 List {
-                    ForEach(card.synonyms___, id: \.self) { (item) in
+                    ForEach(card.listOfSynonyms, id: \.self) { (item) in
                         Text(item)
                     }
-                    if (card.synonyms___.isEmpty) {
+                    if (card.listOfSynonyms.isEmpty) {
                         Text("No synonyms")
                             .opacity(0.7)
                         
@@ -60,11 +60,8 @@ struct InfoCardView : View {
                 HStack(spacing: 10) {
                     Text("Interval:")
                     Spacer()
-                    let formatter = DateComponentsFormatter()
-                    let _ = formatter.allowedUnits = [.day, .hour, .minute]
-                    let _ = formatter.unitsStyle = .abbreviated
                     
-                    Text("\(formatter.string(from: TimeInterval(card.interval * 60)) ?? "")")
+                    Text(TimeInterval(card.interval * 60).formatted())
                     
                     //MARK: delete after
                     Button {

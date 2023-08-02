@@ -15,7 +15,10 @@ struct SchedulerSettingsView: View {
         Form {
             
             Section {
-                Text(Constants.DefaultLearningSteps.map{String($0)}.joined(separator: ", "))
+                Text(Constants.DefaultLearningSteps
+                    .map{String(TimeInterval($0 * 60).formatted())}
+                    .joined(separator: ", ")
+                )
                 
             } header: {
                 Text("Learning steps")

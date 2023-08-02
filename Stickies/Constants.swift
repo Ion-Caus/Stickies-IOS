@@ -11,8 +11,8 @@ struct Constants {
     static let DefaultShuffleMode: ShuffleMode = .spacedRepetition
     static let DefaultMultipleDecksMode: Bool = false
     
-    static let DefaultLearningSteps = [ 5, 60, 3 * 60 ]
-    static let DefaultEaseFactor = 2.5
+    static let DefaultLearningSteps = [ 5, 3 * 60, 24 * 60 ]
+    static let DefaultEaseFactor: Double = 2.5
 }
 
 struct AppStorageKeys {

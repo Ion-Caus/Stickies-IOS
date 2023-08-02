@@ -45,10 +45,10 @@ struct SearchCardsView: View {
                                     }
                                 }
                                 
-                                if !card.synonyms___.isEmpty
+                                if !card.listOfSynonyms.isEmpty
                                 {
                                 
-                                    let matches = card.synonyms___.filter { $0.localizedCaseInsensitiveContains(searchText) }
+                                    let matches = card.listOfSynonyms.filter { $0.localizedCaseInsensitiveContains(searchText) }
                                     if !matches.isEmpty {
                                         HStack {
                                             Text(matches.joined(separator: "; "))

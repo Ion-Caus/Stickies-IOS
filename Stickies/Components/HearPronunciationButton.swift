@@ -30,7 +30,5 @@ struct HearPronunciationButton : View {
             }
             .buttonStyle(BorderlessButtonStyle())
         }
-        
-        
     }
 }
