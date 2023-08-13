@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfoCardView : View {
     
-    let card: Card
+    @StateObject var card: Card
     
     var body: some View {
         Form {

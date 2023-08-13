@@ -82,7 +82,7 @@ extension Card {
     }
 }
 
-enum WordType: String, Equatable, CaseIterable {
+enum WordType: String, Equatable, CaseIterable, Codable {
     case Phrase = "Phrase"
     case Noun = "Noun"
     case Verb = "Verb"

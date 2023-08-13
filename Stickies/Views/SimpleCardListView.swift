@@ -17,14 +17,15 @@ struct SimpleCardListView: View {
     @State private var showingForm = false
     @State private var searchText = ""
     
-    @State var open = false
+    @State private var presentShareSheet: Bool = false
+    @State private var shareURL: URL = .init(string: "https://www.apple.com/")!
     
     let deck: Deck
     @State private var selectedCard: Card?
     
     init(deck: Deck) {
         _cards = FetchRequest(fetchRequest: Card.fetchBy(deck: deck), animation: .easeInOut)
-
+        
         self.deck = deck
     }
     
@@ -45,7 +46,7 @@ struct SimpleCardListView: View {
                                     .foregroundColor(.red)
                             }
                         }
-                      
+                        
                     }
                     .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive) {
@@ -85,9 +86,9 @@ struct SimpleCardListView: View {
                     context.delete(card)
                     DataController.shared.save()
                     selectedCard = nil
-                    
                 }
             }
+                            
             
             VStack {
                 Spacer()
@@ -102,7 +103,19 @@ struct SimpleCardListView: View {
         .sheet(isPresented: $showingForm) {
             CardFormView(isPresented: $showingForm, deck: deck, card: selectedCard)
         }
-      
+        .toolbar {
+            Button {
+                exportCoreData()
+            } label: {
+                Image(systemName: "square.and.arrow.up")
+            }
+        }
+        .sheet(isPresented: $presentShareSheet) {
+            deleteTempFile()
+        } content: {
+            CustomShareSheet(url: $shareURL, showing: $presentShareSheet)
+        }
+        
     }
     
     var addButton: some View {
@@ -112,6 +125,41 @@ struct SimpleCardListView: View {
         }
         label: {
             Image(systemName: "plus.circle")
+        }
+    }
+    
+    func deleteTempFile() {
+        DispatchQueue.global(qos: .utility).async { [shareURL = self.shareURL] in
+            try? FileManager.default.removeItem(at: shareURL)
+            print("Removed Temp JSON File")
+        }
+    
+       
+    }
+    
+    
+    func exportCoreData() {
+        do {
+            if let deckDto = DeckDto.fromEntity(deck) {
+                
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .prettyPrinted
+                
+                let jsonData = try encoder.encode(deckDto)
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    
+                    if let baseUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                        let pathURL = baseUrl.appendingPathComponent("Deck-\(deckDto.title)-\(Date.now.ISO8601Format()).json")
+                        
+                        try jsonString.write(to: pathURL, atomically: true, encoding: .utf8)
+                        
+                        shareURL = pathURL
+                        presentShareSheet.toggle()
+                    }
+                }
+            }
+        } catch {
+            //print(error)
         }
     }
 }

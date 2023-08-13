@@ -22,6 +22,9 @@ struct DeckListView : View {
     @State private var searchText = ""
     @State private var selectedDeck: Deck? = nil
     
+    @State private var presentFilePicker: Bool = false
+    @State private var presentAlert = false
+    
     var body: some View {
         let groups = Dictionary(
             grouping: Array(decks),
@@ -29,6 +32,7 @@ struct DeckListView : View {
         
         ZStack {
             SectionList(groups: groups) { deck in
+                
                 NavigationLink(destination: SimpleCardListView(deck: deck)) {
                     HStack {
                         Text(deck.title ?? "NO TITLE")
@@ -44,7 +48,7 @@ struct DeckListView : View {
             }
             .searchable(text: $searchText)
             .onChange(of: searchText) { newValue in
-                decks.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "title CONTAINS %@", newValue)
+                decks.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "title CONTAINS[C] %@", newValue)
             }
             .confirmationDialog("Would you like to delete \(selectedDeck?.title ?? "this deck")?",
                                 isPresented: $showConfirmation,
@@ -58,8 +62,38 @@ struct DeckListView : View {
         .sheet(isPresented: $showingForm) {
             DeckFormView(isPresented: $showingForm, deck: selectedDeck)
         }
+        .fileImporter(isPresented: $presentFilePicker, allowedContentTypes: [.json]) { result in
+            switch result {
+                case .success(let success):
+                if success.startAccessingSecurityScopedResource() {
+                    importJSON(success)
+                }
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+            }
+        }
+        .alert("Import failed", isPresented: $presentAlert) {
+            Button("Cancel", role: .cancel, action: {})
+        } message: {
+            Text("A deck with the same id is already present")
+        }
         .toolbar {
-            addButton
+            HStack {
+                Button {
+                    presentFilePicker.toggle()
+                } label: {
+                    Image(systemName: "square.and.arrow.down")
+                }
+                
+                Button {
+                    showingForm = true
+                    selectedDeck = nil
+                }
+                label: {
+                    Image(systemName: "plus.circle")
+                }
+            }
+      
         }
     }
     
@@ -81,21 +115,28 @@ struct DeckListView : View {
         .tint(.gray)
     }
     
-    var addButton: some View {
-        Button {
-            showingForm = true
-            selectedDeck = nil
-        }
-        label: {
-            Image(systemName: "plus.circle")
-        }
-    }
-    
     func deleteSelectedDeck() {
         guard let deck = selectedDeck else { return }
         context.delete(deck)
         DataController.shared.save()
         selectedDeck = nil
+    }
+    
+    func importJSON(_ url: URL) {
+        do {
+            let jsonData = try Data(contentsOf: url)
+            let deckDto = try JSONDecoder().decode(DeckDto.self, from: jsonData)
+
+            if let deck = decks.first(where: { $0.id == deckDto.id }) {
+                presentAlert = true
+                return
+            }
+            
+            let _ = deckDto.toEntity(context: context)
+            DataController.shared.save()
+        } catch {
+            print(error)
+        }
     }
 }
 

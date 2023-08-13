@@ -47,7 +47,12 @@ extension Deck {
     }
     
     public var cardList: [Card] {
-        return Array(cards as? Set<Card> ?? [])
+        get {
+            Array(cards as? Set<Card> ?? [])
+        }
+        set {
+            cards?.addingObjects(from: newValue)
+        }
     }
     
     func displayLanguages() -> String {
@@ -59,7 +64,7 @@ extension Deck {
     }
 }
 
-enum DeckType: String, Equatable, CaseIterable {
+enum DeckType: String, Equatable, CaseIterable, Codable {
     case Synonym = "Synonym"
     case Translation = "Translation"
     

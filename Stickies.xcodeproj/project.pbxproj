@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -78,6 +78,9 @@
 		50D6F70329EB193500511B25 /* SectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F70229EB193500511B25 /* SectionList.swift */; };
 		50D97F5629AC160E00113CFF /* TranslateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D97F5529AC160D00113CFF /* TranslateManager.swift */; };
 		50E8A7E928DF8675003421B1 /* SimpleCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E8A7E828DF8675003421B1 /* SimpleCardListView.swift */; };
+		50FA861A2A882F47006475F0 /* CustomShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FA86192A882F47006475F0 /* CustomShareSheet.swift */; };
+		50FA86292A8837A2006475F0 /* CardDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FA86282A8837A2006475F0 /* CardDto.swift */; };
+		50FA862B2A8837AE006475F0 /* DeckDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FA862A2A8837AE006475F0 /* DeckDto.swift */; };
 		50FE96D42A798BEF002842CF /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE96D32A798BEF002842CF /* Review.swift */; };
 		50FE96D62A798C57002842CF /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE96D52A798C57002842CF /* Scheduler.swift */; };
 		50FE96D82A798D4B002842CF /* Shuffler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE96D72A798D4B002842CF /* Shuffler.swift */; };
@@ -173,6 +176,9 @@
 		50D6F70229EB193500511B25 /* SectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionList.swift; sourceTree = "<group>"; };
 		50D97F5529AC160D00113CFF /* TranslateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateManager.swift; sourceTree = "<group>"; };
 		50E8A7E828DF8675003421B1 /* SimpleCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCardListView.swift; sourceTree = "<group>"; };
+		50FA86192A882F47006475F0 /* CustomShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShareSheet.swift; sourceTree = "<group>"; };
+		50FA86282A8837A2006475F0 /* CardDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDto.swift; sourceTree = "<group>"; };
+		50FA862A2A8837AE006475F0 /* DeckDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDto.swift; sourceTree = "<group>"; };
 		50FE96D32A798BEF002842CF /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		50FE96D52A798C57002842CF /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		50FE96D72A798D4B002842CF /* Shuffler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffler.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				5014D5482A3F9F2900253FD2 /* HalfSheetController.swift */,
 				5014D54C2A536CE800253FD2 /* SearchBar.swift */,
 				50A6DFED2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift */,
+				50FA86192A882F47006475F0 /* CustomShareSheet.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -265,6 +272,7 @@
 				506F9AB329E0256400197C3F /* Charts */,
 				508C77F728D129B2009031C7 /* Services */,
 				50168BD628831FFD00ABF8EF /* Components */,
+				50FA86272A88377F006475F0 /* Dtos */,
 				50CC08B6284EB3CD00678A3E /* DataModel */,
 				508FFD2F29AA60270084B7D4 /* Models */,
 				50168BDB288353FC00ABF8EF /* Extensions */,
@@ -371,6 +379,15 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		50FA86272A88377F006475F0 /* Dtos */ = {
+			isa = PBXGroup;
+			children = (
+				50FA86282A8837A2006475F0 /* CardDto.swift */,
+				50FA862A2A8837AE006475F0 /* DeckDto.swift */,
+			);
+			path = Dtos;
+			sourceTree = "<group>";
+		};
 		50FE96D22A798B82002842CF /* Schedulers */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,8 +488,9 @@
 		505D84822842D57900AEC836 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					505D84892842D57900AEC836 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -533,6 +551,7 @@
 				50168BD82883204300ABF8EF /* Deck+Extensions.swift in Sources */,
 				506F9ACB29E0256400197C3F /* ChartLabels.swift in Sources */,
 				50168BDD2883544900ABF8EF /* ViewExtensions.swift in Sources */,
+				50FA86292A8837A2006475F0 /* CardDto.swift in Sources */,
 				50A6DFEC2A59DFC9005E21B4 /* SettingsView.swift in Sources */,
 				508FFD2C29AA5AB70084B7D4 /* SpeechSynthesiser.swift in Sources */,
 				506F9ACC29E0256400197C3F /* LineChartParameters.swift in Sources */,
@@ -564,6 +583,7 @@
 				508BB43B29AD5FD100DA8EAD /* SecretTextField.swift in Sources */,
 				508BB43F29AD706200DA8EAD /* TextFieldWithDebounce.swift in Sources */,
 				508FFD3529AA7AFC0084B7D4 /* SpeechSynthesizerExtensions.swift in Sources */,
+				50FA861A2A882F47006475F0 /* CustomShareSheet.swift in Sources */,
 				50D6F70329EB193500511B25 /* SectionList.swift in Sources */,
 				500EB4C3289FFDEE000A59F7 /* NoCard.swift in Sources */,
 				5090B5E129B7F3CB008FD635 /* DataModel.xcdatamodeld in Sources */,
@@ -575,6 +595,7 @@
 				500627262A77FE5600357F9C /* SpacedRepetitionScheduler.swift in Sources */,
 				508379632890798E001F78AB /* PlayViewModel.swift in Sources */,
 				50AECFC529E4995400B80AF0 /* DateIntervalExtensions.swift in Sources */,
+				50FA862B2A8837AE006475F0 /* DeckDto.swift in Sources */,
 				505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */,
 				500ED8E429059EFE00EB4D59 /* NotificationsView.swift in Sources */,
 				50FEF01E284D594700FA8373 /* StickiesView.swift in Sources */,
@@ -749,15 +770,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stickies/Preview Content\"";
 				DEVELOPMENT_TEAM = 27MAHLJV74;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stickies/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Stickies;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stickies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -773,15 +798,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Stickies/Preview Content\"";
 				DEVELOPMENT_TEAM = 27MAHLJV74;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stickies/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Stickies;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stickies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -797,6 +826,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 27MAHLJV74;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
@@ -820,6 +850,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 27MAHLJV74;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;

@@ -1,5 +1,5 @@
 //
-//  Constants..swift
+//  Constants.swift
 //  Stickies
 //
 //  Created by Ion Caus on 25.02.2023.
@@ -11,7 +11,7 @@ struct Constants {
     static let DefaultShuffleMode: ShuffleMode = .spacedRepetition
     static let DefaultMultipleDecksMode: Bool = false
     
-    static let DefaultLearningSteps = [ 5, 3 * 60, 24 * 60 ]
+    static let DefaultLearningSteps = [ 25, 24 * 60, 3 * 24 * 60 ]
     static let DefaultEaseFactor: Double = 2.5
 }
 

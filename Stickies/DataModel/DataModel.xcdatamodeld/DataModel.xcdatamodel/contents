@@ -14,6 +14,11 @@
         <attribute name="usageExample" optional="YES" attributeType="String"/>
         <attribute name="word" optional="YES" attributeType="String"/>
         <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="cards" inverseEntity="Deck"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CardEntry" representedClassName="CardEntry" syncable="YES" codeGenerationType="class">
         <attribute name="cardId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -28,5 +33,10 @@
         <attribute name="translationLanguage" optional="YES" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Card" inverseName="deck" inverseEntity="Card"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>
