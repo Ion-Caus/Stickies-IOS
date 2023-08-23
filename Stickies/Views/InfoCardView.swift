@@ -126,9 +126,7 @@ struct InfoCardView : View {
             Section(header: Text("Preview")) {
                 VStack(alignment: .center) {
                     CardView(card: card)
-                    .aspectRatio(3/4, contentMode: .fill)
-                    .frame(width: 250, height: 350)
-                    .padding()
+                    .frame(height: 350)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }

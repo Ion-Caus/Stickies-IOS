@@ -12,9 +12,9 @@ class SpacedRepetitionScheduler : Scheduler {
     //MARK: update algorithm and use these
     let intervalModifier = 1
     let hardInterval = 1.2
-    let easyBonus = 1.3
     
     private let easeFactor: Double
+    private let easyBonus: Double
     private let learningSteps: [Int]
     
     private let cards: [Card]
@@ -33,14 +33,16 @@ class SpacedRepetitionScheduler : Scheduler {
         let easeFactor = UserDefaults.standard.double(forKey: AppStorageKeys.SpacedRepetitionEaseFactor)
         self.easeFactor = easeFactor != Double.zero ? easeFactor : Constants.DefaultEaseFactor
         
+        let easyBonus = UserDefaults.standard.double(forKey: AppStorageKeys.SpacedRepetitionEasyBonus)
+        self.easyBonus = easyBonus != Double.zero ? easyBonus : Constants.DefaultEasyBonus
+        
         self.learningSteps = UserDefaults.standard.array(forKey: AppStorageKeys.SpeechUtteranceRate) as? [Int]
                             ?? Constants.DefaultLearningSteps
     
         fillNewQueue()
         fillLearningQueue()
         fillReviewQueue()
-        
-          }
+    }
     
     private func fillNewQueue() {
         self.newQueue = cards
@@ -148,6 +150,10 @@ class SpacedRepetitionScheduler : Scheduler {
             else {
                 timeInterval = getLearningStep(at: index+1)
             }
+        case .Easy:
+            // graduated
+            card.queueType = .Review
+            timeInterval = getLearningStep(at: learningSteps.count - 1)
         }
         
         card.interval = Int64(timeInterval)
@@ -163,11 +169,13 @@ class SpacedRepetitionScheduler : Scheduler {
             card.queueType = .Learning
             timeInterval = getLearningStep(at: 0)
         case .Good:
-           
             timeInterval = timeInterval * easeFactor
+        case .Easy:
+            timeInterval = timeInterval * easeFactor * easyBonus
+            print(timeInterval)
+            print(easeFactor)
+            print(easyBonus)
         }
-        print("\(card.interval) * \(easeFactor)")
-        print(timeInterval)
         
         card.interval = Int64(timeInterval)
         card.due = Date.now.addingTimeInterval(timeInterval * 60)

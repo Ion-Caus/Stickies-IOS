@@ -127,7 +127,7 @@ struct DeckListView : View {
             let jsonData = try Data(contentsOf: url)
             let deckDto = try JSONDecoder().decode(DeckDto.self, from: jsonData)
 
-            if let deck = decks.first(where: { $0.id == deckDto.id }) {
+            if decks.contains(where: { $0.id == deckDto.id }) {
                 presentAlert = true
                 return
             }

@@ -26,7 +26,7 @@ struct HearPronunciationButton : View {
             Button {
                 synthesiser.say(text, in: language)
             } label : {
-                Image(systemName: "ear")
+                Image(systemName: "speaker.wave.2.fill")
             }
             .buttonStyle(BorderlessButtonStyle())
         }

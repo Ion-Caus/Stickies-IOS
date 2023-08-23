@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlayView: View {
+struct PlayView_Old: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) private var context
@@ -34,7 +34,7 @@ struct PlayView: View {
                 VStack {
                     navigationBar
                     
-                    CardView(card: viewModel.card)
+                    CardView_Old(card: viewModel.card)
                         .aspectRatio(CardConstants.aspectRatio, contentMode: .fit)
                         .frame(width: geometry.size.width * CardConstants.widthFromScreen,
                                height: geometry.size.height * CardConstants.heightFromScreen)
@@ -45,31 +45,20 @@ struct PlayView: View {
                             axis: (x: 0, y: 1, z: 0.01)
                         )
                     
-                    HStack(alignment: .center, spacing: 40) {
-                        goodButton
-                        //okButton
-                        badButton
+                    ZStack(alignment: .bottom) {
+                        HStack(spacing: 40) {
+                            againButton
+                            goodButton
+                        }
+                       
+                        HStack {
+                            Spacer()
+                            easyButton
+                        }
                     }
-                    .font(Font.system(size: 50))
                     .padding(30)
                     
                     Spacer()
-              
-                    VStack {
-                        if let card = viewModel.card {
-                            //MARK: remove after
-                            
-                            Text(card.queueType.rawValue)
-                            Text(TimeInterval(card.interval * 60).formatted())
-                            
-                            if let due:Date = card.due_ {
-                                Text(due.formatted(date: .abbreviated, time: .shortened))
-                            }
-                          
-                        }
-                        
-                    }
-                    
                 }
                 
             }
@@ -93,11 +82,32 @@ struct PlayView: View {
             }
             
             Spacer()
-            
             HearPronunciationButton(text: viewModel.card?.word, language: language)
         }
         .font(.title)
         .padding([.top, .horizontal])
+    }
+    
+    var easyButton: some View  {
+        Button {
+            withAnimation {
+                generator.notificationOccurred(.warning)
+                viewModel.updateCurrentCard(review: .Easy)
+                nextCard()
+            }
+        }
+        label: {
+            VStack {
+                Image(systemName: "arrow.right.to.line")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 25))
+                    .padding(.bottom, 5)
+                
+                Text("Easy")
+                    .font(.system(size: 10))
+            }
+            
+        }
     }
     
     var goodButton: some View  {
@@ -109,25 +119,19 @@ struct PlayView: View {
             }
         }
         label: {
-            Image(systemName: "hand.thumbsup")
-                .foregroundColor(.green)
+            VStack {
+                Image(systemName: "hand.thumbsup.fill")
+                    .foregroundColor(.green)
+                    .font(.system(size: 45))
+                    .padding(.bottom, 5)
+                
+                Text("Good")
+                    .font(.system(size: 10))
+            }
         }
     }
     
-//    var okButton: some View  {
-//        Button {
-//            withAnimation {
-//                generator.notificationOccurred(.warning)
-//                viewModel.updateCurrentCard(review: +1)
-//                nextCard()
-//            }
-//        }
-//        label: {
-//            Image(systemName: "circle.bottomhalf.fill")
-//        }
-//    }
-    
-    var badButton: some View  {
+    var againButton: some View  {
         Button {
             withAnimation {
                 generator.notificationOccurred(.error)
@@ -136,10 +140,38 @@ struct PlayView: View {
             }
         }
         label: {
-            Image(systemName: "hand.thumbsdown")
-                .foregroundColor(.red)
+            VStack {
+                Image(systemName: "hand.thumbsdown.fill")
+                    .foregroundColor(.red)
+                    .font(.system(size: 45))
+                    .padding(.bottom, 5)
+                
+                Text("Again")
+                    .font(.system(size: 10))
+            }
         }
     }
+    
+//    var againButton: some View  {
+//        Button {
+//            withAnimation {
+//                generator.notificationOccurred(.warning)
+////                viewModel.updateCurrentCard(review: +1)
+////                nextCard()
+//            }
+//        }
+//        label: {
+//            VStack {
+//                Image(systemName: "arrow.uturn.left")
+//                    .foregroundColor(.yellow)
+//                    .font(.system(size: 25))
+//                    .padding(.bottom, 5)
+//
+//                Text("Again")
+//                    .font(.system(size: 10))
+//            }
+//        }
+//    }
     
     func nextCard() {
         if (viewModel.card == nil) {
@@ -154,11 +186,11 @@ struct PlayView: View {
 }
 
 
-struct PlayView_Previews: PreviewProvider {
+struct PlayView_Old_Previews: PreviewProvider {
     static var context = DataController.shared.context
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, language: Constants.DefaultLanguage, context: context)
         let card = Card(word: "Test", type: WordType.Noun, isFavourite: true, synonyms: ["?", "??"], deck: deck, context: context)
-        PlayView(cards: [card], language: Constants.DefaultLanguage, shuffleMode: .random)
+        PlayView_Old(cards: [card], language: Constants.DefaultLanguage, shuffleMode: .random)
     }
 }

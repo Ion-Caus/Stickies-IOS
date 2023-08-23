@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SchedulerSettingsView: View {
     @AppStorage(AppStorageKeys.SpacedRepetitionEaseFactor) var easeFactor: Double = Constants.DefaultEaseFactor
+    @AppStorage(AppStorageKeys.SpacedRepetitionEasyBonus) var easyBonus: Double = Constants.DefaultEasyBonus
     //@AppStorage(AppStorageKeys.SpacedRepetitionLearningSteps) var learningSteps: [Int] = Constants.DefaultLearningSteps
     
     var body: some View {
@@ -23,7 +24,7 @@ struct SchedulerSettingsView: View {
             } header: {
                 Text("Learning steps")
             } footer: {
-                Text("Due intervals for when the card in the learning phase")
+                Text("Due intervals for when the card is in the learning phase")
             }
                
             Section(header: Text("Advance")) {
@@ -33,6 +34,15 @@ struct SchedulerSettingsView: View {
                     
                     Text("\(easeFactor * 100, specifier: "%.0f")%")
                     Stepper("Rate", value: $easeFactor, in: 1.0...4.0, step: 0.5)
+                        .labelsHidden()
+                }
+                
+                HStack {
+                    Text("Easy bonus")
+                    Spacer()
+                    
+                    Text("\(easyBonus * 100, specifier: "%.0f")%")
+                    Stepper("Rate", value: $easyBonus, in: 2.0...6.0, step: 0.5)
                         .labelsHidden()
                 }
             }

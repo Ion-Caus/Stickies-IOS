@@ -96,9 +96,7 @@ struct StickiesView: View {
         } label: {
             HStack {
                 Label("Overview", systemImage: "chart.bar.xaxis")
-                
                 Spacer()
-                //Image(systemName: "chevron.right")
             }
             .foregroundColor(.red)
             .padding(.bottom, 5)

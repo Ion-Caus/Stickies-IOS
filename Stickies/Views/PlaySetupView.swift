@@ -55,7 +55,7 @@ struct PlaySetupView: View {
             if selectedDecks.count > 0 {
                 if let cards = try? DataController.shared.context.fetch(Card.fetchBy(decks: Array(selectedDecks), limit: 50)) {
 
-                    let playView = PlayView(cards: cards, language: selectedDecks.first?.language, shuffleMode: shuffleMode)
+                    let playView = PlayView(cards: cards, shuffleMode: shuffleMode)
                     NavigationLink(destination: playView) {
                         Image(systemName: "play.circle")
                             .font(.system(size: 65))
@@ -103,7 +103,7 @@ struct PlaySetupView: View {
     
     @ViewBuilder
     func navigationLinkToPlay(deck: Deck) -> some View {
-        NavigationLink(destination: PlayView(cards: deck.cardList, language: deck.language, shuffleMode: shuffleMode)) {
+        NavigationLink(destination: PlayView(cards: deck.cardList, shuffleMode: shuffleMode)) {
             HStack {
                 createLabel(deck: deck)
             }

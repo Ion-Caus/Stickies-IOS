@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardView : View  {
+struct CardView_Old : View  {
     let card: Card?
     
     @State var frontDegree: Double = 0.0

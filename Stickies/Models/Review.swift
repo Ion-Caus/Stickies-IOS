@@ -8,5 +8,5 @@
 import Foundation
 
 enum Review: String, CaseIterable {
-    case Again, Good
+    case Again, Good, Easy
 }

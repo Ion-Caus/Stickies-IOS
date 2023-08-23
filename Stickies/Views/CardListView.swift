@@ -53,7 +53,7 @@ struct CardListView: View {
                     items: Array(cards),
                     aspectRation: CardConstants.aspectRatio)
                 { card in
-                    CardView(card: card)
+                    CardView_Old(card: card)
 //                    CardView(card: card) {
 //                        Group {
 //                            Button {
@@ -115,7 +115,7 @@ struct CardListView: View {
     }
     
     var playButton: some View {
-        NavigationLink(destination: PlayView(cards: Array(cards), language: deck.language)) {
+        NavigationLink(destination: PlayView_Old(cards: Array(cards), language: deck.language)) {
             Image(systemName: "play.circle")
         }
         .font(Font.system(size: 65))

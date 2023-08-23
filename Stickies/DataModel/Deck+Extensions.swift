@@ -19,6 +19,10 @@ extension Deck {
         }
     }
     
+    var deckType: DeckType? {
+        DeckType(rawValue: type ?? "")
+    }
+    
     convenience init(title: String, type: DeckType,
                      language: String,
                      translationLanguage: String? = nil,
