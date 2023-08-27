@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlayView: View {
     @Environment(\.presentationMode) var presentationMode
-    @Environment(\.managedObjectContext) private var context
     
     @StateObject private var viewModel: PlayViewModel
     

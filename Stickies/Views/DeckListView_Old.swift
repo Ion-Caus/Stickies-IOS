@@ -1,5 +1,5 @@
 //
-//  DeckListView.swift
+//  DeckListView_Old.swift
 //  Stickies
 //
 //  Created by Ion Caus on 16.07.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DeckListView : View {
+struct DeckListView_Old : View {
     
     @Environment(\.managedObjectContext) private var context
     
@@ -142,6 +142,6 @@ struct DeckListView : View {
 
 struct DeckListView_Previews : PreviewProvider {
     static var previews: some View {
-        DeckListView()
+        DeckListView_Old()
     }
 }

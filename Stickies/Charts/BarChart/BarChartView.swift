@@ -92,6 +92,7 @@ public struct BarChart: View {
                     Text(element.xLabel)
                         .font(.system(size: 10))
                         .lineLimit(1)
+                        .foregroundColor(Color.darkGray)
                 }
             }
         }

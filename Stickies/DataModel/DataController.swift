@@ -19,7 +19,7 @@ class DataController {
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.loadPersistentStores { description, error in
             let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            print(urls[urls.count-1] as URL)
+            print(urls[urls.count - 1] as URL)
             
             if let error = error {
                 print("Core Data failed to load \(error.localizedDescription)")

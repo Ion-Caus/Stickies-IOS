@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct StickiesView: View {
+struct StickiesView_Old: View {
     
     let daysBack = 7
     
@@ -57,7 +57,7 @@ struct StickiesView: View {
     }
     
     var deckListPreviewGroup: some View {
-        GroupBoxLink(destination: DeckListView()) {
+        GroupBoxLink(destination: DeckListView_Old()) {
             
         } label: {
             HStack {
@@ -106,8 +106,8 @@ struct StickiesView: View {
     }
 }
 
-struct StickiesView_Previews: PreviewProvider {
+struct StickiesView_Old_Previews: PreviewProvider {
     static var previews: some View {
-        StickiesView()
+        StickiesView_Old()
     }
 }

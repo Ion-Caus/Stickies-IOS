@@ -77,7 +77,8 @@ struct CardsPlayedBarChart : View {
                 Divider()
                     .padding(.trailing, paddingTrailing)
                 Text("\(maxValue, specifier: "%.0f")")
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color.darkGray)
+                    .font(.system(size: 10))
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             
@@ -87,7 +88,8 @@ struct CardsPlayedBarChart : View {
                 Divider()
                     .padding(.trailing, paddingTrailing)
                 Text("\((maxValue - minValue) / 2, specifier: "%.0f")")
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color.darkGray)
+                    .font(.system(size: 10))
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             
@@ -97,12 +99,13 @@ struct CardsPlayedBarChart : View {
                 Divider()
                     .padding(.trailing, paddingTrailing)
                 Text("\(minValue, specifier: "%.0f")")
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color.darkGray)
+                    .font(.system(size: 10))
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
-        .padding(.bottom, 10)
-        .padding(.top, 5)
+        .padding(.bottom, 15)
+        .padding(.top, 10)
     }
     
     func createDataElements(dates: [Date]) -> [BarChart.DataSet.DataElement] {
@@ -113,7 +116,7 @@ struct CardsPlayedBarChart : View {
         
         return dates.compactMap { key in
             let value = Double(grouped[key]?.count ?? 0)
-            let color = value < 5 ? Color.gray : Color.red
+            let color = value < 5 ? Color.darkGray : Color.accentRed
             
             return BarChart.DataSet.DataElement(
                 date: key,

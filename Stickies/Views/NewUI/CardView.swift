@@ -54,13 +54,13 @@ struct CardView: View {
             }
            
             VStack(alignment: .center, spacing: 10) {
-                Text(card?.word ?? "[missing word]")
+                Text(card?.word ?? "[word]")
                     .font(.largeTitle)
                     .bold()
                     .multilineTextAlignment(.center)
                     .padding(.top)
                 
-                Text(card?.type ?? "[missing type]")
+                Text(card?.type ?? "[type]")
                     .font(.subheadline)
             }
             .foregroundColor(.black)
