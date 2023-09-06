@@ -40,7 +40,7 @@ struct StickiesView_Old: View {
     }
     
     var searchCardsGroup: some View {
-        GroupBoxLink(destination: SearchCardsView()) {
+        GroupBoxLink(destination: SearchCardsView_Old()) {
             
         } label: {
             HStack {

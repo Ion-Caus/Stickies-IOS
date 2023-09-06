@@ -23,8 +23,8 @@ struct DeckItemView: View {
                     Text(deck.type ?? "[type]")
                         .bold()
                         .font(.caption2)
-                        .padding()
-                        .background(Color.white)
+                        .padding(10)
+                        .background(Color.accentWhite)
                         .clipShape(Capsule())
                         .foregroundColor(.black)
                         .shadow(radius: 10, x: 0, y: 0)
@@ -66,9 +66,7 @@ struct DeckItemView_Previews: PreviewProvider {
  
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
             DeckItemView(deck: deck1)
-            
             DeckItemView(deck: deck2)
-            
             Spacer()
         }
         .padding()

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchCardsView: View {
+struct SearchCardsView_Old: View {
     
     // return empty list
     @FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "word contains[C] %@", ""), animation: .easeInOut)
@@ -21,7 +21,7 @@ struct SearchCardsView: View {
     var body: some View {
         VStack {
             
-            SearchBar(searchText: $searchText)
+            SearchBar("Search", searchText: $searchText)
                 .onChange(of: searchText) { newValue in
                     cards.nsPredicate = NSPredicate(format: "word contains[C] %@ OR searchableText contains[C] %@", newValue, newValue)
                 }
@@ -30,7 +30,7 @@ struct SearchCardsView: View {
             if !searchText.isEmpty {
                 List {
                     ForEach(cards, id: \.id) { card in
-                        NavigationLink(destination: InfoCardView(card: card))
+                        NavigationLink(destination: InfoCardView_Old(card: card))
                         {
                             VStack {
                                 HStack {
@@ -75,8 +75,8 @@ struct SearchCardsView: View {
     }
 }
 
-struct SearchCardsView_Previews: PreviewProvider {
+struct SearchCardsView_Old_Previews: PreviewProvider {
     static var previews: some View {
-        SearchCardsView()
+        SearchCardsView_Old()
     }
 }

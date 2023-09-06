@@ -25,8 +25,8 @@ struct SecretTextField: View {
             Group {
                 if isSecure {
                     SecureField(title, text: $text)
-                    
-                } else {
+                }
+                else {
                     TextField(title, text: $text)
                 }
             }

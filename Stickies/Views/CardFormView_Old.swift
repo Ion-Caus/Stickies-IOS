@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardFormView : View {
+struct CardFormView_Old : View {
     @Binding var isPresented: Bool
     
     @Environment(\.managedObjectContext) var context
@@ -229,12 +229,12 @@ struct CardFormView : View {
     
 }
 
-struct CardFormView_Previews: PreviewProvider {
+struct CardFormView_Old_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, language: Constants.DefaultLanguage, context: context)
         
-        CardFormView(isPresented: .constant(true), deck: deck)
+        CardFormView_Old(isPresented: .constant(true), deck: deck)
     }
 }

@@ -36,6 +36,7 @@ extension Card {
         
         set {
             synonyms = newValue
+            searchableText = newValue.joined(separator: "\n")
         }
     }
     
@@ -53,7 +54,7 @@ extension Card {
         self.deck = deck
         self.searchableText = synonyms.joined(separator: "\n")
         
-        self.due_ = Date()
+        self.due_ = Date.now
         self.queueType_ = QueueType.New.rawValue
         self.interval = 0
     }

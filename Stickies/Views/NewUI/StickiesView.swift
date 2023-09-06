@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct StickiesView: View {
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     
     @State private var isNavigationActive = false
     @State private var navigateTo: AnyView?
     
     @FetchRequest(
-        fetchRequest: Deck.fetch(limit: 6),
+        fetchRequest: Deck.fetch(limit: 2),
         animation: .easeInOut)
     var decks: FetchedResults<Deck>
     
@@ -28,7 +28,7 @@ struct StickiesView: View {
                 header
                     .padding(.horizontal)
                 
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         Text("Progress over the last week.")
                             .font(.title)

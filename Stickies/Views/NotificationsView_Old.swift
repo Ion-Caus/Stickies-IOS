@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NotificationsView: View {
+struct NotificationsView_Old: View {
     
     @StateObject var notifier = NotificationHandler()
     
@@ -24,6 +24,10 @@ struct NotificationsView: View {
     
     let notificationTitle = "⚠️It's learning time.⚠️"
     let notificationBody = "Improve your mind now."
+    
+    init() {
+        notifier.askPermission()
+    }
     
     var body: some View {
         VStack {
@@ -118,11 +122,11 @@ struct NotificationsView: View {
     }
 }
 
-struct NotificationsView_Previews: PreviewProvider {
+struct NotificationsView_Old_Previews: PreviewProvider {
     static var previews: some View {
         Group {
            
-            NotificationsView()
+            NotificationsView_Old()
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardListView: View {
+struct CardListView_Old: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) private var context
@@ -91,7 +91,7 @@ struct CardListView: View {
             .padding(.bottom)
             .navigationBarHidden(true)
             .sheet(isPresented: $showingAdding) {
-                CardFormView(isPresented: $showingAdding, deck: deck)
+                CardFormView_Old(isPresented: $showingAdding, deck: deck)
             }
         }
     }
@@ -123,11 +123,11 @@ struct CardListView: View {
 
 }
 
-struct CardListView_Previews: PreviewProvider {
+struct CardListView_Old_Previews: PreviewProvider {
     static var context = DataController.shared.context
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, language: Constants.DefaultLanguage, context: context)
-        CardListView(deck: deck)
+        CardListView_Old(deck: deck)
             .previewInterfaceOrientation(.portrait)
     }
 }

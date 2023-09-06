@@ -15,18 +15,32 @@ struct DeckGridView<MenuItems>: View where MenuItems: View {
     @ViewBuilder let contextMenu: (Deck) -> MenuItems
     
     var body: some View {
+        let groups = Dictionary(
+            grouping: Array(decks),
+            by: { $0.displayLanguages() })
+        
+        let keys = groups.keys.map {"\($0)"}.sorted()
+        
         ScrollView(showsIndicators: false) {
             VStack {
-                LazyVGrid(columns: [ GridItem(.flexible()), GridItem(.flexible()) ]) {
-                    ForEach(decks, id: \.id) { deck in
-                        NavigationLink(destination: SimpleCardListView(deck: deck)) {
-                            DeckItemView(deck: deck)
-                                .contextMenu {
-                                    contextMenu(deck)
+                ForEach(keys, id: \.self) { key in
+                    Section {
+                        LazyVGrid(columns: [ GridItem(.flexible()), GridItem(.flexible()) ]) {
+                            
+                            ForEach(groups[key] ?? [], id: \.id) { deck in
+                                NavigationLink(destination: CardsView(deck: deck)) {
+                                    DeckItemView(deck: deck)
+                                        .contextMenu {
+                                            contextMenu(deck)
+                                        }
                                 }
+                            }
                         }
                     }
+                    .padding(.vertical)
                 }
+                
+                
             }
         }
     }

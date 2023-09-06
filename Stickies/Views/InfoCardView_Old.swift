@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InfoCardView : View {
+struct InfoCardView_Old : View {
     
     @StateObject var card: Card
     
@@ -137,13 +137,13 @@ struct InfoCardView : View {
     }
 }
 
-struct InfoCardView_Previews: PreviewProvider {
+struct InfoCardView_Old_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
         let deck = Deck(title: "Preview Deck", type: DeckType.Synonym, language: Constants.DefaultLanguage, context: context)
         let card = Card(word: "word", type: WordType.Phrase, isFavourite: true, synonyms: [], usageExample: "This is a text.", deck: deck, context: context)
         
-        InfoCardView(card: card)
+        InfoCardView_Old(card: card)
     }
 }

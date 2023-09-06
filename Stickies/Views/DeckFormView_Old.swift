@@ -1,5 +1,5 @@
 //
-//  DeckFormView.swift
+//  DeckFormView_Old.swift
 //  Stickies
 //
 //  Created by Ion Caus on 16.07.2022.
@@ -8,7 +8,7 @@
 import SwiftUI
 import AVFoundation
 
-struct DeckFormView: View {
+struct DeckFormView_Old: View {
     @Binding var isPresented: Bool
     @Environment(\.managedObjectContext) var context
     
@@ -47,7 +47,7 @@ struct DeckFormView: View {
                 Section {
                     TextField("Title", text: $title)
                     
-                    Picker("Type", selection: $type) {
+                    Picker("Type", selection: $type.animation(.spring())) {
                         ForEach(DeckType.allCases, id: \.self) { value in
                             Text(value.rawValue).tag(value)
                         }
@@ -76,6 +76,9 @@ struct DeckFormView: View {
                             .padding(.horizontal)
                         }
                     }
+                    
+             
+                    
                 }
             }
             .navigationTitle(deck == nil ? "New Deck" : "Edit Deck")
@@ -115,6 +118,6 @@ struct DeckFormView: View {
 
 struct AddDeckView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckFormView(isPresented: .constant(true))
+        DeckFormView_Old(isPresented: .constant(true))
     }
 }

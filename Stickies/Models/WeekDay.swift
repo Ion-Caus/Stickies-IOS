@@ -10,5 +10,5 @@ import Foundation
 struct WeekDay: Identifiable {
     let name: String
     let id: Int
-    var isOn: Bool = true
+    var isOn: Bool = false
 }

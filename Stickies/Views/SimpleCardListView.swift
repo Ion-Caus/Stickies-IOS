@@ -17,9 +17,6 @@ struct SimpleCardListView: View {
     @State private var showingForm = false
     @State private var searchText = ""
     
-    @State private var presentShareSheet: Bool = false
-    @State private var shareURL: URL = .init(string: "https://www.apple.com/")!
-    
     let deck: Deck
     @State private var selectedCard: Card?
     
@@ -33,7 +30,7 @@ struct SimpleCardListView: View {
         ZStack {
             List {
                 ForEach(cards, id: \.id) { card in
-                    NavigationLink(destination: InfoCardView(card: card))
+                    NavigationLink(destination: InfoCardView_Old(card: card))
                     {
                         HStack {
                             Text(card.word ?? "NO TITLE")
@@ -101,21 +98,8 @@ struct SimpleCardListView: View {
         }
         .navigationTitle(deck.title ?? "Stickies")
         .sheet(isPresented: $showingForm) {
-            CardFormView(isPresented: $showingForm, deck: deck, card: selectedCard)
+            CardFormView_Old(isPresented: $showingForm, deck: deck, card: selectedCard)
         }
-        .toolbar {
-            Button {
-                exportCoreData()
-            } label: {
-                Image(systemName: "square.and.arrow.up")
-            }
-        }
-        .sheet(isPresented: $presentShareSheet) {
-            deleteTempFile()
-        } content: {
-            CustomShareSheet(url: $shareURL, showing: $presentShareSheet)
-        }
-        
     }
     
     var addButton: some View {
@@ -125,41 +109,6 @@ struct SimpleCardListView: View {
         }
         label: {
             Image(systemName: "plus.circle")
-        }
-    }
-    
-    func deleteTempFile() {
-        DispatchQueue.global(qos: .utility).async { [shareURL = self.shareURL] in
-            try? FileManager.default.removeItem(at: shareURL)
-            print("Removed Temp JSON File")
-        }
-    
-       
-    }
-    
-    
-    func exportCoreData() {
-        do {
-            if let deckDto = DeckDto.fromEntity(deck) {
-                
-                let encoder = JSONEncoder()
-                encoder.outputFormatting = .prettyPrinted
-                
-                let jsonData = try encoder.encode(deckDto)
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    
-                    if let baseUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                        let pathURL = baseUrl.appendingPathComponent("Deck-\(deckDto.title)-\(Date.now.ISO8601Format()).json")
-                        
-                        try jsonString.write(to: pathURL, atomically: true, encoding: .utf8)
-                        
-                        shareURL = pathURL
-                        presentShareSheet.toggle()
-                    }
-                }
-            }
-        } catch {
-            //print(error)
         }
     }
 }

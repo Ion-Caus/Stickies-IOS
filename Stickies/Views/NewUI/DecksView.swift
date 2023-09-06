@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DecksView: View {
     @Environment(\.managedObjectContext) private var context
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
     
     @FetchRequest(
         fetchRequest: Deck.fetch(),
@@ -88,7 +88,7 @@ struct DecksView: View {
                 } label: {
                     Image(systemName: "square.and.arrow.down")
                         .foregroundStyle(.white)
-                        .padding()
+                        .padding(15)
                         .background(Color.darkGray)
                         .clipShape(Circle())
                 }

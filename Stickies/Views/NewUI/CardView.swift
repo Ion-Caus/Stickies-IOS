@@ -9,22 +9,21 @@ import SwiftUI
 import WrappingStack
 
 struct CardView: View {
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
 
-    @State var showMore: Bool = false
+    @State var extendCard: Bool = false
     
     let card: Card?
     
     var backgroundColor: Color {
-        colorScheme == .dark ? Color.white : Color.accentWhite
+        //colorScheme == .dark ? Color.white : Color.accentWhite
+        Color.accentWhite
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            
             if card == nil {
                 empty
-                   
             }
             else {
                 upperPart
@@ -41,7 +40,7 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: CardConstants.cornerRadius)
                 .fill(backgroundColor)
             
-            VStack{
+            VStack {
                 HStack {
                     
                     Spacer()
@@ -66,6 +65,7 @@ struct CardView: View {
             .foregroundColor(.black)
             .opacity(0.8)
             .padding()
+            .padding(.top, 10)
         }
         .frame(maxHeight: 200)
     }
@@ -101,12 +101,12 @@ struct CardView: View {
                         }
                     }
                 }
-                .frame(maxHeight: showMore ? .infinity : 0)
+                .frame(maxHeight: extendCard ? .infinity : 0)
                 
                 Image(systemName: "chevron.compact.down")
                     .font(.title)
                     .foregroundColor(.gray)
-                    .rotation3DEffect(.degrees(showMore ? 180 : 0), axis: (x: 1, y: 0, z: 0))
+                    .rotation3DEffect(.degrees(extendCard ? 180 : 0), axis: (x: 1, y: 0, z: 0))
                     .padding(5)
             }
             .padding([.horizontal, .top])
@@ -115,7 +115,7 @@ struct CardView: View {
         .fixedSize(horizontal: false, vertical: true)
         .onTapGesture {
             withAnimation(.spring()) {
-                showMore.toggle()
+                extendCard.toggle()
             }
         }
     }
@@ -159,5 +159,6 @@ struct CardView_Previews: PreviewProvider {
         let card = Card(word: "Test", type: WordType.Noun, isFavourite: true, synonyms: ["?", "??"], deck: deck, context: context)
         
         CardView(card: card)
+            .padding()
     }
 }

@@ -60,7 +60,7 @@ struct DeckListView_Old : View {
         }
         .navigationTitle("Decks")
         .sheet(isPresented: $showingForm) {
-            DeckFormView(isPresented: $showingForm, deck: selectedDeck)
+            DeckFormView_Old(isPresented: $showingForm, deck: selectedDeck)
         }
         .fileImporter(isPresented: $presentFilePicker, allowedContentTypes: [.json]) { result in
             switch result {

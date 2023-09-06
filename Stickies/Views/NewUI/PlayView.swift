@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
     
     @StateObject private var viewModel: PlayViewModel
     
