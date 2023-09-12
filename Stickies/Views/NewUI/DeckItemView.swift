@@ -11,6 +11,8 @@ struct DeckItemView: View {
     
     @StateObject var deck: Deck
     
+    let showDueBadge: Bool
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: CardConstants.cornerRadius)
@@ -48,6 +50,11 @@ struct DeckItemView: View {
                 Text(deck.title ?? "[title]")
                     .font(.title2)
                     .bold()
+                    .overlay {
+                        if showDueBadge {
+                            Badge(count: deck.cardList.filter { $0.due <= Date.now }.count)
+                        }
+                    }
             }
             .padding()
         }
@@ -57,16 +64,20 @@ struct DeckItemView: View {
     }
 }
 
+
 struct DeckItemView_Previews: PreviewProvider {
     static var context = DataController.shared.context
     
     static var previews: some View {
         let deck1 = Deck(title: "Preview Deck", type: DeckType.Synonym, language: Constants.DefaultLanguage, context: context)
         let deck2 = Deck(title: "Preview Deck Title", type: DeckType.Translation, language: Constants.DefaultLanguage, translationLanguage: "da-DK", context: context)
+        
+        let card = Card(word: "Test", type: WordType.Noun, isFavourite: true, synonyms: ["?", "??"], deck: deck1, context: context)
+        card.due = Calendar.current.date(byAdding: .day, value: -1, to: Date.now)!
  
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
-            DeckItemView(deck: deck1)
-            DeckItemView(deck: deck2)
+        return LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+            DeckItemView(deck: deck1, showDueBadge: true)
+            DeckItemView(deck: deck2, showDueBadge: true)
             Spacer()
         }
         .padding()

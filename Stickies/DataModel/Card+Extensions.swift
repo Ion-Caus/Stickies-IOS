@@ -40,6 +40,10 @@ extension Card {
         }
     }
     
+    var listOfEntries: [CardEntry] {
+        Array(entries as? Set<CardEntry> ?? [])
+    }
+    
     convenience init(word: String, type: WordType, isFavourite: Bool, synonyms: [String], usageExample: String? = nil, deck: Deck, context: NSManagedObjectContext) {
         self.init(context: context)
         self.id = UUID()

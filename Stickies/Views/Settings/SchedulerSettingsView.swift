@@ -8,46 +8,117 @@
 import SwiftUI
 
 struct SchedulerSettingsView: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.presentationMode) private var presentationMode
+    
     @AppStorage(AppStorageKeys.SpacedRepetitionEaseFactor) var easeFactor: Double = Constants.DefaultEaseFactor
     @AppStorage(AppStorageKeys.SpacedRepetitionEasyBonus) var easyBonus: Double = Constants.DefaultEasyBonus
     //@AppStorage(AppStorageKeys.SpacedRepetitionLearningSteps) var learningSteps: [Int] = Constants.DefaultLearningSteps
     
+    var backgroundColor: Color {
+        colorScheme == .dark ? .darkGray : .accentWhite
+    }
+    
+    var strokeColor: Color {
+        colorScheme == .dark ? .accentWhite : .darkGray
+    }
+    
     var body: some View {
-        Form {
+        VStack(spacing: 20) {
+            header
             
-            Section {
-                Text(Constants.DefaultLearningSteps
-                    .map{String(TimeInterval($0 * 60).formatted())}
-                    .joined(separator: ", ")
-                )
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Learning steps")
+                        .font(.caption)
+                        .bold()
+                        .padding(.horizontal)
+                    
+                    let learningSteps = Constants.DefaultLearningSteps
+                        .map { TimeInterval($0 * 60).formatted() }
+                        .joined(separator: ", ")
+                    HStack {
+                        Text("\(learningSteps)")
+                            .font(.headline)
+                        
+                        Spacer()
+                    }
+                    .modifier(CapsuleBackground(textColor: strokeColor,
+                                                backgroundColor: backgroundColor,
+                                                strokeColor: strokeColor))
+                    
+                    Text("Due intervals for when the card is in the learning phase")
+                        .font(.caption2)
+                        .bold()
+                        .padding(.horizontal)
+                }
                 
-            } header: {
-                Text("Learning steps")
-            } footer: {
-                Text("Due intervals for when the card is in the learning phase")
-            }
-               
-            Section(header: Text("Advance")) {
-                HStack {
+                VStack(alignment: .leading, spacing: 0) {
                     Text("Ease factor")
-                    Spacer()
+                        .font(.caption)
+                        .bold()
+                        .padding(.horizontal)
                     
-                    Text("\(easeFactor * 100, specifier: "%.0f")%")
-                    Stepper("Rate", value: $easeFactor, in: 1.0...4.0, step: 0.5)
-                        .labelsHidden()
+                    HStack {
+                        Text("\(easeFactor * 100, specifier: "%.0f")%")
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        Stepper("Easy factor", value: $easeFactor, in: 1.0...4.0, step: 0.5)
+                            .labelsHidden()
+                    }
+                    .modifier(CapsuleBackground(textColor: strokeColor,
+                                                backgroundColor: backgroundColor,
+                                                strokeColor: strokeColor))
                 }
                 
-                HStack {
+                VStack(alignment: .leading, spacing: 0) {
                     Text("Easy bonus")
-                    Spacer()
+                        .font(.caption)
+                        .bold()
+                        .padding(.horizontal)
                     
-                    Text("\(easyBonus * 100, specifier: "%.0f")%")
-                    Stepper("Rate", value: $easyBonus, in: 2.0...6.0, step: 0.5)
-                        .labelsHidden()
+                    HStack {
+                        Text("\(easyBonus * 100, specifier: "%.0f")%")
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        Stepper("Easy bonus", value: $easyBonus, in: 1.0...4.0, step: 0.5)
+                            .labelsHidden()
+                    }
+                    .modifier(CapsuleBackground(textColor: strokeColor,
+                                                backgroundColor: backgroundColor,
+                                                strokeColor: strokeColor))
                 }
+                
+                Spacer()
             }
         }
-        .navigationTitle("Scheduler")
+        .padding(.horizontal)
+        .navigationBarHidden(true)
+    }
+    
+    var header: some View {
+        ZStack(alignment: .center) {
+            HStack {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(Color.darkGray)
+                        .clipShape(Circle())
+                }
+                Spacer()
+            }
+            
+            Text("Scheduler")
+                .font(.title)
+                .bold()
+        }
     }
 }
 

@@ -27,7 +27,7 @@ struct StickiesView_Old: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SettingsView()) {
+                    NavigationLink(destination: SettingsView_Old()) {
                         Image(systemName: "gearshape")
                     }
                    

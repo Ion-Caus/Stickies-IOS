@@ -39,13 +39,11 @@ class PlayViewModel: ObservableObject {
         let now = Date()
         card.modifiedDate = now
         
-        if let cardId = card.id {
-            let _ = CardEntry(
-                cardId: cardId,
-                createdDate: now,
-                review: review,
-                context: DataController.shared.context)
-        }
+        let _ = CardEntry(
+            card: card,
+            createdDate: now,
+            review: review,
+            context: DataController.shared.context)
         
         DataController.shared.save()
     }

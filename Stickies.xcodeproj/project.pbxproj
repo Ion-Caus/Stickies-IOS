@@ -38,6 +38,10 @@
 		505EE0922A7B0B3F000C69B0 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505EE0912A7B0B3F000C69B0 /* TimeIntervalExtensions.swift */; };
 		505F55D52AA7D43F003B6989 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F55D42AA7D43F003B6989 /* NotificationsView.swift */; };
 		505F55D72AA91386003B6989 /* CapsuleDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F55D62AA91386003B6989 /* CapsuleDatePicker.swift */; };
+		505F55D92AA91F72003B6989 /* PrePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F55D82AA91F71003B6989 /* PrePlayView.swift */; };
+		505F55DB2AA921ED003B6989 /* DeckPlayGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F55DA2AA921ED003B6989 /* DeckPlayGridView.swift */; };
+		505F55DD2AA929D4003B6989 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F55DC2AA929D4003B6989 /* Badge.swift */; };
+		505F55DF2AAA73E6003B6989 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F55DE2AAA73E6003B6989 /* SettingsView.swift */; };
 		5060F52B285D187A004E9142 /* CardFormView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060F52A285D187A004E9142 /* CardFormView_Old.swift */; };
 		5064E4142A9B6793009C5637 /* DeckFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064E4132A9B6793009C5637 /* DeckFormView.swift */; };
 		5064E4162A9B70DE009C5637 /* CapsuleTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5064E4152A9B70DE009C5637 /* CapsuleTextFieldStyle.swift */; };
@@ -66,6 +70,7 @@
 		508BB43F29AD706200DA8EAD /* TextFieldWithDebounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB43E29AD706200DA8EAD /* TextFieldWithDebounce.swift */; };
 		508BB44129AD753500DA8EAD /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BB44029AD753500DA8EAD /* StringExtensions.swift */; };
 		508C77F928D129CC009031C7 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508C77F828D129CC009031C7 /* AudioManager.swift */; };
+		508D63BF2AAE572B008ADCE3 /* CapsuleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508D63BE2AAE572B008ADCE3 /* CapsuleBackground.swift */; };
 		508DC00729C3DB7800C657ED /* CardsPlayedLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DC00629C3DB7800C657ED /* CardsPlayedLineChart.swift */; };
 		508DC00929C3DE0E00C657ED /* CardEntry+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DC00829C3DE0E00C657ED /* CardEntry+Extensions.swift */; };
 		508DC00B29C4790700C657ED /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DC00A29C4790600C657ED /* DateExtensions.swift */; };
@@ -80,7 +85,7 @@
 		5094C5492A96C1C300133A14 /* StickiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094C5482A96C1C300133A14 /* StickiesView.swift */; };
 		5094C54A2A96D3C700133A14 /* DeckGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5090B5E429B7FBF7008FD635 /* DeckGridView.swift */; };
 		50A5399F28E0B46C002E06AA /* InfoCardView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5399E28E0B46C002E06AA /* InfoCardView_Old.swift */; };
-		50A6DFEC2A59DFC9005E21B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A6DFEB2A59DFC9005E21B4 /* SettingsView.swift */; };
+		50A6DFEC2A59DFC9005E21B4 /* SettingsView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A6DFEB2A59DFC9005E21B4 /* SettingsView_Old.swift */; };
 		50A6DFEE2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A6DFED2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift */; };
 		50ADCCEB29F1DCE300A924FD /* SearchCardsView_Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADCCEA29F1DCE300A924FD /* SearchCardsView_Old.swift */; };
 		50AECFB929E3593500B80AF0 /* ShuffleMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AECFB829E3593500B80AF0 /* ShuffleMode.swift */; };
@@ -152,6 +157,10 @@
 		505EE0912A7B0B3F000C69B0 /* TimeIntervalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensions.swift; sourceTree = "<group>"; };
 		505F55D42AA7D43F003B6989 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		505F55D62AA91386003B6989 /* CapsuleDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleDatePicker.swift; sourceTree = "<group>"; };
+		505F55D82AA91F71003B6989 /* PrePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrePlayView.swift; sourceTree = "<group>"; };
+		505F55DA2AA921ED003B6989 /* DeckPlayGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckPlayGridView.swift; sourceTree = "<group>"; };
+		505F55DC2AA929D4003B6989 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		505F55DE2AAA73E6003B6989 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5060F52A285D187A004E9142 /* CardFormView_Old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFormView_Old.swift; sourceTree = "<group>"; };
 		5064E4132A9B6793009C5637 /* DeckFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckFormView.swift; sourceTree = "<group>"; };
 		5064E4152A9B70DE009C5637 /* CapsuleTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleTextFieldStyle.swift; sourceTree = "<group>"; };
@@ -180,6 +189,7 @@
 		508BB43E29AD706200DA8EAD /* TextFieldWithDebounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithDebounce.swift; sourceTree = "<group>"; };
 		508BB44029AD753500DA8EAD /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		508C77F828D129CC009031C7 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		508D63BE2AAE572B008ADCE3 /* CapsuleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleBackground.swift; sourceTree = "<group>"; };
 		508DC00629C3DB7800C657ED /* CardsPlayedLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPlayedLineChart.swift; sourceTree = "<group>"; };
 		508DC00829C3DE0E00C657ED /* CardEntry+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardEntry+Extensions.swift"; sourceTree = "<group>"; };
 		508DC00A29C4790600C657ED /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -194,7 +204,7 @@
 		5090B5E429B7FBF7008FD635 /* DeckGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckGridView.swift; sourceTree = "<group>"; };
 		5094C5482A96C1C300133A14 /* StickiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickiesView.swift; sourceTree = "<group>"; };
 		50A5399E28E0B46C002E06AA /* InfoCardView_Old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardView_Old.swift; sourceTree = "<group>"; };
-		50A6DFEB2A59DFC9005E21B4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		50A6DFEB2A59DFC9005E21B4 /* SettingsView_Old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView_Old.swift; sourceTree = "<group>"; };
 		50A6DFED2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulIconLabelStyle.swift; sourceTree = "<group>"; };
 		50ADCCEA29F1DCE300A924FD /* SearchCardsView_Old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardsView_Old.swift; sourceTree = "<group>"; };
 		50AECFB829E3593500B80AF0 /* ShuffleMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleMode.swift; sourceTree = "<group>"; };
@@ -266,6 +276,8 @@
 				5064E4152A9B70DE009C5637 /* CapsuleTextFieldStyle.swift */,
 				50EBE12B2AA6743600EB01A0 /* CapsulePicker.swift */,
 				505F55D62AA91386003B6989 /* CapsuleDatePicker.swift */,
+				505F55DC2AA929D4003B6989 /* Badge.swift */,
+				508D63BE2AAE572B008ADCE3 /* CapsuleBackground.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -422,6 +434,8 @@
 			isa = PBXGroup;
 			children = (
 				5083D8F72A967C3000432612 /* PlayView.swift */,
+				505F55D82AA91F71003B6989 /* PrePlayView.swift */,
+				505F55DA2AA921ED003B6989 /* DeckPlayGridView.swift */,
 				5094C5482A96C1C300133A14 /* StickiesView.swift */,
 				500965A32A9AB66D000AB9AD /* DeckItemView.swift */,
 				5090B5E429B7FBF7008FD635 /* DeckGridView.swift */,
@@ -433,6 +447,8 @@
 				50EBE1292AA663B400EB01A0 /* CardFormView.swift */,
 				5003F5EB2AA762D200A82384 /* SearchCardsView.swift */,
 				505F55D42AA7D43F003B6989 /* NotificationsView.swift */,
+				505F55DE2AAA73E6003B6989 /* SettingsView.swift */,
+				508DC00C29C4D4BE00C657ED /* AnalyticsSettingsView.swift */,
 			);
 			path = NewUI;
 			sourceTree = "<group>";
@@ -461,9 +477,8 @@
 			children = (
 				508FFD3229AA6C3D0084B7D4 /* SpeechSettingsView.swift */,
 				508BB43829AD5B4E00DA8EAD /* TranslationSettingsView.swift */,
-				508DC00C29C4D4BE00C657ED /* AnalyticsSettingsView.swift */,
 				50FE96DA2A79B1E7002842CF /* SchedulerSettingsView.swift */,
-				50A6DFEB2A59DFC9005E21B4 /* SettingsView.swift */,
+				50A6DFEB2A59DFC9005E21B4 /* SettingsView_Old.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -614,7 +629,7 @@
 				505F55D72AA91386003B6989 /* CapsuleDatePicker.swift in Sources */,
 				50168BDD2883544900ABF8EF /* ViewExtensions.swift in Sources */,
 				50FA86292A8837A2006475F0 /* CardDto.swift in Sources */,
-				50A6DFEC2A59DFC9005E21B4 /* SettingsView.swift in Sources */,
+				50A6DFEC2A59DFC9005E21B4 /* SettingsView_Old.swift in Sources */,
 				508FFD2C29AA5AB70084B7D4 /* SpeechSynthesiser.swift in Sources */,
 				506F9ACC29E0256400197C3F /* LineChartParameters.swift in Sources */,
 				508DC00B29C4790700C657ED /* DateExtensions.swift in Sources */,
@@ -639,11 +654,13 @@
 				507B4A99292C0DAB00FC97AF /* VoiceRecorderManager.swift in Sources */,
 				508DC00D29C4D4BF00C657ED /* AnalyticsSettingsView.swift in Sources */,
 				50D97F5629AC160E00113CFF /* TranslateManager.swift in Sources */,
+				508D63BF2AAE572B008ADCE3 /* CapsuleBackground.swift in Sources */,
 				50A5399F28E0B46C002E06AA /* InfoCardView_Old.swift in Sources */,
 				50A6DFEE2A59E63C005E21B4 /* ColorfulIconLabelStyle.swift in Sources */,
 				5003F5EC2AA762D300A82384 /* SearchCardsView.swift in Sources */,
 				500EB5C32A958D49004D0954 /* ColorExtensions.swift in Sources */,
 				5064E4162A9B70DE009C5637 /* CapsuleTextFieldStyle.swift in Sources */,
+				505F55D92AA91F72003B6989 /* PrePlayView.swift in Sources */,
 				5014D54D2A536CE900253FD2 /* SearchBar.swift in Sources */,
 				50FEF01D284D594700FA8373 /* CardView_Old.swift in Sources */,
 				50168BDA28834ECE00ABF8EF /* DeckFormView_Old.swift in Sources */,
@@ -668,6 +685,8 @@
 				50FA862B2A8837AE006475F0 /* DeckDto.swift in Sources */,
 				505D848E2842D57900AEC836 /* StickiesApp.swift in Sources */,
 				500ED8E429059EFE00EB4D59 /* NotificationsView_Old.swift in Sources */,
+				505F55DF2AAA73E6003B6989 /* SettingsView.swift in Sources */,
+				505F55DB2AA921ED003B6989 /* DeckPlayGridView.swift in Sources */,
 				50FEF01E284D594700FA8373 /* StickiesView_Old.swift in Sources */,
 				50FE96DB2A79B1E7002842CF /* SchedulerSettingsView.swift in Sources */,
 				505EE0922A7B0B3F000C69B0 /* TimeIntervalExtensions.swift in Sources */,
@@ -691,6 +710,7 @@
 				500967A52A9AD284000AB9AD /* DecksView.swift in Sources */,
 				500EA52A287200E9005A2C83 /* CardListView_Old.swift in Sources */,
 				5060F52B285D187A004E9142 /* CardFormView_Old.swift in Sources */,
+				505F55DD2AA929D4003B6989 /* Badge.swift in Sources */,
 				50AECFBF29E3671900B80AF0 /* PlaySetupView.swift in Sources */,
 				507C2CF929B90AC6001A9DAC /* GroupBoxLink.swift in Sources */,
 				508C77F928D129CC009031C7 /* AudioManager.swift in Sources */,
@@ -846,7 +866,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Stickies/Preview Content\"";
 				DEVELOPMENT_TEAM = 27MAHLJV74;
 				ENABLE_PREVIEWS = YES;
@@ -874,7 +894,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Stickies/Preview Content\"";
 				DEVELOPMENT_TEAM = 27MAHLJV74;
 				ENABLE_PREVIEWS = YES;

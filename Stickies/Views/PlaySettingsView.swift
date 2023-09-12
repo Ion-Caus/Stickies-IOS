@@ -42,15 +42,15 @@ struct PlaySettingsView: View {
                     }
                 }
                   
-                Section {
-                    Toggle("Multiple Decks", isOn: $multipleDecksMode)
-                }
-                header: {
-                    Text("Advance")
-                }
-                footer: {
-                    Text("Choose multiple decks to play rather then only one")
-                }
+//                Section {
+//                    Toggle("Multiple Decks", isOn: $multipleDecksMode)
+//                }
+//                header: {
+//                    Text("Advance")
+//                }
+//                footer: {
+//                    Text("Choose multiple decks to play rather then only one")
+//                }
             }
             .navigationTitle("Play Settings")
             

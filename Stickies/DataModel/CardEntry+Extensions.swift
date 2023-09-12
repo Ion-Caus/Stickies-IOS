@@ -10,9 +10,10 @@ import CoreData
 
 extension CardEntry {
     
-    convenience init(cardId: UUID, createdDate: Date, review: Review, context: NSManagedObjectContext) {
+    convenience init(card: Card, createdDate: Date, review: Review, context: NSManagedObjectContext) {
         self.init(context: context)
         self.cardId = cardId
+        self.card = card
         self.createdDate = createdDate
         self.review = review.rawValue
     }

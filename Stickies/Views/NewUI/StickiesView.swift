@@ -139,7 +139,7 @@ struct StickiesView: View {
                     Spacer()
                     
                     CapsuleButton(text: "Play", textColor: .white, backgroundColor: .accentRed, strokeColor: .accentRedDark) {
-                        navigateTo = AnyView(PlaySetupView())
+                        navigateTo = AnyView(PrePlayView())
                         isNavigationActive = true
                     }
                     

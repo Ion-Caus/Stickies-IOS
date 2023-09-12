@@ -1,16 +1,17 @@
 //
-//  DeckGridView.swift
+//  DeckPlayGridView.swift
 //  Stickies
 //
-//  Created by Ion Caus on 08.03.2023.
+//  Created by Ion Caus on 06.09.2023.
 //
 
 import SwiftUI
 
-struct DeckGridView<MenuItems>: View where MenuItems: View {
+struct DeckPlayGridView: View {
+    @AppStorage(AppStorageKeys.ShuffleMode)
+    private var shuffleMode: ShuffleMode = Constants.DefaultShuffleMode
     
     var decks: FetchedResults<Deck>
-    @ViewBuilder let contextMenu: (Deck) -> MenuItems
     
     var body: some View {
         let groups = Dictionary(
@@ -26,11 +27,9 @@ struct DeckGridView<MenuItems>: View where MenuItems: View {
                         LazyVGrid(columns: [ GridItem(.flexible()), GridItem(.flexible()) ]) {
                             
                             ForEach(groups[key] ?? [], id: \.id) { deck in
-                                NavigationLink(destination: CardsView(deck: deck)) {
-                                    DeckItemView(deck: deck, showDueBadge: false)
-                                        .contextMenu {
-                                            contextMenu(deck)
-                                        }
+                                NavigationLink(destination: PlayView(cards: deck.cardList, shuffleMode: shuffleMode)) {
+                                     
+                                    DeckItemView(deck: deck, showDueBadge: true)
                                 }
                             }
                         }
